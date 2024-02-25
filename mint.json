@@ -18,39 +18,22 @@
   "navigation": [
     {
       "group": "How Chart Works",
+      "pages": ["quickstart", "introduction", "development"]
+    },
+    {
+      "group": "Records",
       "pages": [
-        "quickstart",
-        "introduction",
-        "development"
+        "api-reference/records/get",
+        "api-reference/records/create",
+        "api-reference/records/delete"
       ]
     },
     {
-      "group": "Essentials",
+      "group": "Management",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction",
-        "api-reference/health-check",
-        "api-reference/authorize-oauth2",
-        "api-reference/get-oauth2-token",
-        "api-reference/get-tax-records"
-      ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/management/providers",
+        "api-reference/management/introspect",
+        "api-reference/management/disconnect"
       ]
     }
   ],
@@ -91,6 +74,5 @@
   },
   "feedback": {
     "thumbsRating": true
-  },
-  "openapi": "/openapi.yaml"
+  }
 }

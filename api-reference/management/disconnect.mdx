@@ -1,0 +1,8 @@
+---
+title: 'Disconnect'
+openapi: 'POST /disconnect'
+---
+Deletion is based on both the taxpayer and provider of the `access_token` used to call this endpoint, 
+and will also delete all tokens with the same taxpayer/provider pair. Other tokens for the same taxpayer, but connected to a different provider, require a separate call.
+
+We require applications to implement the Disconnect endpoint for billing and security purposes.
