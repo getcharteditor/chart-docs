@@ -18,7 +18,7 @@
   "paths": {
     "/records": {
       "get": {
-        "description": "Returns all tax records associated with an access_token.",
+        "description": "Returns all tax records associated with an `access_token`.",
         "parameters": [
           {
             "$ref": "#/components/parameters/ChartAPIVersion"
@@ -26,7 +26,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Record response",
+            "description": "Records Response",
             "content": {
               "application/json": {
                 "schema": {
@@ -56,7 +56,7 @@
         "description": "Return details on all available tax record providers.",
         "responses": {
           "200": {
-            "description": "Providers response",
+            "description": "Providers Response",
             "content": {
               "application/json": {
                 "schema": {
@@ -87,10 +87,14 @@
         ],
         "responses": {
           "200": {
+            "description": "Introspect Response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Introspection"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Introspection"
+                  }
                 }
               }
             }
@@ -108,7 +112,7 @@
         ],
         "responses": {
           "200": {
-            "description": "disconnect response",
+            "description": "Disconnect Response",
             "content": {
               "application/json": {
                 "schema": {

@@ -23,9 +23,7 @@
     {
       "group": "Records",
       "pages": [
-        "api-reference/records/get",
-        "api-reference/records/create",
-        "api-reference/records/delete"
+        "api-reference/records/get"
       ]
     },
     {
