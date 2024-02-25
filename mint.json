@@ -7,53 +7,20 @@
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#679346",
+    "primary": "#293321",
     "light": "#A5EB71",
-    "dark": "#293321",
+    "dark": "#679346",
     "anchors": {
-      "from": "#293321",
+      "from": "#679346",
       "to": "#A5EB71"
     }
   },
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:hi@trychartapi.com"
-    }
-  ],
-  "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.trychartapi.com"
-  },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://trychartapi.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://trychartapi.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://trychartapi.com/blog"
-    }
-  ],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "How Chart Works",
       "pages": [
-        "introduction",
         "quickstart",
+        "introduction",
         "development"
       ]
     },
@@ -71,7 +38,11 @@
     {
       "group": "API Documentation",
       "pages": [
-        "api-reference/introduction"
+        "api-reference/introduction",
+        "api-reference/health-check",
+        "api-reference/authorize-oauth2",
+        "api-reference/get-oauth2-token",
+        "api-reference/get-tax-records"
       ]
     },
     {
@@ -83,9 +54,43 @@
       ]
     }
   ],
+  "topbarLinks": [
+    {
+      "name": "Sign Up",
+      "url": "https://dashboard.trychartapi.com/auth/signup"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Sign In",
+    "url": "https://dashboard.trychartapi.com/auth/signin"
+  },
+  "anchors": [
+    {
+      "name": "Changelog",
+      "icon": "megaphone",
+      "iconType": "solid",
+      "url": "https://trychartapi.com/docs"
+    },
+    {
+      "name": "API Status",
+      "icon": "signal-bars",
+      "iconType": "solid",
+      "url": "https://trychartapi.com/community"
+    }
+  ],
+  "tabs": [
+    {
+      "name": "API Reference",
+      "url": "api-reference"
+    }
+  ],
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/getcharteditor",
-    "linkedin": "https://www.linkedin.com/company/chart-editor"
-  }
+    "twitter": "https://twitter.com/try_chart_api",
+    "linkedin": "https://www.linkedin.com/company/chart-api",
+    "website": "https://trychartapi.com"
+  },
+  "feedback": {
+    "thumbsRating": true
+  },
+  "openapi": "/openapi.yaml"
 }
