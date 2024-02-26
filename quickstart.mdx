@@ -3,7 +3,7 @@ title: 'Quickstart'
 description: 'This API Quickstart guide will help you send your first request to Chart, the unified API for tax records.'
 ---
 
-To get started, sign up for a free account [here](https://dashboard.trychartapi.com/auth/signup). 
+To get started, sign up for a free account [here](https://dashboard.trychartapi.com/signup). 
 After registration, you will have access to your OAuth application `client_id` and `client_secret` 
 to build and test how Chart works.
 
@@ -26,7 +26,7 @@ you will want to automate this process completely inside your application's code
 Since this quickstart assumes you have not built an application yet, 
 we must make sure that a proper `redirect_uri` is set up before continuing or
 our authorization code generation will fail.
-In your [Chart Dashboard](https://dashboard.trychartapi.com/auth/signup), go to the “Redirect URIs” 
+In your [Chart Dashboard](https://dashboard.trychartapi.com/signup), go to the “Redirect URIs” 
 section and select `+ Add Redirect URI`. We are going to use https://example.com for testing purposes. 
 In production, you will want to use your own application's urls for the Redirect Uris 
 (and remove all mentions of https://example.com or http://localhost).
@@ -39,7 +39,7 @@ We will launch **Chart Connect** - our secure and elegant authorization flow
 for your users to grant your application access to their systems - by constructing and navigating 
 to the following URL on your browser. Copy the url below, open up your favorite text editor 
 (Notes, TextEdit, VS Code, etc), paste, and replace `<your_client_id>` with the client id found 
-in your [Chart Dashboard](https://dashboard.trychartapi.com/auth/signup). 
+in your [Chart Dashboard](https://dashboard.trychartapi.com/signup). 
 Remove the angle brackets when replacing `<your_client_id>`.
 
 ```shell
