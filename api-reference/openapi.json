@@ -180,8 +180,9 @@
           },
           "date": {
             "type": "string",
-            "description": "The date of the submission.",
-            "example": "Feb, 21, 2023"
+            "format": "date-time",
+            "description": "The date of the submission in ISO 8601 format in UTC.",
+            "example": "2024-02-26T21:33:49.428Z"
           },
           "raw_file": {
             "type": "string",
