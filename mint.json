@@ -18,7 +18,7 @@
   "navigation": [
     {
       "group": "How Chart Works",
-      "pages": ["quickstart", "introduction", "connect"]
+      "pages": ["quickstart", "chart-overview", "connect"]
     },
     {
       "group": "Records",
