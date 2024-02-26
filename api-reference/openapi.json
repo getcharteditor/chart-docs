@@ -37,13 +37,33 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/records/{id}": {
+      "get": {
+        "description": "List details about a given tax record.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ChartAPIVersion"
           },
-          "400": {
-            "description": "Unexpected error",
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Record Response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/Record"
                 }
               }
             }
@@ -138,16 +158,37 @@
         }
       },
       "Record": {
-        "required": ["name"],
         "type": "object",
         "properties": {
-          "name": {
-            "description": "The name of the record",
-            "type": "string"
+          "id": {
+            "description": "The Chart UUID assigned to this tax record.",
+            "type": "string",
+            "example": "clt0szoxp0001p82z45ufj6t4"
           },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
+          "raw_file": {
+            "type": "string",
+            "description": "A pre-signed URL pointing to the raw tax file retrieved from the provider."
+          },
+          "taxYear": {
+            "type": "string",
+            "description": "The tax year of the record.",
+            "example": "2022"
+          },
+          "date": {
+            "type": "string",
+            "description": "The date of the submission.",
+            "example": "Feb, 21, 2023"
+          },
+          "provider_id": {
+            "description": "The tax record provider associated with the access_token.",
+            "type": "string",
+            "example": "turbotax"
+          },
+          "name": {
+            "description": "The account name retrieved from tax record provider.",
+            "type": "string",
+            "nullable": true,
+            "example": "John Doe"
           }
         }
       },
@@ -200,7 +241,7 @@
         "type": "object",
         "properties": {
           "account_id": {
-            "description": "The Chart uuid identifying the taxpayer for a specific submission.",
+            "description": "The Chart UUID identifying the taxpayer for a specific submission.",
             "type": "string",
             "example": "clt0szoxp0001p82z45ufj6t4"
           },

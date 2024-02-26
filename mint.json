@@ -18,13 +18,11 @@
   "navigation": [
     {
       "group": "How Chart Works",
-      "pages": ["quickstart", "introduction", "development"]
+      "pages": ["quickstart", "introduction", "connect"]
     },
     {
       "group": "Records",
-      "pages": [
-        "api-reference/records/get"
-      ]
+      "pages": ["api-reference/records/get_all", "api-reference/records/get"]
     },
     {
       "group": "Management",
@@ -33,6 +31,10 @@
         "api-reference/management/introspect",
         "api-reference/management/disconnect"
       ]
+    },
+    {
+      "group": "Development Guides",
+      "pages": ["development/changelog"]
     }
   ],
   "topbarLinks": [
@@ -50,13 +52,7 @@
       "name": "Changelog",
       "icon": "megaphone",
       "iconType": "solid",
-      "url": "https://trychartapi.com/docs"
-    },
-    {
-      "name": "API Status",
-      "icon": "signal-bars",
-      "iconType": "solid",
-      "url": "https://trychartapi.com/community"
+      "url": "development"
     }
   ],
   "tabs": [
