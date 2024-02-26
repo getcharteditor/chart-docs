@@ -111,10 +111,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Introspection"
-                  }
+                  "$ref": "#/components/schemas/Introspection"
                 }
               }
             }
@@ -165,30 +162,30 @@
             "type": "string",
             "example": "clt0szoxp0001p82z45ufj6t4"
           },
-          "raw_file": {
+          "name": {
+            "description": "The account name retrieved from tax record provider.",
             "type": "string",
-            "description": "A pre-signed URL pointing to the raw tax file retrieved from the provider."
+            "nullable": true,
+            "example": "John Doe"
           },
           "taxYear": {
             "type": "string",
             "description": "The tax year of the record.",
             "example": "2022"
           },
-          "date": {
-            "type": "string",
-            "description": "The date of the submission.",
-            "example": "Feb, 21, 2023"
-          },
           "provider_id": {
             "description": "The tax record provider associated with the access_token.",
             "type": "string",
             "example": "turbotax"
           },
-          "name": {
-            "description": "The account name retrieved from tax record provider.",
+          "date": {
             "type": "string",
-            "nullable": true,
-            "example": "John Doe"
+            "description": "The date of the submission.",
+            "example": "Feb, 21, 2023"
+          },
+          "raw_file": {
+            "type": "string",
+            "description": "A pre-signed URL pointing to the raw tax file retrieved from the provider."
           }
         }
       },
