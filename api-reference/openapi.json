@@ -168,7 +168,7 @@
             "nullable": true,
             "example": "John Doe"
           },
-          "taxYear": {
+          "tax_year": {
             "type": "string",
             "description": "The tax year of the record.",
             "example": "2022"
@@ -187,6 +187,15 @@
           "raw_file": {
             "type": "string",
             "description": "A pre-signed URL pointing to the raw tax file retrieved from the provider."
+          },
+          "type": {
+            "description": "The type of the tax record.",
+            "type": "string",
+            "enum": ["F1040"]
+          },
+          "form": {
+            "description": "The parsed tax form data associated with the tax record.",
+            "$ref": "#/components/schemas/Form1040"
           }
         }
       },
@@ -258,6 +267,577 @@
             "description": "The tax record provider associated with the access_token.",
             "type": "string",
             "example": "turbotax"
+          }
+        }
+      },
+      "Form1040": {
+        "type": "object",
+        "nullable": true,
+        "properties": {
+          "Type": {
+            "description": "The type of the form",
+            "type": "string",
+            "enum": ["F1040"]
+          },
+          "TaxYear": {
+            "description": "The tax year for the form 1040.",
+            "type": "string"
+          },
+          "FilingInfo": {
+            "type": "object",
+            "properties": {
+              "FilingStatus": {
+                "description": "The filing status of the taxpayer. Options are Single, Head of household (HOH), Married filing jointly (even if only one had income), Married filing separately (MFS), Qualifying surviving spouse (QSS).",
+                "type": "string",
+                "nullable": true
+              },
+              "FirstAndMiddleName": {
+                "description": "The first name and middle initial of the taxpayer.",
+                "type": "string",
+                "nullable": true
+              },
+              "LastName": {
+                "description": "The last name of the taxpayer.",
+                "type": "string",
+                "nullable": true
+              },
+              "SSN": {
+                "description": "The social security number of the taxpayer.",
+                "type": "string",
+                "nullable": true
+              },
+              "Spouse": {
+                "type": "object",
+                "properties": {
+                  "FirstAndMiddleName": {
+                    "description": "The first name and middle initial of the spouse, if joint return.",
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "LastName": {
+                    "description": "The last name of the spouse, if joint return.",
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "SSN": {
+                    "description": "The social security number of the spouse, if joint return.",
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              },
+              "Address": {
+                "type": "object",
+                "properties": {
+                  "HomeAddress": {
+                    "description": "The home address (number and street) of the taxpayer.",
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "AptNo": {
+                    "description": "The apartment number of the taxpayer.",
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "CityTownOrPO": {
+                    "description": "The city, town, or post office of the taxpayer.",
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "State": {
+                    "description": "The state of the taxpayer.",
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "ZipCode": {
+                    "description": "The zip code of the taxpayer.",
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "ForeignCountryName": {
+                    "description": "The foreign country name if the taxpayer has a foreign address.",
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "ForeignProvince": {
+                    "description": "The foreign province, state or county if the taxpayer has a foreign address.",
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "ForeignPostalCode": {
+                    "description": "The foreign postal code if the taxpayer has a foreign address.",
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "Income": {
+            "type": "object",
+            "properties": {
+              "1": {
+                "description": "Wages, salaries, tips",
+                "type": "string",
+                "nullable": true
+              },
+              "1a": {
+                "description": "Total amount from Form(s) W-2",
+                "type": "string",
+                "nullable": true
+              },
+              "1b": {
+                "description": "Household employee wages not reported on Form(s) W-2.",
+                "type": "string",
+                "nullable": true
+              },
+              "1c": {
+                "description": "Tip income not reported on line 1a.",
+                "type": "string",
+                "nullable": true
+              },
+              "1d": {
+                "description": "Medicaid waiver payments not reported on Form(s) W-2",
+                "type": "string",
+                "nullable": true
+              },
+              "1e": {
+                "description": "Taxable dependent care benefits from Form 2441.",
+                "type": "string",
+                "nullable": true
+              },
+              "1f": {
+                "description": "Employer-provided adoption benefits from Form 8839.",
+                "type": "string",
+                "nullable": true
+              },
+              "1g": {
+                "description": "Wages from Form 8919.",
+                "type": "string",
+                "nullable": true
+              },
+              "1h": {
+                "description": "Other earned income.",
+                "type": "string",
+                "nullable": true
+              },
+              "1i": {
+                "description": "Nontaxable combat pay election.",
+                "type": "string",
+                "nullable": true
+              },
+              "1z": {
+                "description": "Add lines 1a through 1h.",
+                "type": "string",
+                "nullable": true
+              },
+              "2a": {
+                "description": "Tax-exempt interest.",
+                "type": "string",
+                "nullable": true
+              },
+              "2b": {
+                "description": "Taxable interest.",
+                "type": "string",
+                "nullable": true
+              },
+              "3a": {
+                "description": "Qualified dividends.",
+                "type": "string",
+                "nullable": true
+              },
+              "3b": {
+                "description": "Ordinary dividends.",
+                "type": "string",
+                "nullable": true
+              },
+              "4a": {
+                "description": "IRA distributions.",
+                "type": "string",
+                "nullable": true
+              },
+              "4b": {
+                "description": "Taxable amount of IRA distributions.",
+                "type": "string",
+                "nullable": true
+              },
+              "5a": {
+                "description": "Pensions and annuities.",
+                "type": "string",
+                "nullable": true
+              },
+              "5b": {
+                "type": "string",
+                "description": "Taxable amount of Pensions and annuities.",
+                "nullable": true
+              },
+              "6a": {
+                "description": "Social security benefits.",
+                "type": "string",
+                "nullable": true
+              },
+              "6b": {
+                "description": "Taxable amount of social security benefits.",
+                "type": "string",
+                "nullable": true
+              },
+              "7": {
+                "description": "Capital gain or (loss). ",
+                "type": "string",
+                "nullable": true
+              },
+              "8": {
+                "description": "Additional income from Schedule 1.",
+                "type": "string",
+                "nullable": true
+              },
+              "9": {
+                "description": "Add lines 1z, 2b, 3b, 4b, 5b, 6b, 7, and 8. This is your total income.",
+                "type": "string",
+                "nullable": true
+              },
+              "10": {
+                "description": "Adjustments to income from Schedule 1.",
+                "type": "string",
+                "nullable": true
+              },
+              "11": {
+                "description": "Subtract line 10 from line 9. This is your adjusted gross income.",
+                "type": "string",
+                "nullable": true
+              },
+              "12": {
+                "description": "Standard deduction or itemized deductions (from Schedule A).",
+                "type": "string",
+                "nullable": true
+              },
+              "12a": {
+                "description": "Standard deduction or itemized deductions (from Schedule A).",
+                "type": "string",
+                "nullable": true
+              },
+              "12b": {
+                "description": "Charitable contributions if you take the standard deduction (see instructions).",
+                "type": "string",
+                "nullable": true
+              },
+              "12c": {
+                "description": "Add lines 12a and 12b.",
+                "type": "string",
+                "nullable": true
+              },
+              "13": {
+                "description": "Qualified business income deduction from Form 8995 or Form 8995-A.",
+                "type": "string",
+                "nullable": true
+              },
+              "14": {
+                "description": "Add lines 12 and 13.",
+                "type": "string",
+                "nullable": true
+              },
+              "15": {
+                "description": "Subtract line 14 from line 11. If zero or less, enter -0-. This is your taxable income.",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          },
+          "TaxAndCredits": {
+            "type": "object",
+            "properties": {
+              "16": {
+                "description": "Tax.",
+                "type": "string",
+                "nullable": true
+              },
+              "17": {
+                "description": "Amount from Schedule 2.",
+                "type": "string",
+                "nullable": true
+              },
+              "18": {
+                "description": "Add lines 16 and 17.",
+                "type": "string",
+                "nullable": true
+              },
+              "19": {
+                "description": "Child tax credit or credit for other dependents from Schedule 8812.",
+                "type": "string",
+                "nullable": true
+              },
+              "20": {
+                "description": "Amount from Schedule 3.",
+                "type": "string",
+                "nullable": true
+              },
+              "21": {
+                "description": "Add lines 19 and 20.",
+                "type": "string",
+                "nullable": true
+              },
+              "22": {
+                "description": "Subtract line 21 from line 18.",
+                "type": "string",
+                "nullable": true
+              },
+              "23": {
+                "description": "Other taxes, including self-employment tax, from Schedule 2.",
+                "type": "string",
+                "nullable": true
+              },
+              "24": {
+                "description": "Add lines 22 and 23. This is your total tax.",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          },
+          "Payments": {
+            "type": "object",
+            "properties": {
+              "25a": {
+                "description": "Federal income tax withheld from Form(s) W-2.",
+                "type": "string",
+                "nullable": true
+              },
+              "25b": {
+                "description": "Federal income tax withheld from Form(s) 1099.",
+                "type": "string",
+                "nullable": true
+              },
+              "25c": {
+                "description": "Federal income tax withheld from Other forms.",
+                "type": "string",
+                "nullable": true
+              },
+              "25d": {
+                "description": "Add lines 25a through 25c.",
+                "type": "string",
+                "nullable": true
+              },
+              "26": {
+                "description": "Estimated tax payments and amount applied from previous return.",
+                "type": "string",
+                "nullable": true
+              },
+              "27": {
+                "description": "Earned income credit (EIC).",
+                "type": "string",
+                "nullable": true
+              },
+              "27a": {
+                "description": "Earned income credit (EIC).",
+                "type": "string",
+                "nullable": true
+              },
+              "27b": {
+                "description": "Nontaxable combat pay election.",
+                "type": "string",
+                "nullable": true
+              },
+              "27c": {
+                "description": "Prior year earned income.",
+                "type": "string",
+                "nullable": true
+              },
+              "28": {
+                "description": "Additional child tax credit from Schedule 8812.",
+                "type": "string",
+                "nullable": true
+              },
+              "29": {
+                "description": "American opportunity credit from Form 8863.",
+                "type": "string",
+                "nullable": true
+              },
+              "30": {
+                "description": "Reserved for future use.",
+                "type": "string",
+                "nullable": true
+              },
+              "31": {
+                "description": "Amount from Schedule 3.",
+                "type": "string",
+                "nullable": true
+              },
+              "32": {
+                "description": "Add lines 27, 28, 29, and 31. These are your total other payments and refundable credits.",
+                "type": "string",
+                "nullable": true
+              },
+              "33": {
+                "description": "Add lines 25d, 26, and 32. These are your total payments.",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          },
+          "Refund": {
+            "type": "object",
+            "properties": {
+              "34": {
+                "description": "The amount taxpayer overpaid.",
+                "type": "string",
+                "nullable": true
+              },
+              "35b": {
+                "description": "Routing number.",
+                "type": "string",
+                "nullable": true
+              },
+              "35c": {
+                "description": "Checking or Savings.",
+                "type": "string",
+                "enum": ["Checking", "Savings"],
+                "nullable": true
+              },
+              "35d": {
+                "description": "Account number.",
+                "type": "string",
+                "nullable": true
+              },
+              "36": {
+                "description": "Amount of line 34 you want applied to your next year tax return.",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          },
+          "AmountYouOwe": {
+            "type": "object",
+            "properties": {
+              "37": {
+                "description": "Amount the tax payer owes.",
+                "type": "string",
+                "nullable": true
+              },
+              "38": {
+                "description": "Estimated tax penalty.",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          },
+          "ThirdPartyDesignee": {
+            "type": "object",
+            "properties": {
+              "Allowed": {
+                "description": "Whether or not another person is allowed to discuss this return with the IRS.",
+                "type": "boolean",
+                "nullable": true
+              },
+              "Name": {
+                "description": "Designee's name.",
+                "type": "string",
+                "nullable": true
+              },
+              "PhoneNo": {
+                "description": "Designee's Phone number.",
+                "type": "string",
+                "nullable": true
+              },
+              "PIN": {
+                "description": "Personal identification number (PIN) of the Designee.",
+                "type": "string",
+                "nullable": true
+              }
+            }
+          },
+          "SignHere": {
+            "type": "object",
+            "properties": {
+              "Date": {
+                "description": "The signature date.",
+                "type": "string",
+                "nullable": true
+              },
+              "Occupation": {
+                "description": "The taxpayer's occupation.",
+                "type": "string",
+                "nullable": true
+              },
+              "PIN": {
+                "description": "The Identity Protection PIN of the tax payer.",
+                "type": "string",
+                "nullable": true
+              },
+              "PhoneNo": {
+                "description": "The phone number of the tax payer.",
+                "type": "string",
+                "nullable": true
+              },
+              "EmailAddress": {
+                "description": "The email address of the tax payer.",
+                "type": "string",
+                "nullable": true
+              },
+              "Spouse": {
+                "type": "object",
+                "properties": {
+                  "Date": {
+                    "description": "The spouse's signature date.",
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "Occupation": {
+                    "description": "The spouse's occupation.",
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "PIN": {
+                    "description": "The Identity Protection PIN of the spouse.",
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "PaidPreparer": {
+            "type": "object",
+            "properties": {
+              "Name": {
+                "description": "Full name of the tax preparer.",
+                "type": "string",
+                "nullable": true
+              },
+              "Date": {
+                "description": "Date when the preparation was completed.",
+                "type": "string",
+                "nullable": true
+              },
+              "PhoneNo": {
+                "description": "Contact phone number of the tax preparer.",
+                "type": "string",
+                "nullable": true
+              },
+              "PTIN": {
+                "description": "Preparer Tax Identification Number (PTIN) of the tax preparer.",
+                "type": "string",
+                "nullable": true
+              },
+              "SelfEmployed": {
+                "description": "Indicates if the tax preparer is self-employed.",
+                "type": "boolean",
+                "nullable": true
+              },
+              "FirmName": {
+                "description": "Name of the firm where the tax preparer is employed.",
+                "type": "string",
+                "nullable": true
+              },
+              "FirmAddress": {
+                "description": "Physical address of the firm where the tax preparer is employed.",
+                "type": "string",
+                "nullable": true
+              },
+              "FirmEIN": {
+                "description": "Employer Identification Number (EIN) of the firm where the tax preparer is employed.",
+                "type": "string",
+                "nullable": true
+              }
+            }
           }
         }
       },
