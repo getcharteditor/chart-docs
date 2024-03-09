@@ -33,8 +33,31 @@
       ]
     },
     {
-      "group": "Development Guides",
-      "pages": ["development/changelog"]
+      "group": "Implementation Guide",
+      "pages": [
+        "implementation/guide",
+        {
+          "group": "Connect",
+          "pages": [
+            "implementation/connect/create-dev-account",
+            "implementation/connect/set-up-chart-connect",
+            "implementation/connect/retrieve-access-token"
+          ]
+        },
+        {
+          "group": "Secure",
+          "pages": [
+            "implementation/secure/store"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Developer Resources",
+      "pages": [
+        "developer/sdk",
+        "developer/changelog"
+      ]
     }
   ],
   "topbarLinks": [

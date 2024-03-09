@@ -1,0 +1,60 @@
+---
+title: 'Chart API Implementation Guide'
+description: 'In this integration guide, you will sign up for a Chart Account, set up Chart Connect, 
+integrate the Chart API, and go into production.'
+---
+
+Chart's developer-friendly Unified Tax API makes implementation simple and straightforward.
+
+1. [Sign up for a free account](/implementation/connect/create-dev-account) to receive credentials and pilot how Chart works.
+2. [Integrate Chart Connect](/implementation/connect/set-up-chart-connect) into your frontend. 
+(Chart Connect is the user inferface that allows your customers to safely
+ and securely grant your application access to their tax systems.) 
+ You can opt to [redirect to Chart Connect](/implementation/connect/set-up-chart-connect#redirect-to-chart-connect)
+ or [embed it directly](/implementation/connect/set-up-chart-connect#embedded-chart-connect) into your application.
+3. Integrate the Chart API into your application's backend.
+4. [Secure](/implementation/secure) your application to maintain a smooth user experience 
+that is both efficient and protected while using Chart.
+5. Once your integration has been tested thoroughly, go live with all of your customers.
+
+<Note>**Ready to get started? [Create An Account](/implementation/connect/set-up-chart-connect)**</Note>
+
+## Frontend + Backend
+
+In a full implementation, Chart requires both a frontend and a backend application to exist. 
+The frontend application coordinates connecting to tax systems, 
+and the backend server securely manages the requests and responses to and from Chart APIs.
+
+### Frontend User Interface
+
+Before being able to pull data from a tax provider through Chart, 
+your customer needs to consent to the data being transferred. Without consent, 
+Chart is not authorized to pull the data on behalf of the customer. 
+Chart Connect is our user-facing product to help you obtain customer consent, 
+and it is a prerequisite step before calling Chart APIs.
+
+There are two ways to integrate Chart Connect into your application's frontend user interface.
+
+1. Your application can [embed Chart Connect](/implementation/connect/set-up-chart-connect#embedded-chart-connect)
+using our various [frontend SDKs](/developer/sdk). 
+Embedding Chart Connect allows your customer to remain on your application's domain during the entire connection process.
+2. Your application can [redirect to Chart Connect](/implementation/connect/set-up-chart-connect#redirect-to-chart-connect) from the customer's browser. 
+In this case, Chart Connect is securely hosted by Chart on `https://connect.trychartapi.com` instead of your application. 
+After completion, they will be redirected to a URI that you specify.
+
+### Backend Security
+
+Chart takes security seriously, so we require a backend server to manage all requests and responses to and from Chart APIs. 
+Once the connection has been created via Chart Connect, you can obtain an `access_token` 
+which will be used to call the Chart APIs.
+
+We require a backend for several reasons:
+
+1. Since the data from tax data providers is sensitive, making API requests from the backend 
+and storing that data on the backend reduces the likelihood of this data being exposed to malicious persons.
+2. Exchanging the authorization code for an access_token should always take place in your backend 
+to ensure your `client_secret` and `access_token` are never publicly exposed.
+3. Likewise, your backend should always [store the access token](/implementation/secure/store) in a secure database 
+and should never return the access token to the frontend application.
+
+<Note>**Ready to get started? [Create An Account](/implementation/connect/set-up-chart-connect)**</Note>

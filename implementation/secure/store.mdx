@@ -1,0 +1,47 @@
+---
+title: 'Store Tokens'
+description: 'Explore our best practices for storing access tokens securely.
+Chart requires developers to store tokens on the backend server for improved security controls.'
+---
+
+To reduce the likelihood of unitentional exposure of taxpayer access tokens or other private information, 
+you'll need to ensure all access tokens are stored securely.
+
+<Warning>Chart access tokens are “keys” to sensitive information.
+You should treat access tokens with the same level of security as you would passwords.</Warning>
+
+## Secure storage best practices
+
+Storing tokens securely should be done on the backend (server-side) of your application, not on the frontend (client-side).
+A frontend application is more susceptible to potential security threats such as Cross-Site Scripting (XSS)
+attacks or unauthorized access if the client is compromised.
+
+Therefore, **Chart requires developers to store tokens securely on the backend server**
+where you have better control over access and security.
+
+No application is 100% secure, but there are ways to reduce the potential of an exposure (and its impact)
+by following a few best practices:
+
+
+1. Store tokens on the backend of your application.
+2. Encrypt the access token before storing it.
+3. Use environment variables or a secure configuration management system to store static sensitive information that needs to be referenced like `client_secret`.
+4. Never store access tokens in code files or easily accessible directories with human access.
+5. Ensure that tokens are not exposed in URLs, logs, or error messages.
+6. Keep all server-side components, libraries, and frameworks up-to-date with security patches to mitigate potential vulnerabilities.
+
+Determine the best method for securely storing access tokens in your application's backend.
+Reference the sections below if you need additional help.
+
+## Encryption
+
+To add an extra layer of security, you can encrypt the access token before storing it.
+Select a strong symmetric encryption algorithm, such as AES-256. Avoid using weak algorithms like DES,
+as they are susceptible to brute-force attacks due to its small key size (56 bits).
+
+## Never expose access tokens
+
+Ensure that tokens are not exposed in URLs, log files, or error messages. Regularly review logs for any exposure.
+
+Ensure your frontend application never receives the access token to avoid incidental exposure.
+Your frontend, client-side application should only receive tax data, never the token itself.
