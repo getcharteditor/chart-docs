@@ -71,6 +71,12 @@
       "icon": "megaphone",
       "iconType": "solid",
       "url": "developer"
+    },
+    {
+      "name": "API Status",
+      "icon": "signal-bars",
+      "iconType": "solid",
+      "url": "https://chartapi.statuspage.io"
     }
   ],
   "tabs": [
