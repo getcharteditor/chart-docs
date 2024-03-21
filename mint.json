@@ -46,18 +46,13 @@
         },
         {
           "group": "Secure",
-          "pages": [
-            "implementation/secure/store"
-          ]
+          "pages": ["implementation/secure/store"]
         }
       ]
     },
     {
       "group": "Developer Resources",
-      "pages": [
-        "developer/sdk",
-        "developer/changelog"
-      ]
+      "pages": ["developer/changelog", "developer/sdk"]
     }
   ],
   "topbarLinks": [
@@ -75,7 +70,7 @@
       "name": "Changelog",
       "icon": "megaphone",
       "iconType": "solid",
-      "url": "development"
+      "url": "developer"
     }
   ],
   "tabs": [
