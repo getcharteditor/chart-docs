@@ -22,11 +22,16 @@
     },
     {
       "group": "Records",
-      "pages": ["api-reference/records/get_all", "api-reference/records/get", "api-reference/irs-8821-form/post"]
+      "pages": ["api-reference/records/get_all", "api-reference/records/get"]
+    },
+    {
+      "group": "IRS Forms",
+      "pages": ["api-reference/irs-8821-form/post"]
     },
     {
       "group": "Management",
       "pages": [
+        "api-reference/taxpayer/get",
         "api-reference/management/providers",
         "api-reference/management/introspect",
         "api-reference/management/disconnect"

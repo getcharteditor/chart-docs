@@ -177,10 +177,63 @@
           }
         }
       }
+    },
+    "/tax-payer": {
+      "get": {
+        "description": "Retrieve taxpayer information associated with an `access_token`.",
+        "responses": {
+          "200": {
+            "description": "Introspect Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaxpayerResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "TaxpayerResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "clxjfvx74000f11di1uq2u8xm"
+          },
+          "name": {
+            "type": "string",
+            "example": "Joe Doe"
+          },
+          "session": {
+            "type": "object"
+          },
+          "providerId": {
+            "type": "string",
+            "example": "irs-tax-pro"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-06-17T20:40:03.965Z"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "CONSENT_RECEIVED",
+              "TAX_AUTHORIZATION_SUBMITTED",
+              "REJECTED",
+              "COMPLETED"
+            ],
+            "example": "TAX_AUTHORIZATION_SUBMITTED"
+          }
+        },
+        "required": ["id", "name", "providerId", "createdAt", "status"]
+      },
       "IRS8821FormState": {
         "type": "object",
         "properties": {
@@ -218,7 +271,11 @@
           "businessInfo": {
             "type": "object",
             "properties": {
-              "name": { "type": "string", "minLength": 1, "example": "Test, Inc." },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "example": "Test, Inc."
+              },
               "taxId": {
                 "type": "string",
                 "description": "EIN or SSN of the taxpayer",
