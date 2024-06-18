@@ -218,7 +218,7 @@
           "businessInfo": {
             "type": "object",
             "properties": {
-              "name": { "type": "string" },
+              "name": { "type": "string", "minLength": 1, "example": "Test, Inc." },
               "taxId": {
                 "type": "string",
                 "description": "EIN or SSN of the taxpayer",
