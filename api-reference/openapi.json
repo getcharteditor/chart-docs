@@ -184,6 +184,10 @@
       "IRS8821FormState": {
         "type": "object",
         "properties": {
+          "isPersonal": {
+            "type": "boolean",
+            "default": true
+          },
           "personalInfo": {
             "type": "object",
             "properties": {
