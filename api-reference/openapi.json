@@ -159,7 +159,7 @@
           }
         ],
         "responses": {
-          "200": {
+          "201": {
             "description": "IRS 8821 Form Submission Response",
             "content": {
               "application/json": {
