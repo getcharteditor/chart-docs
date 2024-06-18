@@ -140,10 +140,132 @@
           }
         }
       }
+    },
+    "/providers/irs/f8821": {
+      "post": {
+        "description": "Submit an IRS 8821 form.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IRS8821FormState"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "clientAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "IRS 8821 Form Submission Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "authorizationCode": {
+                      "type": "string",
+                      "example": "578453a7dc8f1fdcb237d96a98c6b5ef6282108c"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "IRS8821FormState": {
+        "type": "object",
+        "properties": {
+          "personalInfo": {
+            "type": "object",
+            "properties": {
+              "firstName": {
+                "type": "string",
+                "minLength": 1,
+                "example": "John"
+              },
+              "lastName": {
+                "type": "string",
+                "minLength": 1,
+                "example": "Doe"
+              },
+              "email": {
+                "type": "string",
+                "format": "email",
+                "example": "john.doe@example.com"
+              },
+              "ssn": {
+                "type": "string",
+                "minLength": 9,
+                "maxLength": 9,
+                "example": "123456789"
+              }
+            },
+            "required": ["firstName", "lastName", "email"]
+          },
+          "businessInfo": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "taxId": {
+                "type": "string",
+                "description": "EIN or SSN of the taxpayer",
+                "minLength": 9,
+                "maxLength": 9,
+                "example": "123456789"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "S-Corporation",
+                  "C-Corporation",
+                  "Sole Proprietorship",
+                  "Partnerships"
+                ]
+              },
+              "phone": {
+                "type": "string",
+                "pattern": "^[0-9]{10}$",
+                "example": "1112223344"
+              },
+              "title": { "type": "string", "example": "CEO" }
+            },
+            "required": ["name", "taxId", "type", "phone", "title"]
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "street": {
+                "type": "string",
+                "minLength": 1,
+                "example": "123 Main St"
+              },
+              "other": { "type": "string", "example": "Apt 1" },
+              "city": {
+                "type": "string",
+                "minLength": 1,
+                "example": "San Francisco"
+              },
+              "state": { "type": "string", "minLength": 1, "example": "CA" },
+              "zip": { "type": "string", "minLength": 1, "example": "94101" }
+            },
+            "required": ["street", "city", "state", "zip"]
+          },
+          "signatureBase64": {
+            "type": "string",
+            "description": "Base64 encoded signature image"
+          }
+        },
+        "required": ["personalInfo", "address", "signatureBase64"]
+      },
       "Disconnect": {
         "type": "object",
         "properties": {
@@ -860,6 +982,11 @@
         "type": "http",
         "scheme": "bearer",
         "description": "Please use your Access Token"
+      },
+      "clientAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Please use base64 encoded client_id:client_secret"
       }
     },
     "parameters": {

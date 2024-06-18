@@ -22,7 +22,7 @@
     },
     {
       "group": "Records",
-      "pages": ["api-reference/records/get_all", "api-reference/records/get"]
+      "pages": ["api-reference/records/get_all", "api-reference/records/get", "api-reference/irs-8821-form/post"]
     },
     {
       "group": "Management",
