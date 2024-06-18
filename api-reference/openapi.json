@@ -153,6 +153,11 @@
             }
           }
         },
+        "security": [
+          {
+            "clientAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "IRS 8821 Form Submission Response",
@@ -161,9 +166,9 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "key": {
+                    "authorizationCode": {
                       "type": "string",
-                      "example": "irs-8821/7df8980f8de4aac66b3e0b2974e472cda14d2dad02383d82d83a7edef3f0b3dd.pdf"
+                      "example": "578453a7dc8f1fdcb237d96a98c6b5ef6282108c"
                     }
                   }
                 }
@@ -182,9 +187,27 @@
           "personalInfo": {
             "type": "object",
             "properties": {
-              "firstName": { "type": "string", "minLength": 1 },
-              "lastName": { "type": "string", "minLength": 1 },
-              "email": { "type": "string", "format": "email" }
+              "firstName": {
+                "type": "string",
+                "minLength": 1,
+                "example": "John"
+              },
+              "lastName": {
+                "type": "string",
+                "minLength": 1,
+                "example": "Doe"
+              },
+              "email": {
+                "type": "string",
+                "format": "email",
+                "example": "john.doe@example.com"
+              },
+              "ssn": {
+                "type": "string",
+                "minLength": 9,
+                "maxLength": 9,
+                "example": "123456789"
+              }
             },
             "required": ["firstName", "lastName", "email"]
           },
@@ -194,31 +217,54 @@
               "name": { "type": "string" },
               "taxId": {
                 "type": "string",
-                "description": "Tax ID must be exactly 9 digits and numeric only"
+                "description": "EIN or SSN of the taxpayer",
+                "minLength": 9,
+                "maxLength": 9,
+                "example": "123456789"
               },
-              "type": { "type": "string" },
-              "phone": { "type": "string" },
-              "title": { "type": "string" }
+              "type": {
+                "type": "string",
+                "enum": [
+                  "S-Corporation",
+                  "C-Corporation",
+                  "Sole Proprietorship",
+                  "Partnerships"
+                ]
+              },
+              "phone": {
+                "type": "string",
+                "pattern": "^[0-9]{10}$",
+                "example": "1112223344"
+              },
+              "title": { "type": "string", "example": "CEO" }
             },
             "required": ["name", "taxId", "type", "phone", "title"]
           },
           "address": {
             "type": "object",
             "properties": {
-              "street": { "type": "string", "minLength": 1 },
-              "other": { "type": "string" },
-              "city": { "type": "string", "minLength": 1 },
-              "state": { "type": "string", "minLength": 1 },
-              "zip": { "type": "string", "minLength": 1 }
+              "street": {
+                "type": "string",
+                "minLength": 1,
+                "example": "123 Main St"
+              },
+              "other": { "type": "string", "example": "Apt 1" },
+              "city": {
+                "type": "string",
+                "minLength": 1,
+                "example": "San Francisco"
+              },
+              "state": { "type": "string", "minLength": 1, "example": "CA" },
+              "zip": { "type": "string", "minLength": 1, "example": "94101" }
             },
             "required": ["street", "city", "state", "zip"]
           },
           "signatureBase64": {
             "type": "string",
-            "description": "Invalid base64 string"
+            "description": "Base64 encoded signature image"
           }
         },
-        "required": ["personalInfo", "businessInfo", "address", "signatureBase64"]
+        "required": ["personalInfo", "address", "signatureBase64"]
       },
       "Disconnect": {
         "type": "object",
@@ -936,6 +982,11 @@
         "type": "http",
         "scheme": "bearer",
         "description": "Please use your Access Token"
+      },
+      "clientAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Please use base64 encoded client_id:client_secret"
       }
     },
     "parameters": {
