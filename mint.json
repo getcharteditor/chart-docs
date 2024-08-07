@@ -63,12 +63,12 @@
   "topbarLinks": [
     {
       "name": "Sign Up",
-      "url": "https://dashboard.trychartapi.com/signup"
+      "url": "https://auth.trychartapi.com/sign-up"
     }
   ],
   "topbarCtaButton": {
     "name": "Sign In",
-    "url": "https://dashboard.trychartapi.com/signin"
+    "url": "https://auth.trychartapi.com"
   },
   "anchors": [
     {
