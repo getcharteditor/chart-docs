@@ -57,7 +57,7 @@
     },
     {
       "group": "Developer Resources",
-      "pages": ["changelog", "sdk"]
+      "pages": ["changelog", "sdk", "events", "webhooks"]
     }
   ],
   "topbarLinks": [
