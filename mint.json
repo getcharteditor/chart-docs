@@ -57,7 +57,7 @@
     },
     {
       "group": "Developer Resources",
-      "pages": ["changelog", "sdk", "events", "webhooks"]
+      "pages": ["sdk", "events", "webhooks", "changelog"]
     }
   ],
   "topbarLinks": [
@@ -72,16 +72,16 @@
   },
   "anchors": [
     {
-      "name": "Changelog",
-      "icon": "megaphone",
-      "iconType": "solid",
-      "url": "developer"
-    },
-    {
       "name": "API Status",
       "icon": "signal-bars",
       "iconType": "solid",
       "url": "https://chartapi.statuspage.io"
+    },
+    {
+      "name": "Changelog",
+      "icon": "megaphone",
+      "iconType": "solid",
+      "url": "developer"
     }
   ],
   "tabs": [
