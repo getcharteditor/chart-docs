@@ -218,6 +218,41 @@ process the form and give authorization to Chart to pull the taxpayers' data. Th
 reflext the stages of the IRS Form flow.
 
 <AccordionGroup>
+ <Accordion title="irs_form.consent_received">
+    ```json IRS Form consent received event
+    {
+        "event": "irs_form.consent_received",
+        "id": "ev_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
+        "data": {
+            "taxpayer_id": "tx_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
+            "form": {
+                "isPersonal": true,
+                "personalInfo": {
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "email": "john.doe@example.com",
+                    "ssn": "123456789"
+                },
+                "businessInfo": {
+                    "name": "Test, Inc.",
+                    "taxId": "123456789",
+                    "type": "S-Corporation",
+                    "phone": "1112223344",
+                    "title": "CEO"
+                },
+                "address": {
+                    "street": "123 Main St",
+                    "other": "Apt 1",
+                    "city": "San Francisco",
+                    "state": "CA",
+                    "zip": "94101"
+                }
+            }
+        },
+        "created_at": "2021-08-17T03:29:59.397Z"
+    }
+    ```
+  </Accordion>
   <Accordion title="irs_form.submitted">
     ```json IRS Form submitted event
     {
