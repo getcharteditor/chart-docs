@@ -761,6 +761,12 @@
             "items": {
               "$ref": "#/components/schemas/Form1099SAOr5498SA"
             }
+          },
+          "Form 1099-R Distributions from Pensions, Annuities, Retire or Profit- Sharing Plans, IRAs, Insurance Contracts, etc.": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Form1099R"
+            }
           }
         },
         "required": ["Type", "Tax Year", "SSN Provided", "Tax Period Requested"]
@@ -1329,6 +1335,117 @@
           "Proceeds from": {
             "type": "string",
             "example": "Box not checked"
+          }
+        }
+      },
+      "Form1099R": {
+        "type": "object",
+        "properties": {
+          "Payer": {
+            "type": "object",
+            "properties": {
+              "Payer's Federal Identification Number (FIN)": {
+                "type": "string",
+                "example": "123456789"
+              },
+              "Name": {
+                "type": "string",
+                "example": "TEST COMPANY"
+              },
+              "Address": {
+                "type": "string",
+                "example": "1 MARKET ST\nSAN FRANCISCO, CA 80129-7382"
+              }
+            }
+          },
+          "Recipient": {
+            "type": "object",
+            "properties": {
+              "Recipient's Identification Number": {
+                "type": "string",
+                "example": "123-45-6789"
+              },
+              "Name": {
+                "type": "string",
+                "example": "JOHN SMIT"
+              },
+              "Address": {
+                "type": "string",
+                "example": "123 HOME\n SUN CITY, CA 91111-6623"
+              }
+            }
+          },
+          "Submission Type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "Account Number (Optional)": {
+            "type": "string",
+            "example": "00003535435353"
+          },
+          "Distribution Code Value": {
+            "type": "string",
+            "example": "Direct rollover and rollover contribution"
+          },
+          "Distribution Code": {
+            "type": "string",
+            "example": "G"
+          },
+          "Tax Amount Undetermined Code": {
+            "type": "string",
+            "example": "Not checked"
+          },
+          "Total Distribution Code": {
+            "type": "string",
+            "example": "Total Distribution"
+          },
+          "First Year Roth Contribution": {
+            "type": "string",
+            "example": "0000"
+          },
+          "SEP Indicator": {
+            "type": "string",
+            "example": "IRA/SEP/SIMP box not checked"
+          },
+          "FATCA Indicator": {
+            "type": "string",
+            "example": "not FATCA"
+          },
+          "Date of Payment for Reportable Death Benefits under Section 6050Y": {
+            "type": "string",
+            "example": "00-00-0000"
+          },
+          "Tax Withheld": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Total Employee Contributions": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Unrealized Appreciation": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Other Income": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Gross Distribution": {
+            "type": "number",
+            "example": 23629.0
+          },
+          "Taxable Amount": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Eligible Capital Gains": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Amount to IRR": {
+            "type": "number",
+            "example": 0.0
           }
         }
       },
