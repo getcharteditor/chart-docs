@@ -767,6 +767,12 @@
             "items": {
               "$ref": "#/components/schemas/Form1099R"
             }
+          },
+          "Form 1099-MISC": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Form1099MISC"
+            }
           }
         },
         "required": ["Type", "Tax Year", "SSN Provided", "Tax Period Requested"]
@@ -1448,6 +1454,121 @@
             "example": 0.0
           }
         }
+      },
+      "Form1099MISC": {
+      "type": "object",
+      "properties": {
+        "Payer": {
+          "type": "object",
+          "properties": {
+            "Payer's Federal Identification Number (FIN)": {
+              "type": "string",
+              "example": "464364776"
+            },
+            "Name": {
+              "type": "string",
+              "example": "ROBINHOOD MARKETS INC. AS AGENT FOR\nROBINHOOD SECURITIES LLC"
+            },
+            "Address": {
+              "type": "string",
+              "example": "85 WILLOW ROAD\nMENLO PARK, CA 94025-0000"
+            }
+          }
+        },
+        "Recipient": {
+          "type": "object",
+          "properties": {
+            "Recipient's Identification Number": {
+              "type": "string",
+              "example": "123-45-6789"
+            },
+            "Name": {
+              "type": "string",
+              "example": "JOHN SMIT"
+            },
+            "Address": {
+              "type": "string",
+              "example": "123 HOME\n SUN CITY, CA 91111-6623"
+            }
+          }
+        },
+        "Submission Type": {
+          "type": "string",
+          "example": "Original document"
+        },
+        "Account Number (Optional)": {
+          "type": "string",
+          "example": "11063535390"
+        },
+        "Tax Withheld": {
+          "type": "number",
+          "example": 0.0
+        },
+        "Medical Payments": {
+          "type": "number",
+          "example": 0.0
+        },
+        "Fishing Income": {
+          "type": "number",
+          "example": 0.0
+        },
+        "Rents": {
+          "type": "number",
+          "example": 0.0
+        },
+        "Royalties": {
+          "type": "number",
+          "example": 0.0
+        },
+        "Other Income": {
+          "type": "number",
+          "example": 0.0
+        },
+        "Substitute Payments for Dividends": {
+          "type": "number",
+          "example": 403.0
+        },
+        "Excess Golden Parachute": {
+          "type": "number",
+          "example": 0.0
+        },
+        "Crop Insurance": {
+          "type": "number",
+          "example": 0.0
+        },
+        "Attorney Fees": {
+          "type": "number",
+          "example": 0.0
+        },
+        "Foreign Tax Paid": {
+          "type": "number",
+          "example": 0.0
+        },
+        "Section 409A Deferrals": {
+          "type": "number",
+          "example": 0.0
+        },
+        "Nonqualified deferred compensation": {
+          "type": "number",
+          "example": 0.0
+        },
+        "Fish Purchased for Resale": {
+          "type": "number",
+          "example": 0.0
+        },
+        "Direct Sales Indicator": {
+          "type": "string",
+          "example": "Not Direct Sales"
+        },
+        "FATCA Filing Requirement": {
+          "type": "string",
+          "example": "Box not checked no Filing Requirement"
+        },
+        "Second Notice Indicator": {
+          "type": "string",
+          "example": "No Second Notice"
+        }
+      }
       },
       "Form5498IndRet": {
         "type": "object",
