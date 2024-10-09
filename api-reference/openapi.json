@@ -719,6 +719,12 @@
             "items": {
               "$ref": "#/components/schemas/Form1099INT"
             }
+          },
+          "Schedule K-1 1065": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ScheduleK1_1065"
+            }
           }
         },
         "required": ["Type", "Tax Year", "SSN Provided", "Tax Period Requested"]
@@ -942,6 +948,149 @@
           "FATCA Filing Requirement": {
             "type": "string",
             "example": "Box not checked no Filing Requirement"
+          }
+        }
+      },
+      "ScheduleK1_1065": {
+        "type": "object",
+        "properties": {
+          "Partnership": {
+            "type": "object",
+            "properties": {
+              "Partnership's Employer Identification Number": {
+                "type": "string",
+                "example": "123456789"
+              },
+              "Name": {
+                "type": "string",
+                "example": "Test, Inc."
+              },
+              "Address": {
+                "type": "string",
+                "example": "PO BOX 1234\nSEATTLE, WA 94111-0000"
+              }
+            }
+          },
+          "Partner": {
+            "type": "object",
+            "properties": {
+              "Partner's Identifying Number": {
+                "type": "string",
+                "example": "123-45-6789"
+              },
+              "Name": {
+                "type": "string",
+                "example": "JOHN SMIT"
+              },
+              "Address": {
+                "type": "string",
+                "example": "123 HOME RESORT \nJOHN CITY, UT 1234-0000"
+              }
+            }
+          },
+          "Submission Type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "Partner Share of Capital Beginning": {
+            "type": "string",
+            "example": "0.01%"
+          },
+          "Partner Share of Capital Ending": {
+            "type": "string",
+            "example": "0.01%"
+          },
+          "IRA SEP KEOGH Indicator": {
+            "type": "string",
+            "example": "N/A"
+          },
+          "Beginning Tax Period": {
+            "type": "string",
+            "example": "202301"
+          },
+          "Ending Tax Period": {
+            "type": "string",
+            "example": "202312"
+          },
+          "Schedule K-3": {
+            "type": "string",
+            "example": "Box is not checked"
+          },
+          "Dividends": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Interest": {
+            "type": "number",
+            "example": 636
+          },
+          "Royalties": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Ordinary Income K-1": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Real Estate": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Other Rental": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Total Guaranteed Payments": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Section 179 Expenses": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Short Term Capital Gain": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Long Term Capital Gain": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Part III Other Income (Loss)": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Part III Other Deduction": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Nonrecourse Beginning": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Nonrecourse Ending": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Qualified Nonrecourse Beginning": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Qualified Nonrecourse Ending": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Recourse Beginning": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Recourse Ending": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Dividend Equivalents": {
+            "type": "number",
+            "example": 0.0
           }
         }
       },
