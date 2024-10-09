@@ -726,6 +726,12 @@
               "$ref": "#/components/schemas/ScheduleK1_1065"
             }
           },
+          "Schedule K-1 1120S Shareholder's Share of Income, Credits, Deductions,etc.": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ScheduleK1_1120S"
+            }
+          },
           "Form 1099-DIV": {
             "type": "array",
             "items": {
@@ -1456,119 +1462,119 @@
         }
       },
       "Form1099MISC": {
-      "type": "object",
-      "properties": {
-        "Payer": {
-          "type": "object",
-          "properties": {
-            "Payer's Federal Identification Number (FIN)": {
-              "type": "string",
-              "example": "464364776"
-            },
-            "Name": {
-              "type": "string",
-              "example": "ROBINHOOD MARKETS INC. AS AGENT FOR\nROBINHOOD SECURITIES LLC"
-            },
-            "Address": {
-              "type": "string",
-              "example": "85 WILLOW ROAD\nMENLO PARK, CA 94025-0000"
+        "type": "object",
+        "properties": {
+          "Payer": {
+            "type": "object",
+            "properties": {
+              "Payer's Federal Identification Number (FIN)": {
+                "type": "string",
+                "example": "464364776"
+              },
+              "Name": {
+                "type": "string",
+                "example": "ROBINHOOD MARKETS INC. AS AGENT FOR\nROBINHOOD SECURITIES LLC"
+              },
+              "Address": {
+                "type": "string",
+                "example": "85 WILLOW ROAD\nMENLO PARK, CA 94025-0000"
+              }
             }
-          }
-        },
-        "Recipient": {
-          "type": "object",
-          "properties": {
-            "Recipient's Identification Number": {
-              "type": "string",
-              "example": "123-45-6789"
-            },
-            "Name": {
-              "type": "string",
-              "example": "JOHN SMIT"
-            },
-            "Address": {
-              "type": "string",
-              "example": "123 HOME\n SUN CITY, CA 91111-6623"
+          },
+          "Recipient": {
+            "type": "object",
+            "properties": {
+              "Recipient's Identification Number": {
+                "type": "string",
+                "example": "123-45-6789"
+              },
+              "Name": {
+                "type": "string",
+                "example": "JOHN SMIT"
+              },
+              "Address": {
+                "type": "string",
+                "example": "123 HOME\n SUN CITY, CA 91111-6623"
+              }
             }
+          },
+          "Submission Type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "Account Number (Optional)": {
+            "type": "string",
+            "example": "11063535390"
+          },
+          "Tax Withheld": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Medical Payments": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Fishing Income": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Rents": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Royalties": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Other Income": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Substitute Payments for Dividends": {
+            "type": "number",
+            "example": 403.0
+          },
+          "Excess Golden Parachute": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Crop Insurance": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Attorney Fees": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Foreign Tax Paid": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Section 409A Deferrals": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Nonqualified deferred compensation": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Fish Purchased for Resale": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Direct Sales Indicator": {
+            "type": "string",
+            "example": "Not Direct Sales"
+          },
+          "FATCA Filing Requirement": {
+            "type": "string",
+            "example": "Box not checked no Filing Requirement"
+          },
+          "Second Notice Indicator": {
+            "type": "string",
+            "example": "No Second Notice"
           }
-        },
-        "Submission Type": {
-          "type": "string",
-          "example": "Original document"
-        },
-        "Account Number (Optional)": {
-          "type": "string",
-          "example": "11063535390"
-        },
-        "Tax Withheld": {
-          "type": "number",
-          "example": 0.0
-        },
-        "Medical Payments": {
-          "type": "number",
-          "example": 0.0
-        },
-        "Fishing Income": {
-          "type": "number",
-          "example": 0.0
-        },
-        "Rents": {
-          "type": "number",
-          "example": 0.0
-        },
-        "Royalties": {
-          "type": "number",
-          "example": 0.0
-        },
-        "Other Income": {
-          "type": "number",
-          "example": 0.0
-        },
-        "Substitute Payments for Dividends": {
-          "type": "number",
-          "example": 403.0
-        },
-        "Excess Golden Parachute": {
-          "type": "number",
-          "example": 0.0
-        },
-        "Crop Insurance": {
-          "type": "number",
-          "example": 0.0
-        },
-        "Attorney Fees": {
-          "type": "number",
-          "example": 0.0
-        },
-        "Foreign Tax Paid": {
-          "type": "number",
-          "example": 0.0
-        },
-        "Section 409A Deferrals": {
-          "type": "number",
-          "example": 0.0
-        },
-        "Nonqualified deferred compensation": {
-          "type": "number",
-          "example": 0.0
-        },
-        "Fish Purchased for Resale": {
-          "type": "number",
-          "example": 0.0
-        },
-        "Direct Sales Indicator": {
-          "type": "string",
-          "example": "Not Direct Sales"
-        },
-        "FATCA Filing Requirement": {
-          "type": "string",
-          "example": "Box not checked no Filing Requirement"
-        },
-        "Second Notice Indicator": {
-          "type": "string",
-          "example": "No Second Notice"
         }
-      }
       },
       "Form5498IndRet": {
         "type": "object",
@@ -2004,6 +2010,63 @@
             "type": "number",
             "example": 0.0
           }
+        }
+      },
+      "ScheduleK1_1120S": {
+        "type": "object",
+        "properties": {
+          "Corporation": {
+            "type": "object",
+            "properties": {
+              "Corporation's Employer Identification Number": {
+                "type": "string",
+                "example": "123456789"
+              },
+              "Name": { "type": "string", "example": "TEST LLC" },
+              "Address": {
+                "type": "string",
+                "example": "1 MARKET ST\nSAN FRANCISCO, CA 80129-7382"
+              }
+            }
+          },
+          "Shareholder": {
+            "type": "object",
+            "properties": {
+              "Shareholder's Identifying Number": {
+                "type": "string",
+                "example": "123-45-6789"
+              },
+              "Name": { "type": "string", "example": "JOHN SMIT" },
+              "Address": {
+                "type": "string",
+                "example": "123 HOME\n SUN CITY, CA 91111-6623"
+              }
+            }
+          },
+          "Submission Type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "Dividends": { "type": "number", "example": 0.0 },
+          "Interest": { "type": "number", "example": 12022.0 },
+          "Royalties": { "type": "number", "example": 0.0 },
+          "Ordinary Income K-1": { "type": "number", "example": 250000.0 },
+          "Real Estate": { "type": "number", "example": 0.0 },
+          "Other Rental": { "type": "number", "example": 0.0 },
+          "Section 179 Expenses": { "type": "number", "example": 14224.0 },
+          "Short Term Capital Gain": { "type": "number", "example": 0.0 },
+          "Long Term Capital Gain": { "type": "number", "example": 0.0 },
+          "Credits": { "type": "number", "example": 0.0 },
+          "Part III Other Income Loss": { "type": "number", "example": 0.0 },
+          "Part III Other Deduction": { "type": "number", "example": 0.0 },
+          "Credits Code 1": { "type": "string", "example": "Insignificant" },
+          "Credits Code 2": { "type": "string", "example": "Insignificant" },
+          "Shareholder's Percentage of Stock": {
+            "type": "string",
+            "example": "33.333%"
+          },
+          "Beginning Tax Period": { "type": "string", "example": "202301" },
+          "Ending Tax Period": { "type": "string", "example": "202312" }
         }
       },
       "Error": {
