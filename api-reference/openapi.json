@@ -731,6 +731,12 @@
             "items": {
               "$ref": "#/components/schemas/Form1099DIV"
             }
+          },
+          "Form 1099-G": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Form1099G"
+            }
           }
         },
         "required": ["Type", "Tax Year", "SSN Provided", "Tax Period Requested"]
@@ -1077,6 +1083,93 @@
           "Section 897 Capital Gain": {
             "type": "number",
             "example": 0.0
+          }
+        }
+      },
+      "Form1099G": {
+        "type": "object",
+        "properties": {
+          "Payer": {
+            "type": "object",
+            "properties": {
+              "Payer's Federal Identification Number (FIN)": {
+                "type": "string",
+                "example": "123456789"
+              },
+              "Name": {
+                "type": "string",
+                "example": "CALIFORNIA STATE TAX COMMISSION"
+              },
+              "Address": {
+                "type": "string",
+                "example": "1 MARKET ST\nSAN FRANCISCO, CA 80129-7382"
+              }
+            }
+          },
+          "Recipient": {
+            "type": "object",
+            "properties": {
+              "Recipient's Identification Number": {
+                "type": "string",
+                "example": "123-45-6789"
+              },
+              "Name": {
+                "type": "string",
+                "example": "JOHN SMIT"
+              },
+              "Address": {
+                "type": "string",
+                "example": "123 HOME\n SUN CITY, CA 91111-6623"
+              }
+            }
+          },
+          "Submission Type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "Account Number (Optional)": {
+            "type": "string",
+            "example": "79737472012312022"
+          },
+          "RTAA Payments": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Tax Withheld": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Taxable Grants": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Unemployment Compensation": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Agricultural Subsidies": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Prior Year Refund": {
+            "type": "number",
+            "example": 3678.0
+          },
+          "Market gain on Commodity Credit Corporation loans repaid": {
+            "type": "number",
+            "example": 0
+          },
+          "Year of Refund": {
+            "type": "string",
+            "example": "2022"
+          },
+          "1099G Offset": {
+            "type": "string",
+            "example": "Not Refund, Credit, or Offset for Trade or Business"
+          },
+          "Second TIN Notice": {
+            "type": "string",
+            "example": ""
           }
         }
       },
