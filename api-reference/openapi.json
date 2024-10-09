@@ -743,6 +743,12 @@
             "items": {
               "$ref": "#/components/schemas/Form1099B"
             }
+          },
+          "Form 5498 Individual Retirement Arrangement Contribution Information": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Form5498IndRet"
+            }
           }
         },
         "required": ["Type", "Tax Year", "SSN Provided", "Tax Period Requested"]
@@ -1311,6 +1317,145 @@
           "Proceeds from": {
             "type": "string",
             "example": "Box not checked"
+          }
+        }
+      },
+      "Form5498IndRet": {
+        "type": "object",
+        "properties": {
+          "Trustee": {
+            "type": "object",
+            "properties": {
+              "Trustee/Issuer's Federal Identification Number (FIN)": {
+                "type": "string",
+                "example": "123456789"
+              },
+              "Name": {
+                "type": "string",
+                "example": "TEST CUSTODIAN"
+              },
+              "Address": {
+                "type": "string",
+                "example": "1 MARKET ST\nSAN FRANCISCO, CA 80129-7382"
+              }
+            }
+          },
+          "Participant": {
+            "type": "object",
+            "properties": {
+              "Participant's Identification Number": {
+                "type": "string",
+                "example": "123-45-6789"
+              },
+              "Name": {
+                "type": "string",
+                "example": "JOHN SMIT"
+              },
+              "Address": {
+                "type": "string",
+                "example": "123 HOME\n SUN CITY, CA 91111-6623"
+              }
+            }
+          },
+          "Submission Type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "Account Number (Optional)": {
+            "type": "string",
+            "example": "123435"
+          },
+          "IRA Contributions": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Rollover Contributions": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Roth Conversion Amount": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Recharacterized Contributions": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Fair Market Value of Account": {
+            "type": "number",
+            "example": 28988.0
+          },
+          "Life Insurance Cost Included in Box 1": {
+            "type": "number",
+            "example": 0.0
+          },
+          "SEP Code": {
+            "type": "string",
+            "example": "Not Checked"
+          },
+          "IRA Code": {
+            "type": "string",
+            "example": "Not Checked"
+          },
+          "Simple Code": {
+            "type": "string",
+            "example": "Not Checked"
+          },
+          "Roth IRA Code": {
+            "type": "string",
+            "example": "Checked"
+          },
+          "RMD For Subsequent Year": {
+            "type": "string",
+            "example": "RMD box not checked"
+          },
+          "RMD Date": {
+            "type": "string",
+            "example": "00-00-0000"
+          },
+          "Year": {
+            "type": "string",
+            "example": ""
+          },
+          "Postponed Contribution Code": {
+            "type": "string",
+            "example": ""
+          },
+          "Repayments Code": {
+            "type": "string",
+            "example": ""
+          },
+          "Fair Market Value of certain specified assets": {
+            "type": "string",
+            "example": "N/A"
+          },
+          "SEP Contributions": {
+            "type": "number",
+            "example": 0.0
+          },
+          "SIMPLE Contributions": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Roth IRA Contributions": {
+            "type": "number",
+            "example": 6167.0
+          },
+          "Required Minimum Distribution Amount": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Postponed Contributions": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Repayment of a qualified reservist distribution or federally designated disaster withdrawal repayment": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Fair Market Value of Certain Specified Assets": {
+            "type": "number",
+            "example": 0.0
           }
         }
       },
