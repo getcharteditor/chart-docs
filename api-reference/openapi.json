@@ -737,6 +737,12 @@
             "items": {
               "$ref": "#/components/schemas/Form1099G"
             }
+          },
+          "Form 1099-B Proceeds From Broker and Barter Exchange Transactions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Form1099B"
+            }
           }
         },
         "required": ["Type", "Tax Year", "SSN Provided", "Tax Period Requested"]
@@ -1170,6 +1176,141 @@
           "Second TIN Notice": {
             "type": "string",
             "example": ""
+          }
+        }
+      },
+      "Form1099B": {
+        "type": "object",
+        "properties": {
+          "Payer": {
+            "type": "object",
+            "properties": {
+              "Payer's Federal Identification Number (FIN)": {
+                "type": "string",
+                "example": "123456789"
+              },
+              "Name": {
+                "type": "string",
+                "example": "CHARLES SCHWAB & CO., INC."
+              },
+              "Address": {
+                "type": "string",
+                "example": "9800 SCHWAB WAY\nLONE TREE, CO 80124-0000"
+              }
+            }
+          },
+          "Recipient": {
+            "type": "object",
+            "properties": {
+              "Recipient's Identification Number": {
+                "type": "string",
+                "example": "123-45-6789"
+              },
+              "Name": {
+                "type": "string",
+                "example": "JOHN SMIT"
+              },
+              "Address": {
+                "type": "string",
+                "example": "123 HOME\n SUN CITY, CA 91111-6623"
+              }
+            }
+          },
+          "Submission Type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "Account Number (Optional)": {
+            "type": "string",
+            "example": "1242542353"
+          },
+          "Date Sold or Disposed": {
+            "type": "string",
+            "example": "10-11-2023"
+          },
+          "CUSIP Number": {
+            "type": "string",
+            "example": "464288679"
+          },
+          "Gross Proceeds": {
+            "type": "string",
+            "example": "Gross proceeds"
+          },
+          "Bartering": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Federal Income Tax Withheld": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Proceeds": {
+            "type": "number",
+            "example": 5509.0
+          },
+          "Aggregate Profit or (Loss)": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Realized Profit or (Loss)": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Unrealized Profit or (Loss) 12/31 Prior Year": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Unrealized Profit or (Loss) 12/31 Current Year": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Cost or Basis": {
+            "type": "number",
+            "example": 5515.0
+          },
+          "Wash Sale Loss Disallowed": {
+            "type": "number",
+            "example": 4.0
+          },
+          "Accrued Market Discount Amount": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Description": {
+            "type": "string",
+            "example": "50 SHARES ISHARES SHORT TREASURY"
+          },
+          "Second Notice Indicator": {
+            "type": "string",
+            "example": "No Second Notice"
+          },
+          "Date Acquired": {
+            "type": "string",
+            "example": "00-00-0000"
+          },
+          "Noncovered Security Indicator": {
+            "type": "string",
+            "example": "Nothing checked"
+          },
+          "Type of Gain or Loss Code": {
+            "type": "string",
+            "example": "Short-term"
+          },
+          "Applicable Check Box on Form 8949": {
+            "type": "string",
+            "example": "Short term transaction for which the cost or other basis is being reported to the IRS"
+          },
+          "Loss Not Allowed Indicator": {
+            "type": "string",
+            "example": ""
+          },
+          "FATCA Filing Requirement": {
+            "type": "string",
+            "example": "Box not checked no Filing Requirement"
+          },
+          "Proceeds from": {
+            "type": "string",
+            "example": "Box not checked"
           }
         }
       },
