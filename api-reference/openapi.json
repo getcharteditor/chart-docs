@@ -725,6 +725,12 @@
             "items": {
               "$ref": "#/components/schemas/ScheduleK1_1065"
             }
+          },
+          "Form 1099-DIV": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Form1099DIV"
+            }
           }
         },
         "required": ["Type", "Tax Year", "SSN Provided", "Tax Period Requested"]
@@ -948,6 +954,129 @@
           "FATCA Filing Requirement": {
             "type": "string",
             "example": "Box not checked no Filing Requirement"
+          }
+        }
+      },
+      "Form1099DIV": {
+        "type": "object",
+        "properties": {
+          "Payer": {
+            "type": "object",
+            "properties": {
+              "Payer's Federal Identification Number (FIN)": {
+                "type": "string",
+                "example": "123456789"
+              },
+              "Name": {
+                "type": "string",
+                "example": "Test, Inc."
+              },
+              "Address": {
+                "type": "string",
+                "example": "1 WHITE HOUSE\nDALLAS, TX 12345-0000"
+              }
+            }
+          },
+          "Recipient": {
+            "type": "object",
+            "properties": {
+              "Recipient's Identification Number": {
+                "type": "string",
+                "example": "123-45-6789"
+              },
+              "Name": {
+                "type": "string",
+                "example": "JOHN SMIT"
+              },
+              "Address": {
+                "type": "string",
+                "example": "123 HOME\n SUN CITY, CA 91111-6623"
+              }
+            }
+          },
+          "Submission Type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "Account Number (Optional)": {
+            "type": "string",
+            "example": "3TQ26707000000000001"
+          },
+          "Tax Withheld": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Capital Gains": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Non-Dividend Distribution": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Cash Liquidation Distribution": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Non-Cash Liquidation Distribution": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Investment Expense": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Ordinary Dividend": {
+            "type": "number",
+            "example": 29.0
+          },
+          "Collectibles (28%) Gain": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Unrecaptured Section 1250 Gain": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Section 1202 Gain": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Foreign Tax Paid": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Qualified Dividends": {
+            "type": "number",
+            "example": 29.0
+          },
+          "Section 199A REIT Dividends": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Second Notice Indicator": {
+            "type": "string",
+            "example": "No Second Notice"
+          },
+          "FATCA Filing Requirement": {
+            "type": "string",
+            "example": "Box not checked no Filing Requirement"
+          },
+          "Exempt Interest Dividends": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Specified Private Activity Bond Interest Dividend": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Section 897 Ordinary Dividends": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Section 897 Capital Gain": {
+            "type": "number",
+            "example": 0.0
           }
         }
       },
