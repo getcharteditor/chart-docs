@@ -749,6 +749,18 @@
             "items": {
               "$ref": "#/components/schemas/Form5498IndRet"
             }
+          },
+          "Form 5498 SA": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Form5498SA"
+            }
+          },
+          "Form 1099-SA or 5498-SA": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Form1099SAOr5498SA"
+            }
           }
         },
         "required": ["Type", "Tax Year", "SSN Provided", "Tax Period Requested"]
@@ -1456,6 +1468,160 @@
           "Fair Market Value of Certain Specified Assets": {
             "type": "number",
             "example": 0.0
+          }
+        }
+      },
+      "Form5498SA": {
+        "type": "object",
+        "properties": {
+          "Trustee": {
+            "type": "object",
+            "properties": {
+              "Trustee's Federal Identification Number (FIN)": {
+                "type": "string",
+                "example": "123456789"
+              },
+              "Name": {
+                "type": "string",
+                "example": "TEST CUSTODIAN"
+              },
+              "Address": {
+                "type": "string",
+                "example": "1 MARKET ST\nSAN FRANCISCO, CA 80129-7382"
+              }
+            }
+          },
+          "Participant": {
+            "type": "object",
+            "properties": {
+              "Participant's Identification Number": {
+                "type": "string",
+                "example": "123-45-6789"
+              },
+              "Name": {
+                "type": "string",
+                "example": "JOHN SMIT"
+              },
+              "Address": {
+                "type": "string",
+                "example": "123 HOME\n SUN CITY, CA 91111-6623"
+              }
+            }
+          },
+          "Submission Type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "Account Number (Optional)": {
+            "type": "string",
+            "example": "4816087"
+          },
+          "MSA Contributions": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Current Contributions": {
+            "type": "number",
+            "example": 2196.0
+          },
+          "Future Contributions": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Rollover MSA Contributions": {
+            "type": "number",
+            "example": 0.0
+          },
+          "MSA Fair Market Value": {
+            "type": "number",
+            "example": 1417.0
+          },
+          "HSA Indicator": {
+            "type": "string",
+            "example": "HSA Box Checked"
+          },
+          "Archer MSA Indicator": {
+            "type": "string",
+            "example": "Archer MSA Box Not Checked"
+          },
+          "MA MSA Indicator": {
+            "type": "string",
+            "example": "Not Checked"
+          }
+        }
+      },
+      "Form1099SAOr5498SA": {
+        "type": "object",
+        "properties": {
+          "Payer": {
+            "type": "object",
+            "properties": {
+              "Payer's Federal Identification Number (FIN)": {
+                "type": "string",
+                "example": "123456789"
+              },
+              "Name": {
+                "type": "string",
+                "example": "OPTUM BANK"
+              },
+              "Address": {
+                "type": "string",
+                "example": "P.O. BOX 12345\nSAN FRANCISCO, CA 94117-1629"
+              }
+            }
+          },
+          "Recipient": {
+            "type": "object",
+            "properties": {
+              "Recipient's Identification Number": {
+                "type": "string",
+                "example": "123-45-6789"
+              },
+              "Name": {
+                "type": "string",
+                "example": "JOHN SMIT"
+              },
+              "Address": {
+                "type": "string",
+                "example": "1 WHITE HOUSE\nDALLAS, TX 12345-0000"
+              }
+            }
+          },
+          "Submission Type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "Account Number (Optional)": {
+            "type": "string",
+            "example": "415370223"
+          },
+          "MSA Distribution Code": {
+            "type": "string",
+            "example": "Normal Distribution"
+          },
+          "Earnings on Distributive Excess Contributions": {
+            "type": "number",
+            "example": 0.0
+          },
+          "MSA Gross Distributions": {
+            "type": "number",
+            "example": 3562.0
+          },
+          "FMV On Date of Death": {
+            "type": "number",
+            "example": 0.0
+          },
+          "HSA Indicator": {
+            "type": "string",
+            "example": "HSA Box Checked"
+          },
+          "Archer MSA Indicator": {
+            "type": "string",
+            "example": "Archer MSA Box Not Checked"
+          },
+          "MA MSA Indicator": {
+            "type": "string",
+            "example": "Not Checked"
           }
         }
       },
