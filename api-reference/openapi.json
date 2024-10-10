@@ -762,6 +762,12 @@
               "$ref": "#/components/schemas/Form5498SA"
             }
           },
+          "Form 1098 Mortgage Interest Statement": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Form1098"
+            }
+          },
           "Form 1099-SA or 5498-SA": {
             "type": "array",
             "items": {
@@ -903,6 +909,93 @@
           "W2 WHC SSN Validation Code": {
             "type": "string",
             "example": "Correct SSN"
+          }
+        }
+      },
+      "Form1098": {
+        "type": "object",
+        "properties": {
+          "Recipient": {
+            "type": "object",
+            "properties": {
+              "Recipient's Federal Identification Number (FIN)": {
+                "type": "string",
+                "example": "123456789"
+              },
+              "Name": {
+                "type": "string",
+                "example": "TEST FSB"
+              },
+              "Address": {
+                "type": "string",
+                "example": "1 MARKET ST\nSAN FRANCISCO, CA 80129-7382"
+              }
+            }
+          },
+          "Payer": {
+            "type": "object",
+            "properties": {
+              "Payer's Social Security Number": {
+                "type": "string",
+                "example": "123-45-6789"
+              },
+              "Name": {
+                "type": "string",
+                "example": "JOHN SMIT"
+              },
+              "Address": {
+                "type": "string",
+                "example": "123 HOME\n SUN CITY, CA 91111-6623"
+              }
+            }
+          },
+          "Submission Type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "Account Number (Optional)": {
+            "type": "string",
+            "example": "MTG013534664"
+          },
+          "Mortgage Interest Received from Payer(s)/Borrower(s)": {
+            "type": "number",
+            "example": 694.0
+          },
+          "Points Paid on Purchase of Principal Residence": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Refund of Overpaid Interest": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Mortgage Insurance Premiums": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Outstanding Mortgage Principle": {
+            "type": "number",
+            "example": 200000.0
+          },
+          "Mortgage Origination Date": {
+            "type": "string",
+            "example": "02-12-2018"
+          },
+          "Address of property securing Mortgage": {
+            "type": "string",
+            "example": "123 W 20th"
+          },
+          "Other information from recipient": {
+            "type": "string",
+            "example": "SAN FRANCISCO CA 94117"
+          },
+          "The number of mortgaged properties": {
+            "type": "string",
+            "example": "000000000000"
+          },
+          "Mortgage Acquisition Date": {
+            "type": "string",
+            "example": "00-00-0000"
           }
         }
       },
