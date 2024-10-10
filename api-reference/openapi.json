@@ -768,6 +768,12 @@
               "$ref": "#/components/schemas/Form1098"
             }
           },
+          "Form 1098-T": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Form1098T"
+            }
+          },
           "Form 1099-SA or 5498-SA": {
             "type": "array",
             "items": {
@@ -996,6 +1002,89 @@
           "Mortgage Acquisition Date": {
             "type": "string",
             "example": "00-00-0000"
+          }
+        }
+      },
+      "Form1098T": {
+        "type": "object",
+        "properties": {
+          "Payer": {
+            "type": "object",
+            "properties": {
+              "Payer's Federal Identification Number (FIN)": {
+                "type": "string",
+                "example": "XXXXX1234"
+              },
+              "Name": {
+                "type": "string",
+                "example": "YALE"
+              },
+              "Address": {
+                "type": "string",
+                "example": "246 CH"
+              }
+            }
+          },
+          "Recipient": {
+            "type": "object",
+            "properties": {
+              "Recipient's Identification Number": {
+                "type": "string",
+                "example": "XXX-XX-1234"
+              },
+              "Name": {
+                "type": "string",
+                "example": "SMIT JOHN"
+              },
+              "Address": {
+                "type": "string",
+                "example": "1 ST"
+              }
+            }
+          },
+          "Submission Type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "Account Number (Optional)": {
+            "type": "string",
+            "example": "XXXXXXXXXXXX1234"
+          },
+          "Qualified Tuition and Related Expense": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Scholarships or Grants": {
+            "type": "number",
+            "example": 38241.0
+          },
+          "Half Time Student Indicator": {
+            "type": "string",
+            "example": "Grtr than or Eq to Half Time Student"
+          },
+          "Graduate Student Indicator": {
+            "type": "string",
+            "example": "Not a Graduate Student"
+          },
+          "Academic Period Code": {
+            "type": "string",
+            "example": "Academic Period Box Not Checked"
+          },
+          "TIN Checkbox": {
+            "type": "string",
+            "example": "box marked"
+          },
+          "Adjustments Made for Prior Year": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Adjustments to Scholarships or Grants for a Prior Year": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Reimbursements/Refunds from an Insurance Contract": {
+            "type": "number",
+            "example": 0.0
           }
         }
       },
