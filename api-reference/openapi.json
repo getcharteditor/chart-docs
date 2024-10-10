@@ -791,6 +791,12 @@
             "items": {
               "$ref": "#/components/schemas/Form1099MISC"
             }
+          },
+          "Form 1042-S": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Form1042S"
+            }
           }
         },
         "required": ["Type", "Tax Year", "SSN Provided", "Tax Period Requested"]
@@ -915,6 +921,265 @@
           "W2 WHC SSN Validation Code": {
             "type": "string",
             "example": "Correct SSN"
+          }
+        }
+      },
+      "Form1042S": {
+        "type": "object",
+        "properties": {
+          "Withholding Agent": {
+            "type": "object",
+            "properties": {
+              "Withholding Agent's EIN": {
+                "type": "string",
+                "example": "XXXXX1234"
+              },
+              "Name": {
+                "type": "string",
+                "example": "YALE"
+              },
+              "Address": {
+                "type": "string",
+                "example": "P.O. B"
+              }
+            }
+          },
+          "Recipient": {
+            "type": "object",
+            "properties": {
+              "Recipient's U.S. TIN": {
+                "type": "string",
+                "example": "XXX-XX-1234"
+              },
+              "Name": {
+                "type": "string",
+                "example": "JOHN SMIT"
+              },
+              "Address": {
+                "type": "string",
+                "example": "1 ST"
+              }
+            }
+          },
+          "Submission Type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "Withholding Agent Province Code": {
+            "type": "string",
+            "example": ""
+          },
+          "Withholding Agent Country Code": {
+            "type": "string",
+            "example": ""
+          },
+          "Unique Form Identifier": {
+            "type": "string",
+            "example": "0040000213"
+          },
+          "Return Type": {
+            "type": "string",
+            "example": "Original"
+          },
+          "Number or Space": {
+            "type": "string",
+            "example": ""
+          },
+          "Recipient's Country Code for Tax Purposes": {
+            "type": "string",
+            "example": ""
+          },
+          "Recipient's Account Number (Optional)": {
+            "type": "string",
+            "example": "XXXX1234"
+          },
+          "Withholding Occurred in Subsequent Year": {
+            "type": "string",
+            "example": "Box not checked no withholding in subsequent year"
+          },
+          "Withholding Agent's EIN Type": {
+            "type": "string",
+            "example": "EIN"
+          },
+          "Pro Rata Basis Reporting": {
+            "type": "string",
+            "example": "Not Checked"
+          },
+          "Income Code": {
+            "type": "string",
+            "example": "Scholarship or Fellowship Grants"
+          },
+          "Recipient Foreign Tax Identifying Number": {
+            "type": "string",
+            "example": "XXXXXXX1234"
+          },
+          "Gross Income": {
+            "type": "number",
+            "example": 10491.0
+          },
+          "Withholding Allowance": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Net Income": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Tax Rate Chapter 3": {
+            "type": "number",
+            "example": 14.0
+          },
+          "Exemption Code Chapter 3": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Tax Rate Chapter 4": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Exemption Code Chapter 4": {
+            "type": "string",
+            "example": "Excluded nonfinancial payment"
+          },
+          "U.S. Federal Tax Withheld": {
+            "type": "number",
+            "example": 1469.0
+          },
+          "Overwithheld Tax Repaid to Recipient Pursuant to Adjustment": {
+            "type": "number",
+            "example": 0.0
+          },
+          "NQI Flow-Through Entity's EIN": {
+            "type": "string",
+            "example": ""
+          },
+          "NQI Flow Province Code": {
+            "type": "string",
+            "example": ""
+          },
+          "NQI Flow Country Code": {
+            "type": "string",
+            "example": ""
+          },
+          "NQI Flow Postal Code": {
+            "type": "string",
+            "example": ""
+          },
+          "NQI Flow-Through Name": {
+            "type": "string",
+            "example": ""
+          },
+          "Payer's TIN (if different)": {
+            "type": "string",
+            "example": ""
+          },
+          "Payer's Name (if different)": {
+            "type": "string",
+            "example": ""
+          },
+          "State Income Tax Withheld": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Withholding By Other Agents": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Payer's State Tax No.": {
+            "type": "string",
+            "example": "XXXXXX99-0"
+          },
+          "State Code": {
+            "type": "string",
+            "example": "CT"
+          },
+          "Total Withholding Credit": {
+            "type": "number",
+            "example": 1469.0
+          },
+          "Tax Paid by Withholding Agent": {
+            "type": "number",
+            "example": 0.0
+          },
+          "Chapter 3 or Chapter 4 Indicator": {
+            "type": "string",
+            "example": "Form was filed Chapter 3"
+          },
+          "Tax Not Deposited Under Escrow Procedure Checkbox": {
+            "type": "string",
+            "example": "Check box not checked"
+          },
+          "Recipient Chapter 3 Status Code": {
+            "type": "string",
+            "example": "Individual"
+          },
+          "Recipient Chapter 4 Status Code": {
+            "type": "string",
+            "example": ""
+          },
+          "Primary Withholding Agent Name": {
+            "type": "string",
+            "example": ""
+          },
+          "Recipient Global Intermediary Identification Number (GIIN)": {
+            "type": "string",
+            "example": ""
+          },
+          "Recipient Birthdate": {
+            "type": "string",
+            "example": "01-13-2000"
+          },
+          "Primary Withholding Agent EIN": {
+            "type": "string",
+            "example": "000000000"
+          },
+          "Intermediary or Flow-Through Entity's Chapter 3 Status Code": {
+            "type": "string",
+            "example": ""
+          },
+          "Intermediary or Flow-Through Entity's Chapter 4 Status Code": {
+            "type": "string",
+            "example": ""
+          },
+          "Intermediary or Flow-Through Entity's Foreign Tax ID Number": {
+            "type": "string",
+            "example": ""
+          },
+          "Intermediary or Flow-Through Entity's GIIN": {
+            "type": "string",
+            "example": ""
+          },
+          "Withholding Agent's Chapter 3 Status Code": {
+            "type": "string",
+            "example": "Tax Exempt Organization (Section 501(c) entities)"
+          },
+          "Withholding Agent's Chapter 4 Status Code": {
+            "type": "string",
+            "example": "Section 501(c) Entities"
+          },
+          "Withholding Agent's Foreign Taxpayer ID Number": {
+            "type": "string",
+            "example": ""
+          },
+          "Withholding Agent's GIIN": {
+            "type": "string",
+            "example": ""
+          },
+          "Payer's GIIN": {
+            "type": "string",
+            "example": ""
+          },
+          "Limitations on Benefits (LOB) Code": {
+            "type": "string",
+            "example": ""
+          },
+          "Payer Chapter 3 Status Code": {
+            "type": "string",
+            "example": ""
+          },
+          "Payer Chapter 4 Status Code": {
+            "type": "string",
+            "example": ""
           }
         }
       },
