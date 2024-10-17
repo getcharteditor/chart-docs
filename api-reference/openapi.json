@@ -809,7 +809,7 @@
             "properties": {
               "Name": { "type": "string", "example": "META" },
               "Address": { "type": "string", "example": "1 HAC" },
-              "EIN": {
+              "Employer Identification Number (EIN)": {
                 "type": "string",
                 "example": "XXXXX2001"
               }
@@ -820,7 +820,7 @@
             "properties": {
               "Name": { "type": "string", "example": "JOHN SMIT" },
               "Address": { "type": "string", "example": "123 WA" },
-              "SSN": {
+              "Employee's Social Security Number": {
                 "type": "string",
                 "example": "XXX-XX-1234"
               }
@@ -846,65 +846,65 @@
           "Allocated Tips": { "type": "integer", "example": 0 },
           "Dependent Care Benefits": { "type": "integer", "example": 0 },
           "Deferred Compensation": { "type": "integer", "example": 0 },
-          "Code Q": {
+          "Code \"Q\" Nontaxable Combat Pay": {
             "type": "integer",
             "example": 0
           },
-          "Code W": {
+          "Code \"W\" Employer Contributions to a Health Savings Account": {
             "type": "integer",
             "example": 0
           },
-          "Code Y": {
+          "Code \"Y\" Deferrals under a section 409A nonqualified Deferred Compensation plan": {
             "type": "integer",
             "example": 0
           },
-          "Code Z": {
+          "Code \"Z\" Income under section 409A on a nonqualified Deferred Compensation plan": {
             "type": "integer",
             "example": 0
           },
-          "Code R": {
+          "Code \"R\" Employer's Contribution to MSA": {
             "type": "integer",
             "example": 0
           },
-          "Code S": {
+          "Code \"S\" Employer's Contribution to Simple Account": {
             "type": "integer",
             "example": 0
           },
-          "Code T": {
+          "Code \"T\" Expenses Incurred for Qualified Adoptions": {
             "type": "integer",
             "example": 0
           },
-          "Code V": {
+          "Code \"V\" Income from exercise of non-statutory stock options": {
             "type": "integer",
             "example": 0
           },
-          "Code AA": {
+          "Code \"AA\" Designated Roth Contributions under a Section 401(k) Plan": {
             "type": "integer",
             "example": 0
           },
-          "Code BB": {
+          "Code \"BB\" Designated Roth Contributions under a Section 403(b) Plan": {
             "type": "integer",
             "example": 0
           },
-          "Code DD": {
+          "Code \"DD\" Cost of Employer-Sponsored Health Coverage": {
             "type": "integer",
             "example": 2227
           },
-          "Code EE": {
+          "Code \"EE\" Designated ROTH Contributions Under a Governmental Section 457(b) Plan": {
             "type": "integer",
             "example": 0
           },
-          "Code FF": {
+          "Code \"FF\" Permitted benefits under a qualified small employer health reimbursement arrangement": {
             "type": "integer",
             "example": 0
           },
-          "Code GG": {
+          "Code \"GG\" Income from Qualified Equity Grants Under Section 83(i)": {
             "type": "integer",
             "example": 0
           },
-          "Code HH": {
-            "type": "integer",
-            "example": 0
+          "Code \"HH\" Aggregate Deferrals Under Section 83(i) Elections as of the Close of the Calendar Year": {
+            "type": "number",
+            "example": 0.0
           },
           "Third Party Sick Pay Indicator": {
             "type": "string",
@@ -930,7 +930,7 @@
           "Withholding Agent": {
             "type": "object",
             "properties": {
-              "EIN": {
+              "Withholding Agent's EIN": {
                 "type": "string",
                 "example": "XXXXX1234"
               },
@@ -947,7 +947,7 @@
           "Recipient": {
             "type": "object",
             "properties": {
-              "TIN": {
+              "Recipient's U.S. TIN": {
                 "type": "string",
                 "example": "XXX-XX-1234"
               },
@@ -985,11 +985,11 @@
             "type": "string",
             "example": ""
           },
-          "Recipient Country Code for Tax Purposes": {
+          "Recipient's Country Code for Tax Purposes": {
             "type": "string",
             "example": ""
           },
-          "Recipient Account Number": {
+          "Recipient's Account Number (Optional)": {
             "type": "string",
             "example": "XXXX1234"
           },
@@ -997,7 +997,7 @@
             "type": "string",
             "example": "Box not checked no withholding in subsequent year"
           },
-          "Withholding Agent EIN Type": {
+          "Withholding Agent's EIN Type": {
             "type": "string",
             "example": "EIN"
           },
@@ -1085,7 +1085,7 @@
             "type": "number",
             "example": 0.0
           },
-          "Payer State Tax No.": {
+          "Payer's State Tax No.": {
             "type": "string",
             "example": "XXXXXX99-0"
           },
@@ -1149,15 +1149,15 @@
             "type": "string",
             "example": ""
           },
-          "Withholding Agent Chapter 3 Status Code": {
+          "Withholding Agent's Chapter 3 Status Code": {
             "type": "string",
             "example": "Tax Exempt Organization (Section 501(c) entities)"
           },
-          "Withholding Agent Chapter 4 Status Code": {
+          "Withholding Agent's Chapter 4 Status Code": {
             "type": "string",
             "example": "Section 501(c) Entities"
           },
-          "Withholding Agent Foreign Taxpayer ID Number": {
+          "Withholding Agent's Foreign Taxpayer ID Number": {
             "type": "string",
             "example": ""
           },
@@ -1189,7 +1189,7 @@
           "Recipient": {
             "type": "object",
             "properties": {
-              "FIN": {
+              "Recipient's Federal Identification Number (FIN)": {
                 "type": "string",
                 "example": "123456789"
               },
@@ -1206,7 +1206,7 @@
           "Payer": {
             "type": "object",
             "properties": {
-              "SSN": {
+              "Payer's Social Security Number": {
                 "type": "string",
                 "example": "123-45-6789"
               },
@@ -1224,7 +1224,7 @@
             "type": "string",
             "example": "Original document"
           },
-          "Account Number": {
+          "Account Number (Optional)": {
             "type": "string",
             "example": "MTG013534664"
           },
@@ -1276,7 +1276,7 @@
           "Payer": {
             "type": "object",
             "properties": {
-              "FIN": {
+              "Payer's Federal Identification Number (FIN)": {
                 "type": "string",
                 "example": "XXXXX1234"
               },
@@ -1293,7 +1293,7 @@
           "Recipient": {
             "type": "object",
             "properties": {
-              "ID": {
+              "Recipient's Identification Number": {
                 "type": "string",
                 "example": "XXX-XX-1234"
               },
@@ -1311,7 +1311,7 @@
             "type": "string",
             "example": "Original document"
           },
-          "Account Number ": {
+          "Account Number (Optional)": {
             "type": "string",
             "example": "XXXXXXXXXXXX1234"
           },
@@ -1361,7 +1361,7 @@
             "properties": {
               "Name": { "type": "string", "example": "MERR" },
               "Address": { "type": "string", "example": "1500 A" },
-              "FIN": {
+              "Payer's Federal Identification Number (FIN)": {
                 "type": "string",
                 "example": "XXXXX4085"
               }
@@ -1372,7 +1372,7 @@
             "properties": {
               "Name": { "type": "string", "example": "JOHN SMIT" },
               "Address": { "type": "string", "example": "123 WA" },
-              "ID": {
+              "Recipient's Identification Number": {
                 "type": "string",
                 "example": "XXX-XX-1234"
               }
@@ -1382,7 +1382,7 @@
             "type": "string",
             "example": "Original document"
           },
-          "Account Number ": {
+          "Account Number (Optional)": {
             "type": "string",
             "example": "XXXX1T23"
           },
@@ -1458,7 +1458,7 @@
           "Payer": {
             "type": "object",
             "properties": {
-              "FIN": {
+              "Payer's Federal Identification Number (FIN)": {
                 "type": "string",
                 "example": "123456789"
               },
@@ -1475,7 +1475,7 @@
           "Recipient": {
             "type": "object",
             "properties": {
-              "ID": {
+              "Recipient's Identification Number": {
                 "type": "string",
                 "example": "123-45-6789"
               },
@@ -1493,7 +1493,7 @@
             "type": "string",
             "example": "Original document"
           },
-          "Account Number": {
+          "Account Number (Optional)": {
             "type": "string",
             "example": "3TQ26707000000000001"
           },
@@ -1581,7 +1581,7 @@
           "Payer": {
             "type": "object",
             "properties": {
-              "FIN": {
+              "Payer's Federal Identification Number (FIN)": {
                 "type": "string",
                 "example": "123456789"
               },
@@ -1598,7 +1598,7 @@
           "Recipient": {
             "type": "object",
             "properties": {
-              "ID": {
+              "Recipient's Identification Number": {
                 "type": "string",
                 "example": "123-45-6789"
               },
@@ -1616,7 +1616,7 @@
             "type": "string",
             "example": "Original document"
           },
-          "Account Number ": {
+          "Account Number (Optional)": {
             "type": "string",
             "example": "79737472012312022"
           },
@@ -1668,7 +1668,7 @@
           "Payer": {
             "type": "object",
             "properties": {
-              "FIN": {
+              "Payer's Federal Identification Number (FIN)": {
                 "type": "string",
                 "example": "123456789"
               },
@@ -1685,7 +1685,7 @@
           "Recipient": {
             "type": "object",
             "properties": {
-              "ID": {
+              "Recipient's Identification Number": {
                 "type": "string",
                 "example": "123-45-6789"
               },
@@ -1703,7 +1703,7 @@
             "type": "string",
             "example": "Original document"
           },
-          "Account Number ": {
+          "Account Number (Optional)": {
             "type": "string",
             "example": "1242542353"
           },
@@ -1803,7 +1803,7 @@
           "Payer": {
             "type": "object",
             "properties": {
-              "FIN": {
+              "Payer's Federal Identification Number (FIN)": {
                 "type": "string",
                 "example": "123456789"
               },
@@ -1820,7 +1820,7 @@
           "Recipient": {
             "type": "object",
             "properties": {
-              "ID": {
+              "Recipient's Identification Number": {
                 "type": "string",
                 "example": "123-45-6789"
               },
@@ -1838,7 +1838,7 @@
             "type": "string",
             "example": "Original document"
           },
-          "Account Number ": {
+          "Account Number (Optional)": {
             "type": "string",
             "example": "00003535435353"
           },
@@ -1914,7 +1914,7 @@
           "Payer": {
             "type": "object",
             "properties": {
-              "FIN": {
+              "Payer's Federal Identification Number (FIN)": {
                 "type": "string",
                 "example": "464364776"
               },
@@ -1931,7 +1931,7 @@
           "Recipient": {
             "type": "object",
             "properties": {
-              "ID": {
+              "Recipient's Identification Number": {
                 "type": "string",
                 "example": "123-45-6789"
               },
@@ -1949,7 +1949,7 @@
             "type": "string",
             "example": "Original document"
           },
-          "Account Number ": {
+          "Account Number (Optional)": {
             "type": "string",
             "example": "11063535390"
           },
@@ -2029,7 +2029,7 @@
           "Trustee": {
             "type": "object",
             "properties": {
-              "FIN": {
+              "Trustee/Issuer's Federal Identification Number (FIN)": {
                 "type": "string",
                 "example": "123456789"
               },
@@ -2046,7 +2046,7 @@
           "Participant": {
             "type": "object",
             "properties": {
-              "ID": {
+              "Participant's Identification Number": {
                 "type": "string",
                 "example": "123-45-6789"
               },
@@ -2064,7 +2064,7 @@
             "type": "string",
             "example": "Original document"
           },
-          "Account Number ": {
+          "Account Number (Optional)": {
             "type": "string",
             "example": "123435"
           },
@@ -2168,7 +2168,7 @@
           "Trustee": {
             "type": "object",
             "properties": {
-              "FIN": {
+              "Trustee's Federal Identification Number (FIN)": {
                 "type": "string",
                 "example": "123456789"
               },
@@ -2185,7 +2185,7 @@
           "Participant": {
             "type": "object",
             "properties": {
-              "ID": {
+              "Participant's Identification Number": {
                 "type": "string",
                 "example": "123-45-6789"
               },
@@ -2203,7 +2203,7 @@
             "type": "string",
             "example": "Original document"
           },
-          "Account Number ": {
+          "Account Number (Optional)": {
             "type": "string",
             "example": "4816087"
           },
@@ -2247,7 +2247,7 @@
           "Payer": {
             "type": "object",
             "properties": {
-              "FIN": {
+              "Payer's Federal Identification Number (FIN)": {
                 "type": "string",
                 "example": "123456789"
               },
@@ -2264,7 +2264,7 @@
           "Recipient": {
             "type": "object",
             "properties": {
-              "ID": {
+              "Recipient's Identification Number": {
                 "type": "string",
                 "example": "123-45-6789"
               },
@@ -2282,7 +2282,7 @@
             "type": "string",
             "example": "Original document"
           },
-          "Account Number ": {
+          "Account Number (Optional)": {
             "type": "string",
             "example": "415370223"
           },
@@ -2322,7 +2322,7 @@
           "Partnership": {
             "type": "object",
             "properties": {
-              "EIN": {
+              "Partnership's Employer Identification Number": {
                 "type": "string",
                 "example": "123456789"
               },
@@ -2465,7 +2465,7 @@
           "Corporation": {
             "type": "object",
             "properties": {
-              "EIN": {
+              "Corporation's Employer Identification Number": {
                 "type": "string",
                 "example": "123456789"
               },
