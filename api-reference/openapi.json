@@ -485,6 +485,9 @@
       "IRS8821FormState": {
         "type": "object",
         "properties": {
+          "sandbox": {
+            "type": "boolean"
+          },
           "personalInfo": {
             "type": "object",
             "properties": {
