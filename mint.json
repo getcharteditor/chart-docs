@@ -67,12 +67,12 @@
   "topbarLinks": [
     {
       "name": "Sign Up",
-      "url": "https://auth.trychartapi.com/sign-up"
+      "url": "https://auth.trychart.com/sign-up"
     }
   ],
   "topbarCtaButton": {
     "name": "Sign In",
-    "url": "https://auth.trychartapi.com"
+    "url": "https://auth.trychart.com"
   },
   "anchors": [
     {
@@ -85,7 +85,7 @@
       "name": "Changelog",
       "icon": "megaphone",
       "iconType": "solid",
-      "url": "https://developer.trychartapi.com/changelog"
+      "url": "https://developer.trychart.com/changelog"
     }
   ],
   "tabs": [
@@ -97,7 +97,7 @@
   "footerSocials": {
     "twitter": "https://twitter.com/try_chart_api",
     "linkedin": "https://www.linkedin.com/company/chart-api",
-    "website": "https://trychartapi.com"
+    "website": "https://trychart.com"
   },
   "feedback": {
     "thumbsRating": true

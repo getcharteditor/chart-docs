@@ -4,60 +4,64 @@ description: 'In this guide, you''ll exchange the authorization code for an acce
 Access tokens are required for making API requests to Chart endpoints.'
 ---
 
-Now that you have successfully [integrated Chart Connect](/implementation/connect/set-up-chart-connect) into your application's frontend and obtained an authorization code, 
+Now that you have successfully [integrated Chart Connect](/implementation/connect/set-up-chart-connect) into your application's frontend and obtained an authorization code,
 you will need to exchange it for an access token. Access tokens are required for making API requests to Chart's various endpoints.
 In this step, you'll set up a secure server-side process to exchange the authorization code for an access token.
 
-1. **Create a server-side “callback” endpoint**: Set up a secure server-side endpoint in your application 
-to handle the exchange of authorization codes for access tokens.
-This endpoint should be accessible only by your application's backend to ensure the security of the process. 
-This endpoint will receive the authorization code as a query parameter from your frontend
-and communicate with Chart's API to obtain the access token. Example: `https://example.com/api/chart/callback`.
+1.  **Create a server-side “callback” endpoint**: Set up a secure server-side endpoint in your application
+    to handle the exchange of authorization codes for access tokens.
+    This endpoint should be accessible only by your application's backend to ensure the security of the process.
+    This endpoint will receive the authorization code as a query parameter from your frontend
+    and communicate with Chart's API to obtain the access token. Example: `https://example.com/api/chart/callback`.
 
-    > You can reuse this same endpoint to support a Redirect Chart Connect flow as well.
-    Just make sure to add the `redirect_uri` to the whitelist in your Chart Developer Dashboard.
+        > You can reuse this same endpoint to support a Redirect Chart Connect flow as well.
+        Just make sure to add the `redirect_uri` to the whitelist in your Chart Developer Dashboard.
 
-2. **Exchange the authorization code for an access token**: In your server-side code, make a POST request to the `/auth/token` endpoint. 
-The request should include the following fields in the request body's JSON payload:
+2.  **Exchange the authorization code for an access token**: In your server-side code, make a POST request to the `/auth/token` endpoint.
+    The request should include the following fields in the request body's JSON payload:
 
-    - `client_id`: Your unique client ID from the Chart developer dashboard.
-    - `client_secret`: Your unique client secret from the Chart developer dashboard.
-    - `code`: The authorization code obtained from Chart Connect in the [Set Up Chart Connect](/implementation/connect/set-up-chart-connect).
-    - `redirect_uri` (optional): If using the Redirect Chart Connect Flow, include the `redirect_uri`
-    This is the same redirect URI you used when setting up Chart Connect. If you using Embedded Flow, do not include `redirect_uri` in the payload.
+        - `client_id`: Your unique client ID from the Chart developer dashboard.
+        - `client_secret`: Your unique client secret from the Chart developer dashboard.
+        - `code`: The authorization code obtained from Chart Connect in the [Set Up Chart Connect](/implementation/connect/set-up-chart-connect).
+        - `redirect_uri` (optional): If using the Redirect Chart Connect Flow, include the `redirect_uri`
+        This is the same redirect URI you used when setting up Chart Connect. If you using Embedded Flow, do not include `redirect_uri` in the payload.
 
-    ```shell Token exchange example
-    curl https://api.trychartapi.com/auth/token \
-    -X POST \
-    -H "Content-Type: application/json" \
-    --data-raw '{
-        "client_id": "<your_client_id>",
-        "client_secret": "<your_client_secret>",
-        "code": "<your_authorization_code>"
-    }'
-    ```
-3. **Handle the response**: Chart's `/auth/token` endpoint will respond with a JSON object containing an `access_token`
-if the request is successful. Parse the JSON response body and extract the `access_token`.
+        ```shell Token exchange example
+        curl https://api.trychart.com/auth/token \
+        -X POST \
+        -H "Content-Type: application/json" \
+        --data-raw '{
+            "client_id": "<your_client_id>",
+            "client_secret": "<your_client_secret>",
+            "code": "<your_authorization_code>"
+        }'
+        ```
 
-    ```javascript
-    {
-      "account_id": "ac3a2af9-ce03-46c4-9142-81abe789c64d",
-      "provider_id": "turbotax",
-      "access_token": "7e965183-9332-423c-9259-3edafb332ad2"
-    }
-    ```
+3.  **Handle the response**: Chart's `/auth/token` endpoint will respond with a JSON object containing an `access_token`
+    if the request is successful. Parse the JSON response body and extract the `access_token`.
 
-4. **Securely store the access token**: It is critical to store access tokens securely,
-as they grant access to sensitive user data. Implement a secure storage solution to store access tokens, 
-treating them with the same level of security as passwords. Do not log or expose access tokens to your frontend application.
-Storing access tokens is covered in more depth in Store Tokens.
+        ```javascript
+        {
+          "account_id": "ac3a2af9-ce03-46c4-9142-81abe789c64d",
+          "provider_id": "turbotax",
+          "access_token": "7e965183-9332-423c-9259-3edafb332ad2"
+        }
+        ```
 
-5. **Handle errors**: If the `/auth/token` endpoint returns an error, your server-side code should handle it gracefully.
-Common error scenarios include invalid or expired authorization codes, incorrect client IDs or secrets,
-or mismatched redirect URIs. Display a helpful error message to the user or retry the authentication flow as needed.
+4.  **Securely store the access token**: It is critical to store access tokens securely,
+    as they grant access to sensitive user data. Implement a secure storage solution to store access tokens,
+    treating them with the same level of security as passwords. Do not log or expose access tokens to your frontend application.
+    Storing access tokens is covered in more depth in Store Tokens.
+
+5.  **Handle errors**: If the `/auth/token` endpoint returns an error, your server-side code should handle it gracefully.
+    Common error scenarios include invalid or expired authorization codes, incorrect client IDs or secrets,
+    or mismatched redirect URIs. Display a helpful error message to the user or retry the authentication flow as needed.
 
 ## Checkpoint + Next Step
 
-<Check>After completing this step, your application will be able to exchange authorization codes 
-for access tokens securely and automatically. You are ready to use the access token to make API requests
-to Chart's various endpoints.</Check>
+<Check>
+  After completing this step, your application will be able to exchange
+  authorization codes for access tokens securely and automatically. You are
+  ready to use the access token to make API requests to Chart's various
+  endpoints.
+</Check>

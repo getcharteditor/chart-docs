@@ -1,59 +1,59 @@
 ---
-title: 'Set Up Chart Connect'
-description: 'In this guide, you''ll integrate Chart Connect into your application''s frontend.'
+title: "Set Up Chart Connect"
+description: "In this guide, you'll integrate Chart Connect into your application's frontend."
 ---
 
-Now that your application is [registered with Chart](/implementation/connect/create-dev-account), it's time to integrate Chart Connect into your application's frontend. 
-Chart Connect is the user-facing authentication flow that allows your users to securely input their tax system credentials 
+Now that your application is [registered with Chart](/implementation/connect/create-dev-account), it's time to integrate Chart Connect into your application's frontend.
+Chart Connect is the user-facing authentication flow that allows your users to securely input their tax system credentials
 to establish a connection with their provider. This prerequisite step is crucial before obtaining access tokens to make API requests.
 
 Chart Connect is configurable with the following parameters:
 
-| Parameter      | Required      | Description             |
-| -------------- | ------------- | ----------------------- |
-| `client_id`    | true          | Your `client_id`, a unique identifier for your application. |
+| Parameter      | Required      | Description                                                                                                                                                                                                                                   |
+| -------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `client_id`    | true          | Your `client_id`, a unique identifier for your application.                                                                                                                                                                                   |
 | `redirect_uri` | redirect only | The URI your user is redirected to after successfully granting your application access to their system. This value must match one of your application's configured [redirect URIs](/implementation/connect/create-dev-account#redirect-uris). |
-| `state`        | optional      | An optional value included as a query parameter in the response back to your application. This value is often used to identify a user and/or prevent cross-site request forgery. | 
+| `state`        | optional      | An optional value included as a query parameter in the response back to your application. This value is often used to identify a user and/or prevent cross-site request forgery.                                                              |
 
 Chart provides two options to setup Chart Connect: [Redirect](#redirect-to-chart-connect) or [Embedded](#embedded-chart-connect).
 
 ## Implementing Chart Connect in your application
 
-1. **Choose your preferred flow**: Chart provides several Frontend SDKs for easy integration. 
-Select the SDK that best suits your application's technology stack. Otherwise, you can use the Redirect flow.
+1.  **Choose your preferred flow**: Chart provides several Frontend SDKs for easy integration.
+    Select the SDK that best suits your application's technology stack. Otherwise, you can use the Redirect flow.
 
-    - [React SDK](https://github.com/getcharteditor/react-connect): If you're using React as your frontend framework, use the React SDK. 
-    Import the Chart Connect component and include it in your application. 
-    You can find examples and usage instructions in the SDK documentation or continue to follow this tutorial.
+        - [React SDK](https://github.com/getcharteditor/react-connect): If you're using React as your frontend framework, use the React SDK.
+        Import the Chart Connect component and include it in your application.
+        You can find examples and usage instructions in the SDK documentation or continue to follow this tutorial.
 
-        - `npm install --save @chartapi/react-connect`
-        - `yarn add @chartapi/react-connect`
-    - JavaScript SDK: If you're using a different frontend framework or vanilla JavaScript, 
-    use the pure JavaScript SDK. Include the Chart Connect library in your application, 
-    either by adding a script tag to your HTML file or by importing it as a module.
+            - `npm install --save @chartapi/react-connect`
+            - `yarn add @chartapi/react-connect`
+        - JavaScript SDK: If you're using a different frontend framework or vanilla JavaScript,
+        use the pure JavaScript SDK. Include the Chart Connect library in your application,
+        either by adding a script tag to your HTML file or by importing it as a module.
 
-        - `<script src="https://cdn.trychartapi.com/script.js"></script>`
-            > Since Chart Connect is an iFrame that requires interactivity,
-            the HTML page that is loading Chart Connect must be served from a server.
-            If the page is hosted statically, Chart Connect will not work properly.
+            - `<script src="https://cdn.trychart.com/script.js"></script>`
+                > Since Chart Connect is an iFrame that requires interactivity,
+                the HTML page that is loading Chart Connect must be served from a server.
+                If the page is hosted statically, Chart Connect will not work properly.
 
-    - [Redirect Flow](#redirect-to-chart-connect): The redirect flow is helpful in instances where you do not have a user interface (such as a link in an email) 
-    or you prefer to redirect in order to not host the authorization experience yourself.
+        - [Redirect Flow](#redirect-to-chart-connect): The redirect flow is helpful in instances where you do not have a user interface (such as a link in an email)
+        or you prefer to redirect in order to not host the authorization experience yourself.
 
-2. **Configure Chart Connect**: Every flow requires you to configure Chart Connect with your unique `client_id`. 
-You can find this `client_id` in your [Chart Developer Dashboard](https://dashboard.trychartapi.com).
+2.  **Configure Chart Connect**: Every flow requires you to configure Chart Connect with your unique `client_id`.
+    You can find this `client_id` in your [Chart Developer Dashboard](https://dashboard.trychart.com).
 
 ## Redirect to Chart Connect
 
-In this method of integrating Chart Connect, your application redirects your user's browser to Chart Connect 
-hosted by Chart on `https://connect.trychartapi.com`. After a successful connection, 
+In this method of integrating Chart Connect, your application redirects your user's browser to Chart Connect
+hosted by Chart on `https://connect.trychart.com`. After a successful connection,
 Chart Connect will redirect your user back to a URI you specified (`redirect_uri`) with a short-lived authorization `code`.
 
-Set the `redirect_uri` parameter to the URL where users will be redirected after completing the authentication flow. 
-The `redirect_uri` must be set in the [Chart Developer Dashboard](https://dashboard.trychartapi.com). Otherwise, the request will fail.
+Set the `redirect_uri` parameter to the URL where users will be redirected after completing the authentication flow.
+The `redirect_uri` must be set in the [Chart Developer Dashboard](https://dashboard.trychart.com). Otherwise, the request will fail.
 
 ```shell
-https://connect.trychartapi.com?
+https://connect.trychart.com?
 client_id=<your_client_id>
 &redirect_uri=https://example.com
 ```
@@ -62,19 +62,19 @@ The redirect authorization flow consists of four steps:
 
 1. **Open Chart Connect** — Your application redirects your user's browser to Chart Connect to initiate the authorization flow.
 2. **Obtain consent** — Chart Connect prompts your user to log in to their tax system and grant your application access to the permissions you are requesting.
-3. **Retrieve the authorization code** — If your user successfully connects and grants your application access to their system, 
-Chart Connect will redirect their browser to a specified `redirect_uri` with a short-lived authorization `code`.
-4. **Exchange the code for an access token** — Before sending API requests, your application will exchange the short-lived code 
-for a long-lived `access_token` that represents your application's access to your user's tax system.
+3. **Retrieve the authorization code** — If your user successfully connects and grants your application access to their system,
+   Chart Connect will redirect their browser to a specified `redirect_uri` with a short-lived authorization `code`.
+4. **Exchange the code for an access token** — Before sending API requests, your application will exchange the short-lived code
+   for a long-lived `access_token` that represents your application's access to your user's tax system.
 
 ## Embedded Chart Connect
 
-The Chart-provided SDK embeds the Chart Connect screen into your application. 
-The user will remain entirely on your application throughout the process. 
+The Chart-provided SDK embeds the Chart Connect screen into your application.
+The user will remain entirely on your application throughout the process.
 When the `onSuccess` event is called by the SDK, simply pass the `code` to your internal callback endpoint as a query parameter.
 
-> NOTE: You should not include a `redirect_uri` if using the embedded flow. 
-Because the entire flow is already self-contained in your app, no redirect is necessary.
+> NOTE: You should not include a `redirect_uri` if using the embedded flow.
+> Because the entire flow is already self-contained in your app, no redirect is necessary.
 
 <CodeGroup>
 
@@ -106,17 +106,17 @@ const App = () => {
 <html>
   <body>
     <script>
-      const onSuccess = ({code}) => {
+      const onSuccess = ({ code }) => {
         // exchange code for access token via your server
-      }
+      };
       const onError = ({ errorMessage }) => {
         console.error(errorMessage);
-      }
+      };
       const onClose = () => {
-        console.log('Connect closed');
-      }
+        console.log("Connect closed");
+      };
       const connect = ChartConnect.initialize({
-        clientId: '<your-client-id>',
+        clientId: "<your-client-id>",
         state: "", // optional
         onSuccess,
         onError,
@@ -163,25 +163,29 @@ const App = () => {
     </script>
   </body>
 </html>
-
 ```
 
 </CodeGroup>
 
-**Listen for events**: Chart Connect emits events that your application should listen for to handle the different stages of the authentication process. 
+**Listen for events**: Chart Connect emits events that your application should listen for to handle the different stages of the authentication process.
 The two most important events are `onSuccess` and `onError`.
-1. `onSuccess`: This event is triggered when the user completes the authentication process. 
-It returns an authorization `code` that you will use to obtain an `access_token` in the next step. 
-Pass this authorization `code` securely and temporarily to the access token exchange function.
+
+1. `onSuccess`: This event is triggered when the user completes the authentication process.
+   It returns an authorization `code` that you will use to obtain an `access_token` in the next step.
+   Pass this authorization `code` securely and temporarily to the access token exchange function.
 2. `onError`: This event is triggered if there's an issue during the authentication process.
-Your application should handle this error gracefully, either by displaying an error message to the user or retrying the authentication flow.
+   Your application should handle this error gracefully, either by displaying an error message to the user or retrying the authentication flow.
 3. `onClose`: This event is triggered when a user exits the Chart Connect model, either by closing the modal or clicking outside the modal.
 
 ## Checkpoint + Next Step
 
-<Check>After completing this step, you will have successfully integrated Chart Connect into your application's frontend.
-This will enable users to authenticate with their tax systems, providing your application with the necessary authorization 
-to [obtain an access token](/implementation//connect/retrieve-access-token) in the next step.</Check>
+<Check>
+  After completing this step, you will have successfully integrated Chart
+  Connect into your application's frontend. This will enable users to
+  authenticate with their tax systems, providing your application with the
+  necessary authorization to [obtain an access
+  token](/implementation//connect/retrieve-access-token) in the next step.
+</Check>
 
 ## Learn more
 

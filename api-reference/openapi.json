@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://api.trychartapi.com"
+      "url": "https://api.trychart.com"
     }
   ],
   "security": [

@@ -1,26 +1,25 @@
 ---
-title: 'Events'
-description: 'Respond to activity that occurs within Chart and third-party providers.'
+title: "Events"
+description: "Respond to activity that occurs within Chart and third-party providers."
 ---
 
-Events represent activity that has occurred within Chart or within third-party tax providers. 
+Events represent activity that has occurred within Chart or within third-party tax providers.
 Your app can sync the data via either the events API or webhooks.
 
 ### Event objects
 
 All event objects share a similar structure.
 
-| Attribute  | Description                                                   |
-| ---------- | ------------------------------------------------------------- |
-| event      | A string that distinguishes the event type.                   |
-| id         | Unique identifier for the event.                              |
-| data       | Event payload.                                                |
-| created_at | Timestamp of when the event occurred.                         |
-
+| Attribute  | Description                                 |
+| ---------- | ------------------------------------------- |
+| event      | A string that distinguishes the event type. |
+| id         | Unique identifier for the event.            |
+| data       | Event payload.                              |
+| created_at | Timestamp of when the event occurred.       |
 
 ### Widget events
 
-Events emitted when end users (taxpayers) interact with Chart Connect widget. 
+Events emitted when end users (taxpayers) interact with Chart Connect widget.
 
 <AccordionGroup>
   <Accordion title="widget.opened">
@@ -33,6 +32,7 @@ Events emitted when end users (taxpayers) interact with Chart Connect widget.
         "created_at": "2021-08-17T03:29:59.397Z"
     }
     ```
+
   </Accordion>
   <Accordion title="widget.closed">
     
@@ -64,7 +64,7 @@ Events emitted when end users (taxpayers) interact with Chart Connect widget.
 
 ### Client Link events
 
-Events emitted when end users (taxpayers) interact with the no-code client links. 
+Events emitted when end users (taxpayers) interact with the no-code client links.
 
 <AccordionGroup>
   <Accordion title="client_link.opened">
@@ -73,7 +73,7 @@ Events emitted when end users (taxpayers) interact with the no-code client links
         "event": "client_link.opened",
         "id": "ev_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
         "data": {
-            "url": "https://dashboard.trychartapi.com/c/test"
+            "url": "https://dashboard.trychart.com/c/test"
         },
         "created_at": "2021-08-17T03:29:59.397Z"
     }
@@ -85,7 +85,7 @@ Events emitted when end users (taxpayers) interact with the no-code client links
         "event": "client_link.closed",
         "id": "ev_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
         "data": {
-            "url": "https://dashboard.trychartapi.com/c/test"
+            "url": "https://dashboard.trychart.com/c/test"
         },
         "created_at": "2021-08-17T03:29:59.397Z"
     }
