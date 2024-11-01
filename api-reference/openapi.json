@@ -2253,9 +2253,28 @@
       "RECA_Business": {
         "type": "object",
         "properties": {
-          "name": { "type": "string" }
+          "name": { "type": "string" },
+          "address": { "type": "string" },
+          "form_number": { "type": "string" },
+          "taxpayer_identification_number": { "type": "string" },
+          "account_summary": {
+            "$ref": "#/components/schemas/AccountSummaryModel"
+          },
+          "transactions": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/TransactionModel" }
+          },
+          "return_summary": {
+            "$ref": "#/components/schemas/ReturnSummaryBusinessModel"
+          }
         },
-        "required": ["name"]
+        "required": [
+          "name",
+          "address",
+          "form_number",
+          "taxpayer_identification_number",
+          "account_summary"
+        ]
       },
       "AccruedAmountModel": {
         "type": "object",
@@ -2298,6 +2317,23 @@
           "processing_date": { "type": "string" }
         },
         "required": ["filing_status", "adjusted_gross_income"]
+      },
+      "ReturnSummaryBusinessModel": {
+        "type": "object",
+        "properties": {
+          "net_receipts": { "type": "number" },
+          "total_income": { "type": "number" },
+          "total_deductions": { "type": "number" },
+          "net_taxable_income": { "type": "number" },
+          "minimum_tax_amount": { "type": "number" },
+          "estimated_tax_credits": { "type": "number" },
+          "personal_holding_tax": { "type": "number" },
+          "es_7004_payments_claimed": { "type": "number" },
+          "tax_per_return": { "type": "number" },
+          "naics": { "type": "string" },
+          "return_due_received_date": { "type": "string" },
+          "processing_date": { "type": "string" }
+        }
       },
       "DependentModel": {
         "type": "object",
