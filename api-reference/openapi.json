@@ -625,7 +625,10 @@
             "description": "The parsed tax form data associated with the tax record.",
             "type": "array",
             "items": {
-              "anyOf": [{ "$ref": "#/components/schemas/WAID" }]
+              "anyOf": [
+                { "$ref": "#/components/schemas/WAID" },
+                { "$ref": "#/components/schemas/RECA" }
+              ]
             }
           }
         }
@@ -704,1759 +707,403 @@
       "WAID": {
         "type": "object",
         "properties": {
-          "Type": { "type": "string", "enum": ["WAID"], "example": "WAID" },
-          "Tax Year": { "type": "string", "example": "2023" },
-          "SSN Provided": { "type": "string", "example": "XXX-XX-1234" },
-          "Tax Period Requested": {
-            "type": "string",
-            "example": "December, 2023"
-          },
-          "Form W-2 Wage and Tax Statement": {
+          "type": { "type": "string", "enum": ["WAID"], "example": "WAID" },
+          "year": { "type": "string", "example": "2023" },
+          "ssn": { "type": "string", "example": "XXX-XX-1234" },
+          "form_w2": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/FormW2"
             }
           },
-          "Form 1099-INT": {
+          "form_w2g": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Form1099INT"
+              "$ref": "#/components/schemas/FormW2G"
             }
           },
-          "Schedule K-1 1065": {
+          "schedule_k1_1065": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ScheduleK1_1065"
             }
           },
-          "Schedule K-1 1120S Shareholder's Share of Income, Credits, Deductions,etc.": {
+          "schedule_k1_1120s": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ScheduleK1_1120S"
             }
           },
-          "Form 1099-DIV": {
+          "schedule_k1_1041": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Form1099DIV"
+              "$ref": "#/components/schemas/ScheduleK1_1041"
             }
           },
-          "Form 1099-G": {
+          "form_5498": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Form1099G"
+              "$ref": "#/components/schemas/Form5498IRA"
             }
           },
-          "Form 1099-B Proceeds From Broker and Barter Exchange Transactions": {
+          "form_1042_s": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Form1099B"
+              "$ref": "#/components/schemas/Form1042S"
             }
           },
-          "Form 5498 Individual Retirement Arrangement Contribution Information": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Form5498IndRet"
-            }
-          },
-          "Form 5498 SA": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Form5498SA"
-            }
-          },
-          "Form 1098 Mortgage Interest Statement": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Form1098"
-            }
-          },
-          "Form 1098-T": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Form1098T"
-            }
-          },
-          "Form 1099-SA or 5498-SA": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Form1099SAOr5498SA"
-            }
-          },
-          "Form 1099-R Distributions from Pensions, Annuities, Retire or Profit- Sharing Plans, IRAs, Insurance Contracts, etc.": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Form1099R"
-            }
-          },
-          "Form 1099-MISC": {
+          "form_1099_misc": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Form1099MISC"
             }
           },
-          "Form 1042-S": {
+          "form_1099_int": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Form1042S"
+              "$ref": "#/components/schemas/Form1099INT"
+            }
+          },
+          "form_1099_g": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Form1099G"
+            }
+          },
+          "form_1099_r": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Form1099R"
+            }
+          },
+          "form_1099_div": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Form1099DIV"
+            }
+          },
+          "form_1099_b": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Form1099B"
+            }
+          },
+          "form_1099_nec": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Form1099NEC"
+            }
+          },
+          "form_ssa_1099": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FormSSA1099"
+            }
+          },
+          "form_1098": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Form1098"
+            }
+          },
+          "form_1098_t": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Form1098T"
             }
           }
         },
-        "required": ["Type", "Tax Year", "SSN Provided", "Tax Period Requested"]
+        "required": ["type", "year", "ssn"]
       },
       "FormW2": {
         "type": "object",
         "properties": {
-          "Employer": {
+          "employer": {
             "type": "object",
             "properties": {
-              "Name": { "type": "string", "example": "META" },
-              "Address": { "type": "string", "example": "1 HAC" },
-              "Employer Identification Number (EIN)": {
+              "name": { "type": "string", "example": "META" },
+              "address": { "type": "string", "example": "1 HAC" },
+              "ein": {
                 "type": "string",
                 "example": "XXXXX2001"
               }
             }
           },
-          "Employee": {
+          "employee": {
             "type": "object",
             "properties": {
-              "Name": { "type": "string", "example": "JOHN SMIT" },
-              "Address": { "type": "string", "example": "123 WA" },
-              "Employee's Social Security Number": {
+              "name": { "type": "string", "example": "JOHN SMIT" },
+              "address": { "type": "string", "example": "123 WA" },
+              "ssn": {
                 "type": "string",
                 "example": "XXX-XX-1234"
               }
             }
           },
-          "Submission Type": {
+          "submission_type": {
             "type": "string",
             "example": "Original document"
           },
-          "Wages, Tips and Other Compensation": {
-            "type": "integer",
+          "wages_tips_other_compensation": {
+            "type": "number",
             "example": 55738
           },
-          "Federal Income Tax Withheld": { "type": "integer", "example": 5490 },
-          "Social Security Wages": { "type": "integer", "example": 55738 },
-          "Social Security Tax Withheld": {
-            "type": "integer",
+          "federal_income_tax_withheld": { "type": "number", "example": 5490 },
+          "social_security_wages": { "type": "number", "example": 55738 },
+          "social_security_tax_withheld": {
+            "type": "number",
             "example": 3455
           },
-          "Medicare Wages and Tips": { "type": "integer", "example": 55738 },
-          "Medicare Tax Withheld": { "type": "integer", "example": 808 },
-          "Social Security Tips": { "type": "integer", "example": 0 },
-          "Allocated Tips": { "type": "integer", "example": 0 },
-          "Dependent Care Benefits": { "type": "integer", "example": 0 },
-          "Deferred Compensation": { "type": "integer", "example": 0 },
-          "Code \"Q\" Nontaxable Combat Pay": {
-            "type": "integer",
+          "medicare_wages_tips": { "type": "number", "example": 55738 },
+          "medicare_tax_withheld": { "type": "number", "example": 808 },
+          "social_security_tips": { "type": "number", "example": 0 },
+          "allocated_tips": { "type": "number", "example": 0 },
+          "dependent_care_benefits": { "type": "number", "example": 0 },
+          "deferred_compensation": { "type": "number", "example": 0 },
+          "nonqualified_plans": { "type": "number", "example": 0 },
+          "code_q": {
+            "type": "number",
             "example": 0
           },
-          "Code \"W\" Employer Contributions to a Health Savings Account": {
-            "type": "integer",
+          "code_w": {
+            "type": "number",
             "example": 0
           },
-          "Code \"Y\" Deferrals under a section 409A nonqualified Deferred Compensation plan": {
-            "type": "integer",
+          "code_y": {
+            "type": "number",
             "example": 0
           },
-          "Code \"Z\" Income under section 409A on a nonqualified Deferred Compensation plan": {
-            "type": "integer",
+          "code_z": {
+            "type": "number",
             "example": 0
           },
-          "Code \"R\" Employer's Contribution to MSA": {
-            "type": "integer",
+          "code_r": {
+            "type": "number",
             "example": 0
           },
-          "Code \"S\" Employer's Contribution to Simple Account": {
-            "type": "integer",
+          "code_s": {
+            "type": "number",
             "example": 0
           },
-          "Code \"T\" Expenses Incurred for Qualified Adoptions": {
-            "type": "integer",
+          "code_t": {
+            "type": "number",
             "example": 0
           },
-          "Code \"V\" Income from exercise of non-statutory stock options": {
-            "type": "integer",
+          "code_v": {
+            "type": "number",
             "example": 0
           },
-          "Code \"AA\" Designated Roth Contributions under a Section 401(k) Plan": {
-            "type": "integer",
+          "code_aa": {
+            "type": "number",
             "example": 0
           },
-          "Code \"BB\" Designated Roth Contributions under a Section 403(b) Plan": {
-            "type": "integer",
+          "code_bb": {
+            "type": "number",
             "example": 0
           },
-          "Code \"DD\" Cost of Employer-Sponsored Health Coverage": {
-            "type": "integer",
+          "code_dd": {
+            "type": "number",
             "example": 2227
           },
-          "Code \"EE\" Designated ROTH Contributions Under a Governmental Section 457(b) Plan": {
-            "type": "integer",
+          "code_ee": {
+            "type": "number",
             "example": 0
           },
-          "Code \"FF\" Permitted benefits under a qualified small employer health reimbursement arrangement": {
-            "type": "integer",
+          "code_ff": {
+            "type": "number",
             "example": 0
           },
-          "Code \"GG\" Income from Qualified Equity Grants Under Section 83(i)": {
-            "type": "integer",
+          "code_gg": {
+            "type": "number",
             "example": 0
           },
-          "Code \"HH\" Aggregate Deferrals Under Section 83(i) Elections as of the Close of the Calendar Year": {
+          "code_hh": {
             "type": "number",
             "example": 0.0
           },
-          "Third Party Sick Pay Indicator": {
-            "type": "string",
-            "example": "Unanswered"
+          "third_party_sick_pay_indicator": {
+            "type": "boolean",
+            "example": false
           },
-          "Retirement Plan Indicator": {
-            "type": "string",
-            "example": "Unanswered"
+          "retirement_plan_indicator": {
+            "type": "boolean",
+            "example": false
           },
-          "Statutory Employee": {
-            "type": "string",
-            "example": "Not Statutory Employee"
+          "statutory_employee": {
+            "type": "boolean",
+            "example": false
           },
-          "W2 WHC SSN Validation Code": {
+          "w2_whc_ssn_validation_code": {
             "type": "string",
             "example": "Correct SSN"
           }
         }
       },
-      "Form1042S": {
+      "FormW2G": {
         "type": "object",
         "properties": {
-          "Withholding Agent": {
+          "payer": {
             "type": "object",
             "properties": {
-              "Withholding Agent's EIN": {
-                "type": "string",
-                "example": "XXXXX1234"
-              },
-              "Name": {
-                "type": "string",
-                "example": "YALE"
-              },
-              "Address": {
-                "type": "string",
-                "example": "P.O. B"
-              }
+              "fin": { "type": "string" },
+              "name": { "type": "string" },
+              "address": { "type": "string" }
             }
           },
-          "Recipient": {
+          "winner": {
             "type": "object",
             "properties": {
-              "Recipient's U.S. TIN": {
-                "type": "string",
-                "example": "XXX-XX-1234"
-              },
-              "Name": {
-                "type": "string",
-                "example": "JOHN SMIT"
-              },
-              "Address": {
-                "type": "string",
-                "example": "1 ST"
-              }
+              "tin": { "type": "string" },
+              "name": { "type": "string" },
+              "address": { "type": "string" }
             }
           },
-          "Submission Type": {
-            "type": "string",
-            "example": "Original document"
-          },
-          "Withholding Agent Province Code": {
-            "type": "string",
-            "example": ""
-          },
-          "Withholding Agent Country Code": {
-            "type": "string",
-            "example": ""
-          },
-          "Unique Form Identifier": {
-            "type": "string",
-            "example": "0040000213"
-          },
-          "Return Type": {
-            "type": "string",
-            "example": "Original"
-          },
-          "Number or Space": {
-            "type": "string",
-            "example": ""
-          },
-          "Recipient's Country Code for Tax Purposes": {
-            "type": "string",
-            "example": ""
-          },
-          "Recipient's Account Number (Optional)": {
-            "type": "string",
-            "example": "XXXX1234"
-          },
-          "Withholding Occurred in Subsequent Year": {
-            "type": "string",
-            "example": "Box not checked no withholding in subsequent year"
-          },
-          "Withholding Agent's EIN Type": {
-            "type": "string",
-            "example": "EIN"
-          },
-          "Pro Rata Basis Reporting": {
-            "type": "string",
-            "example": "Not Checked"
-          },
-          "Income Code": {
-            "type": "string",
-            "example": "Scholarship or Fellowship Grants"
-          },
-          "Recipient Foreign Tax Identifying Number": {
-            "type": "string",
-            "example": "XXXXXXX1234"
-          },
-          "Gross Income": {
-            "type": "number",
-            "example": 10491.0
-          },
-          "Withholding Allowance": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Net Income": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Tax Rate Chapter 3": {
-            "type": "number",
-            "example": 14.0
-          },
-          "Exemption Code Chapter 3": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Tax Rate Chapter 4": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Exemption Code Chapter 4": {
-            "type": "string",
-            "example": "Excluded nonfinancial payment"
-          },
-          "U.S. Federal Tax Withheld": {
-            "type": "number",
-            "example": 1469.0
-          },
-          "Overwithheld Tax Repaid to Recipient Pursuant to Adjustment": {
-            "type": "number",
-            "example": 0.0
-          },
-          "NQI Flow-Through Entity's EIN": {
-            "type": "string",
-            "example": ""
-          },
-          "NQI Flow Province Code": {
-            "type": "string",
-            "example": ""
-          },
-          "NQI Flow Country Code": {
-            "type": "string",
-            "example": ""
-          },
-          "NQI Flow Postal Code": {
-            "type": "string",
-            "example": ""
-          },
-          "NQI Flow-Through Name": {
-            "type": "string",
-            "example": ""
-          },
-          "Payer's TIN (if different)": {
-            "type": "string",
-            "example": ""
-          },
-          "Payer's Name (if different)": {
-            "type": "string",
-            "example": ""
-          },
-          "State Income Tax Withheld": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Withholding By Other Agents": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Payer's State Tax No.": {
-            "type": "string",
-            "example": "XXXXXX99-0"
-          },
-          "State Code": {
-            "type": "string",
-            "example": "CT"
-          },
-          "Total Withholding Credit": {
-            "type": "number",
-            "example": 1469.0
-          },
-          "Tax Paid by Withholding Agent": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Chapter 3 or Chapter 4 Indicator": {
-            "type": "string",
-            "example": "Form was filed Chapter 3"
-          },
-          "Tax Not Deposited Under Escrow Procedure Checkbox": {
-            "type": "string",
-            "example": "Check box not checked"
-          },
-          "Recipient Chapter 3 Status Code": {
-            "type": "string",
-            "example": "Individual"
-          },
-          "Recipient Chapter 4 Status Code": {
-            "type": "string",
-            "example": ""
-          },
-          "Primary Withholding Agent Name": {
-            "type": "string",
-            "example": ""
-          },
-          "Recipient Global Intermediary Identification Number (GIIN)": {
-            "type": "string",
-            "example": ""
-          },
-          "Recipient Birthdate": {
-            "type": "string",
-            "example": "01-13-2000"
-          },
-          "Primary Withholding Agent EIN": {
-            "type": "string",
-            "example": "000000000"
-          },
-          "Intermediary or Flow-Through Entity's Chapter 3 Status Code": {
-            "type": "string",
-            "example": ""
-          },
-          "Intermediary or Flow-Through Entity's Chapter 4 Status Code": {
-            "type": "string",
-            "example": ""
-          },
-          "Intermediary or Flow-Through Entity's Foreign Tax ID Number": {
-            "type": "string",
-            "example": ""
-          },
-          "Intermediary or Flow-Through Entity's GIIN": {
-            "type": "string",
-            "example": ""
-          },
-          "Withholding Agent's Chapter 3 Status Code": {
-            "type": "string",
-            "example": "Tax Exempt Organization (Section 501(c) entities)"
-          },
-          "Withholding Agent's Chapter 4 Status Code": {
-            "type": "string",
-            "example": "Section 501(c) Entities"
-          },
-          "Withholding Agent's Foreign Taxpayer ID Number": {
-            "type": "string",
-            "example": ""
-          },
-          "Withholding Agent's GIIN": {
-            "type": "string",
-            "example": ""
-          },
-          "Payer's GIIN": {
-            "type": "string",
-            "example": ""
-          },
-          "Limitations on Benefits (LOB) Code": {
-            "type": "string",
-            "example": ""
-          },
-          "Payer Chapter 3 Status Code": {
-            "type": "string",
-            "example": ""
-          },
-          "Payer Chapter 4 Status Code": {
-            "type": "string",
-            "example": ""
-          }
-        }
-      },
-      "Form1098": {
-        "type": "object",
-        "properties": {
-          "Recipient": {
-            "type": "object",
-            "properties": {
-              "Recipient's Federal Identification Number (FIN)": {
-                "type": "string",
-                "example": "123456789"
-              },
-              "Name": {
-                "type": "string",
-                "example": "TEST FSB"
-              },
-              "Address": {
-                "type": "string",
-                "example": "1 MARKET ST\nSAN FRANCISCO, CA 80129-7382"
-              }
-            }
-          },
-          "Payer": {
-            "type": "object",
-            "properties": {
-              "Payer's Social Security Number": {
-                "type": "string",
-                "example": "123-45-6789"
-              },
-              "Name": {
-                "type": "string",
-                "example": "JOHN SMIT"
-              },
-              "Address": {
-                "type": "string",
-                "example": "123 HOME\n SUN CITY, CA 91111-6623"
-              }
-            }
-          },
-          "Submission Type": {
-            "type": "string",
-            "example": "Original document"
-          },
-          "Account Number (Optional)": {
-            "type": "string",
-            "example": "MTG013534664"
-          },
-          "Mortgage Interest Received from Payer(s)/Borrower(s)": {
-            "type": "number",
-            "example": 694.0
-          },
-          "Points Paid on Purchase of Principal Residence": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Refund of Overpaid Interest": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Mortgage Insurance Premiums": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Outstanding Mortgage Principle": {
-            "type": "number",
-            "example": 200000.0
-          },
-          "Mortgage Origination Date": {
-            "type": "string",
-            "example": "02-12-2018"
-          },
-          "Address of property securing Mortgage": {
-            "type": "string",
-            "example": "123 W 20th"
-          },
-          "Other information from recipient": {
-            "type": "string",
-            "example": "SAN FRANCISCO CA 94117"
-          },
-          "The number of mortgaged properties": {
-            "type": "string",
-            "example": "000000000000"
-          },
-          "Mortgage Acquisition Date": {
-            "type": "string",
-            "example": "00-00-0000"
-          }
-        }
-      },
-      "Form1098T": {
-        "type": "object",
-        "properties": {
-          "Payer": {
-            "type": "object",
-            "properties": {
-              "Payer's Federal Identification Number (FIN)": {
-                "type": "string",
-                "example": "XXXXX1234"
-              },
-              "Name": {
-                "type": "string",
-                "example": "YALE"
-              },
-              "Address": {
-                "type": "string",
-                "example": "246 CH"
-              }
-            }
-          },
-          "Recipient": {
-            "type": "object",
-            "properties": {
-              "Recipient's Identification Number": {
-                "type": "string",
-                "example": "XXX-XX-1234"
-              },
-              "Name": {
-                "type": "string",
-                "example": "SMIT JOHN"
-              },
-              "Address": {
-                "type": "string",
-                "example": "1 ST"
-              }
-            }
-          },
-          "Submission Type": {
-            "type": "string",
-            "example": "Original document"
-          },
-          "Account Number (Optional)": {
-            "type": "string",
-            "example": "XXXXXXXXXXXX1234"
-          },
-          "Qualified Tuition and Related Expense": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Scholarships or Grants": {
-            "type": "number",
-            "example": 38241.0
-          },
-          "Half Time Student Indicator": {
-            "type": "string",
-            "example": "Grtr than or Eq to Half Time Student"
-          },
-          "Graduate Student Indicator": {
-            "type": "string",
-            "example": "Not a Graduate Student"
-          },
-          "Academic Period Code": {
-            "type": "string",
-            "example": "Academic Period Box Not Checked"
-          },
-          "TIN Checkbox": {
-            "type": "string",
-            "example": "box marked"
-          },
-          "Adjustments Made for Prior Year": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Adjustments to Scholarships or Grants for a Prior Year": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Reimbursements/Refunds from an Insurance Contract": {
-            "type": "number",
-            "example": 0.0
-          }
-        }
-      },
-      "Form1099INT": {
-        "type": "object",
-        "properties": {
-          "Payer": {
-            "type": "object",
-            "properties": {
-              "Name": { "type": "string", "example": "MERR" },
-              "Address": { "type": "string", "example": "1500 A" },
-              "Payer's Federal Identification Number (FIN)": {
-                "type": "string",
-                "example": "XXXXX4085"
-              }
-            }
-          },
-          "Recipient": {
-            "type": "object",
-            "properties": {
-              "Name": { "type": "string", "example": "JOHN SMIT" },
-              "Address": { "type": "string", "example": "123 WA" },
-              "Recipient's Identification Number": {
-                "type": "string",
-                "example": "XXX-XX-1234"
-              }
-            }
-          },
-          "Submission Type": {
-            "type": "string",
-            "example": "Original document"
-          },
-          "Account Number (Optional)": {
-            "type": "string",
-            "example": "XXXX1T23"
-          },
-          "Interest": {
-            "type": "integer",
-            "example": 3300
-          },
-          "Tax Withheld": {
-            "type": "integer",
-            "example": 0
-          },
-          "Savings Bonds": {
-            "type": "integer",
-            "example": 0
-          },
-          "Investment Expense": {
-            "type": "integer",
-            "example": 0
-          },
-          "Interest Forfeiture": {
-            "type": "integer",
-            "example": 0
-          },
-          "Foreign Tax Paid": {
-            "type": "integer",
-            "example": 0
-          },
-          "Tax-Exempt Interest": {
-            "type": "integer",
-            "example": 0
-          },
-          "Specified Private Activity Bond Interest": {
-            "type": "integer",
-            "example": 0
-          },
-          "Market Discount": {
-            "type": "integer",
-            "example": 0
-          },
-          "Bond Premium": {
-            "type": "integer",
-            "example": 0
-          },
-          "Bond Premium on Tax Exempt Bond": {
-            "type": "integer",
-            "example": 0
-          },
-          "Bond Premium on Treasury Obligations": {
-            "type": "integer",
-            "example": 0
-          },
-          "Second Notice Indicator": {
-            "type": "string",
-            "example": "No Second Notice"
-          },
-          "Foreign Country or US Possession": {
-            "type": "string",
-            "example": ""
-          },
-          "CUSIP Number": {
-            "type": "string",
-            "example": "037833100"
-          },
-          "FATCA Filing Requirement": {
-            "type": "string",
-            "example": "Box not checked no Filing Requirement"
-          }
-        }
-      },
-      "Form1099DIV": {
-        "type": "object",
-        "properties": {
-          "Payer": {
-            "type": "object",
-            "properties": {
-              "Payer's Federal Identification Number (FIN)": {
-                "type": "string",
-                "example": "123456789"
-              },
-              "Name": {
-                "type": "string",
-                "example": "Test, Inc."
-              },
-              "Address": {
-                "type": "string",
-                "example": "1 WHITE HOUSE\nDALLAS, TX 12345-0000"
-              }
-            }
-          },
-          "Recipient": {
-            "type": "object",
-            "properties": {
-              "Recipient's Identification Number": {
-                "type": "string",
-                "example": "123-45-6789"
-              },
-              "Name": {
-                "type": "string",
-                "example": "JOHN SMIT"
-              },
-              "Address": {
-                "type": "string",
-                "example": "123 HOME\n SUN CITY, CA 91111-6623"
-              }
-            }
-          },
-          "Submission Type": {
-            "type": "string",
-            "example": "Original document"
-          },
-          "Account Number (Optional)": {
-            "type": "string",
-            "example": "3TQ26707000000000001"
-          },
-          "Tax Withheld": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Capital Gains": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Non-Dividend Distribution": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Cash Liquidation Distribution": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Non-Cash Liquidation Distribution": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Investment Expense": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Ordinary Dividend": {
-            "type": "number",
-            "example": 29.0
-          },
-          "Collectibles (28%) Gain": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Unrecaptured Section 1250 Gain": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Section 1202 Gain": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Foreign Tax Paid": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Qualified Dividends": {
-            "type": "number",
-            "example": 29.0
-          },
-          "Section 199A REIT Dividends": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Second Notice Indicator": {
-            "type": "string",
-            "example": "No Second Notice"
-          },
-          "FATCA Filing Requirement": {
-            "type": "string",
-            "example": "Box not checked no Filing Requirement"
-          },
-          "Exempt Interest Dividends": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Specified Private Activity Bond Interest Dividend": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Section 897 Ordinary Dividends": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Section 897 Capital Gain": {
-            "type": "number",
-            "example": 0.0
-          }
-        }
-      },
-      "Form1099G": {
-        "type": "object",
-        "properties": {
-          "Payer": {
-            "type": "object",
-            "properties": {
-              "Payer's Federal Identification Number (FIN)": {
-                "type": "string",
-                "example": "123456789"
-              },
-              "Name": {
-                "type": "string",
-                "example": "CALIFORNIA STATE TAX COMMISSION"
-              },
-              "Address": {
-                "type": "string",
-                "example": "1 MARKET ST\nSAN FRANCISCO, CA 80129-7382"
-              }
-            }
-          },
-          "Recipient": {
-            "type": "object",
-            "properties": {
-              "Recipient's Identification Number": {
-                "type": "string",
-                "example": "123-45-6789"
-              },
-              "Name": {
-                "type": "string",
-                "example": "JOHN SMIT"
-              },
-              "Address": {
-                "type": "string",
-                "example": "123 HOME\n SUN CITY, CA 91111-6623"
-              }
-            }
-          },
-          "Submission Type": {
-            "type": "string",
-            "example": "Original document"
-          },
-          "Account Number (Optional)": {
-            "type": "string",
-            "example": "79737472012312022"
-          },
-          "RTAA Payments": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Tax Withheld": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Taxable Grants": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Unemployment Compensation": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Agricultural Subsidies": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Prior Year Refund": {
-            "type": "number",
-            "example": 3678.0
-          },
-          "Market gain on Commodity Credit Corporation loans repaid": {
-            "type": "number",
-            "example": 0
-          },
-          "Year of Refund": {
-            "type": "string",
-            "example": "2022"
-          },
-          "1099G Offset": {
-            "type": "string",
-            "example": "Not Refund, Credit, or Offset for Trade or Business"
-          },
-          "Second TIN Notice": {
-            "type": "string",
-            "example": ""
-          }
-        }
-      },
-      "Form1099B": {
-        "type": "object",
-        "properties": {
-          "Payer": {
-            "type": "object",
-            "properties": {
-              "Payer's Federal Identification Number (FIN)": {
-                "type": "string",
-                "example": "123456789"
-              },
-              "Name": {
-                "type": "string",
-                "example": "CHARLES SCHWAB & CO., INC."
-              },
-              "Address": {
-                "type": "string",
-                "example": "9800 SCHWAB WAY\nLONE TREE, CO 80124-0000"
-              }
-            }
-          },
-          "Recipient": {
-            "type": "object",
-            "properties": {
-              "Recipient's Identification Number": {
-                "type": "string",
-                "example": "123-45-6789"
-              },
-              "Name": {
-                "type": "string",
-                "example": "JOHN SMIT"
-              },
-              "Address": {
-                "type": "string",
-                "example": "123 HOME\n SUN CITY, CA 91111-6623"
-              }
-            }
-          },
-          "Submission Type": {
-            "type": "string",
-            "example": "Original document"
-          },
-          "Account Number (Optional)": {
-            "type": "string",
-            "example": "1242542353"
-          },
-          "Date Sold or Disposed": {
-            "type": "string",
-            "example": "10-11-2023"
-          },
-          "CUSIP Number": {
-            "type": "string",
-            "example": "464288679"
-          },
-          "Gross Proceeds": {
-            "type": "string",
-            "example": "Gross proceeds"
-          },
-          "Bartering": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Federal Income Tax Withheld": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Proceeds": {
-            "type": "number",
-            "example": 5509.0
-          },
-          "Aggregate Profit or (Loss)": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Realized Profit or (Loss)": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Unrealized Profit or (Loss) 12/31 Prior Year": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Unrealized Profit or (Loss) 12/31 Current Year": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Cost or Basis": {
-            "type": "number",
-            "example": 5515.0
-          },
-          "Wash Sale Loss Disallowed": {
-            "type": "number",
-            "example": 4.0
-          },
-          "Accrued Market Discount Amount": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Description": {
-            "type": "string",
-            "example": "50 SHARES ISHARES SHORT TREASURY"
-          },
-          "Second Notice Indicator": {
-            "type": "string",
-            "example": "No Second Notice"
-          },
-          "Date Acquired": {
-            "type": "string",
-            "example": "00-00-0000"
-          },
-          "Noncovered Security Indicator": {
-            "type": "string",
-            "example": "Nothing checked"
-          },
-          "Type of Gain or Loss Code": {
-            "type": "string",
-            "example": "Short-term"
-          },
-          "Applicable Check Box on Form 8949": {
-            "type": "string",
-            "example": "Short term transaction for which the cost or other basis is being reported to the IRS"
-          },
-          "Loss Not Allowed Indicator": {
-            "type": "string",
-            "example": ""
-          },
-          "FATCA Filing Requirement": {
-            "type": "string",
-            "example": "Box not checked no Filing Requirement"
-          },
-          "Proceeds from": {
-            "type": "string",
-            "example": "Box not checked"
-          }
-        }
-      },
-      "Form1099R": {
-        "type": "object",
-        "properties": {
-          "Payer": {
-            "type": "object",
-            "properties": {
-              "Payer's Federal Identification Number (FIN)": {
-                "type": "string",
-                "example": "123456789"
-              },
-              "Name": {
-                "type": "string",
-                "example": "TEST COMPANY"
-              },
-              "Address": {
-                "type": "string",
-                "example": "1 MARKET ST\nSAN FRANCISCO, CA 80129-7382"
-              }
-            }
-          },
-          "Recipient": {
-            "type": "object",
-            "properties": {
-              "Recipient's Identification Number": {
-                "type": "string",
-                "example": "123-45-6789"
-              },
-              "Name": {
-                "type": "string",
-                "example": "JOHN SMIT"
-              },
-              "Address": {
-                "type": "string",
-                "example": "123 HOME\n SUN CITY, CA 91111-6623"
-              }
-            }
-          },
-          "Submission Type": {
-            "type": "string",
-            "example": "Original document"
-          },
-          "Account Number (Optional)": {
-            "type": "string",
-            "example": "00003535435353"
-          },
-          "Distribution Code Value": {
-            "type": "string",
-            "example": "Direct rollover and rollover contribution"
-          },
-          "Distribution Code": {
-            "type": "string",
-            "example": "G"
-          },
-          "Tax Amount Undetermined Code": {
-            "type": "string",
-            "example": "Not checked"
-          },
-          "Total Distribution Code": {
-            "type": "string",
-            "example": "Total Distribution"
-          },
-          "First Year Roth Contribution": {
-            "type": "string",
-            "example": "0000"
-          },
-          "SEP Indicator": {
-            "type": "string",
-            "example": "IRA/SEP/SIMP box not checked"
-          },
-          "FATCA Indicator": {
-            "type": "string",
-            "example": "not FATCA"
-          },
-          "Date of Payment for Reportable Death Benefits under Section 6050Y": {
-            "type": "string",
-            "example": "00-00-0000"
-          },
-          "Tax Withheld": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Total Employee Contributions": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Unrealized Appreciation": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Other Income": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Gross Distribution": {
-            "type": "number",
-            "example": 23629.0
-          },
-          "Taxable Amount": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Eligible Capital Gains": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Amount to IRR": {
-            "type": "number",
-            "example": 0.0
-          }
-        }
-      },
-      "Form1099MISC": {
-        "type": "object",
-        "properties": {
-          "Payer": {
-            "type": "object",
-            "properties": {
-              "Payer's Federal Identification Number (FIN)": {
-                "type": "string",
-                "example": "464364776"
-              },
-              "Name": {
-                "type": "string",
-                "example": "ROBINHOOD MARKETS INC. AS AGENT FOR\nROBINHOOD SECURITIES LLC"
-              },
-              "Address": {
-                "type": "string",
-                "example": "85 WILLOW ROAD\nMENLO PARK, CA 94025-0000"
-              }
-            }
-          },
-          "Recipient": {
-            "type": "object",
-            "properties": {
-              "Recipient's Identification Number": {
-                "type": "string",
-                "example": "123-45-6789"
-              },
-              "Name": {
-                "type": "string",
-                "example": "JOHN SMIT"
-              },
-              "Address": {
-                "type": "string",
-                "example": "123 HOME\n SUN CITY, CA 91111-6623"
-              }
-            }
-          },
-          "Submission Type": {
-            "type": "string",
-            "example": "Original document"
-          },
-          "Account Number (Optional)": {
-            "type": "string",
-            "example": "11063535390"
-          },
-          "Tax Withheld": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Medical Payments": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Fishing Income": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Rents": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Royalties": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Other Income": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Substitute Payments for Dividends": {
-            "type": "number",
-            "example": 403.0
-          },
-          "Excess Golden Parachute": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Crop Insurance": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Attorney Fees": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Foreign Tax Paid": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Section 409A Deferrals": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Nonqualified deferred compensation": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Fish Purchased for Resale": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Direct Sales Indicator": {
-            "type": "string",
-            "example": "Not Direct Sales"
-          },
-          "FATCA Filing Requirement": {
-            "type": "string",
-            "example": "Box not checked no Filing Requirement"
-          },
-          "Second Notice Indicator": {
-            "type": "string",
-            "example": "No Second Notice"
-          }
-        }
-      },
-      "Form5498IndRet": {
-        "type": "object",
-        "properties": {
-          "Trustee": {
-            "type": "object",
-            "properties": {
-              "Trustee/Issuer's Federal Identification Number (FIN)": {
-                "type": "string",
-                "example": "123456789"
-              },
-              "Name": {
-                "type": "string",
-                "example": "TEST CUSTODIAN"
-              },
-              "Address": {
-                "type": "string",
-                "example": "1 MARKET ST\nSAN FRANCISCO, CA 80129-7382"
-              }
-            }
-          },
-          "Participant": {
-            "type": "object",
-            "properties": {
-              "Participant's Identification Number": {
-                "type": "string",
-                "example": "123-45-6789"
-              },
-              "Name": {
-                "type": "string",
-                "example": "JOHN SMIT"
-              },
-              "Address": {
-                "type": "string",
-                "example": "123 HOME\n SUN CITY, CA 91111-6623"
-              }
-            }
-          },
-          "Submission Type": {
-            "type": "string",
-            "example": "Original document"
-          },
-          "Account Number (Optional)": {
-            "type": "string",
-            "example": "123435"
-          },
-          "IRA Contributions": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Rollover Contributions": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Roth Conversion Amount": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Recharacterized Contributions": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Fair Market Value of Account": {
-            "type": "number",
-            "example": 28988.0
-          },
-          "Life Insurance Cost Included in Box 1": {
-            "type": "number",
-            "example": 0.0
-          },
-          "SEP Code": {
-            "type": "string",
-            "example": "Not Checked"
-          },
-          "IRA Code": {
-            "type": "string",
-            "example": "Not Checked"
-          },
-          "Simple Code": {
-            "type": "string",
-            "example": "Not Checked"
-          },
-          "Roth IRA Code": {
-            "type": "string",
-            "example": "Checked"
-          },
-          "RMD For Subsequent Year": {
-            "type": "string",
-            "example": "RMD box not checked"
-          },
-          "RMD Date": {
-            "type": "string",
-            "example": "00-00-0000"
-          },
-          "Year": {
-            "type": "string",
-            "example": ""
-          },
-          "Postponed Contribution Code": {
-            "type": "string",
-            "example": ""
-          },
-          "Repayments Code": {
-            "type": "string",
-            "example": ""
-          },
-          "Fair Market Value of certain specified assets": {
-            "type": "string",
-            "example": "N/A"
-          },
-          "SEP Contributions": {
-            "type": "number",
-            "example": 0.0
-          },
-          "SIMPLE Contributions": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Roth IRA Contributions": {
-            "type": "number",
-            "example": 6167.0
-          },
-          "Required Minimum Distribution Amount": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Postponed Contributions": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Repayment of a qualified reservist distribution or federally designated disaster withdrawal repayment": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Fair Market Value of Certain Specified Assets": {
-            "type": "number",
-            "example": 0.0
-          }
-        }
-      },
-      "Form5498SA": {
-        "type": "object",
-        "properties": {
-          "Trustee": {
-            "type": "object",
-            "properties": {
-              "Trustee's Federal Identification Number (FIN)": {
-                "type": "string",
-                "example": "123456789"
-              },
-              "Name": {
-                "type": "string",
-                "example": "TEST CUSTODIAN"
-              },
-              "Address": {
-                "type": "string",
-                "example": "1 MARKET ST\nSAN FRANCISCO, CA 80129-7382"
-              }
-            }
-          },
-          "Participant": {
-            "type": "object",
-            "properties": {
-              "Participant's Identification Number": {
-                "type": "string",
-                "example": "123-45-6789"
-              },
-              "Name": {
-                "type": "string",
-                "example": "JOHN SMIT"
-              },
-              "Address": {
-                "type": "string",
-                "example": "123 HOME\n SUN CITY, CA 91111-6623"
-              }
-            }
-          },
-          "Submission Type": {
-            "type": "string",
-            "example": "Original document"
-          },
-          "Account Number (Optional)": {
-            "type": "string",
-            "example": "4816087"
-          },
-          "MSA Contributions": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Current Contributions": {
-            "type": "number",
-            "example": 2196.0
-          },
-          "Future Contributions": {
-            "type": "number",
-            "example": 0.0
-          },
-          "Rollover MSA Contributions": {
-            "type": "number",
-            "example": 0.0
-          },
-          "MSA Fair Market Value": {
-            "type": "number",
-            "example": 1417.0
-          },
-          "HSA Indicator": {
-            "type": "string",
-            "example": "HSA Box Checked"
-          },
-          "Archer MSA Indicator": {
-            "type": "string",
-            "example": "Archer MSA Box Not Checked"
-          },
-          "MA MSA Indicator": {
-            "type": "string",
-            "example": "Not Checked"
-          }
-        }
-      },
-      "Form1099SAOr5498SA": {
-        "type": "object",
-        "properties": {
-          "Payer": {
-            "type": "object",
-            "properties": {
-              "Payer's Federal Identification Number (FIN)": {
-                "type": "string",
-                "example": "123456789"
-              },
-              "Name": {
-                "type": "string",
-                "example": "OPTUM BANK"
-              },
-              "Address": {
-                "type": "string",
-                "example": "P.O. BOX 12345\nSAN FRANCISCO, CA 94117-1629"
-              }
-            }
-          },
-          "Recipient": {
-            "type": "object",
-            "properties": {
-              "Recipient's Identification Number": {
-                "type": "string",
-                "example": "123-45-6789"
-              },
-              "Name": {
-                "type": "string",
-                "example": "JOHN SMIT"
-              },
-              "Address": {
-                "type": "string",
-                "example": "1 WHITE HOUSE\nDALLAS, TX 12345-0000"
-              }
-            }
-          },
-          "Submission Type": {
-            "type": "string",
-            "example": "Original document"
-          },
-          "Account Number (Optional)": {
-            "type": "string",
-            "example": "415370223"
-          },
-          "MSA Distribution Code": {
-            "type": "string",
-            "example": "Normal Distribution"
-          },
-          "Earnings on Distributive Excess Contributions": {
-            "type": "number",
-            "example": 0.0
-          },
-          "MSA Gross Distributions": {
-            "type": "number",
-            "example": 3562.0
-          },
-          "FMV On Date of Death": {
-            "type": "number",
-            "example": 0.0
-          },
-          "HSA Indicator": {
-            "type": "string",
-            "example": "HSA Box Checked"
-          },
-          "Archer MSA Indicator": {
-            "type": "string",
-            "example": "Archer MSA Box Not Checked"
-          },
-          "MA MSA Indicator": {
-            "type": "string",
-            "example": "Not Checked"
-          }
+          "submission_type": { "type": "string" },
+          "gross_winnings": { "type": "number" },
+          "federal_income_tax_withheld": { "type": "number" },
+          "type_of_wager": { "type": "string" },
+          "date_won": { "type": "string", "format": "date" },
+          "winnings_from_identical_wagers": { "type": "number" }
         }
       },
       "ScheduleK1_1065": {
         "type": "object",
         "properties": {
-          "Partnership": {
+          "partnership": {
             "type": "object",
             "properties": {
-              "Partnership's Employer Identification Number": {
+              "ein": {
                 "type": "string",
                 "example": "123456789"
               },
-              "Name": {
+              "name": {
                 "type": "string",
                 "example": "Test, Inc."
               },
-              "Address": {
+              "address": {
                 "type": "string",
                 "example": "PO BOX 1234\nSEATTLE, WA 94111-0000"
               }
             }
           },
-          "Partner": {
+          "partner": {
             "type": "object",
             "properties": {
-              "Partner's Identifying Number": {
+              "id": {
                 "type": "string",
                 "example": "123-45-6789"
               },
-              "Name": {
+              "name": {
                 "type": "string",
                 "example": "JOHN SMIT"
               },
-              "Address": {
+              "address": {
                 "type": "string",
                 "example": "123 HOME RESORT \nJOHN CITY, UT 1234-0000"
               }
             }
           },
-          "Submission Type": {
+          "submission_type": {
             "type": "string",
             "example": "Original document"
           },
-          "Partner Share of Capital Beginning": {
-            "type": "string",
-            "example": "0.01%"
+          "partner_share_of_capital_beginning": {
+            "type": "number",
+            "example": 0.01
           },
-          "Partner Share of Capital Ending": {
-            "type": "string",
-            "example": "0.01%"
+          "partner_share_of_capital_end": {
+            "type": "number",
+            "example": 0.01
           },
-          "IRA SEP KEOGH Indicator": {
+          "ira_sep_keogh_indicator": {
             "type": "string",
             "example": "N/A"
           },
-          "Beginning Tax Period": {
+          "tax_period_beginning": {
             "type": "string",
             "example": "202301"
           },
-          "Ending Tax Period": {
+          "tax_period_end": {
             "type": "string",
             "example": "202312"
           },
-          "Schedule K-3": {
+          "sch_k3": {
             "type": "string",
             "example": "Box is not checked"
           },
-          "Dividends": {
+          "dividends": {
             "type": "number",
             "example": 0.0
           },
-          "Interest": {
+          "interest": {
             "type": "number",
             "example": 636
           },
-          "Royalties": {
+          "royalties": {
             "type": "number",
             "example": 0.0
           },
-          "Ordinary Income K-1": {
+          "ordinary_income_k1": {
             "type": "number",
             "example": 0.0
           },
-          "Real Estate": {
+          "real_estate": {
             "type": "number",
             "example": 0.0
           },
-          "Other Rental": {
+          "other_rental": {
             "type": "number",
             "example": 0.0
           },
-          "Total Guaranteed Payments": {
+          "total_guaranteed_payments": {
             "type": "number",
             "example": 0.0
           },
-          "Section 179 Expenses": {
+          "section_179_expenses": {
             "type": "number",
             "example": 0.0
           },
-          "Short Term Capital Gain": {
+          "capital_gain_short": {
             "type": "number",
             "example": 0.0
           },
-          "Long Term Capital Gain": {
+          "capital_gain_long": {
             "type": "number",
             "example": 0.0
           },
-          "Part III Other Income (Loss)": {
+          "part_iii_other_income_loss": {
             "type": "number",
             "example": 0.0
           },
-          "Part III Other Deduction": {
+          "part_iii_other_deduction": {
             "type": "number",
             "example": 0.0
           },
-          "Nonrecourse Beginning": {
+          "nonrecourse_beginning": {
             "type": "number",
             "example": 0.0
           },
-          "Nonrecourse Ending": {
+          "nonrecourse_end": {
             "type": "number",
             "example": 0.0
           },
-          "Qualified Nonrecourse Beginning": {
+          "qualified_nonrecourse_beginning": {
             "type": "number",
             "example": 0.0
           },
-          "Qualified Nonrecourse Ending": {
+          "qualified_nonrecourse_end": {
             "type": "number",
             "example": 0.0
           },
-          "Recourse Beginning": {
+          "recourse_beginning": {
             "type": "number",
             "example": 0.0
           },
-          "Recourse Ending": {
+          "recourse_end": {
             "type": "number",
             "example": 0.0
           },
-          "Dividend Equivalents": {
+          "dividend_equivalents": {
             "type": "number",
             "example": 0.0
           }
@@ -2465,58 +1112,1519 @@
       "ScheduleK1_1120S": {
         "type": "object",
         "properties": {
-          "Corporation": {
+          "corporation": {
             "type": "object",
             "properties": {
-              "Corporation's Employer Identification Number": {
+              "ein": {
                 "type": "string",
                 "example": "123456789"
               },
-              "Name": { "type": "string", "example": "TEST LLC" },
-              "Address": {
+              "name": { "type": "string", "example": "TEST LLC" },
+              "address": {
                 "type": "string",
                 "example": "1 MARKET ST\nSAN FRANCISCO, CA 80129-7382"
               }
             }
           },
-          "Shareholder": {
+          "shareholder": {
             "type": "object",
             "properties": {
-              "Shareholder's Identifying Number": {
+              "id": {
                 "type": "string",
                 "example": "123-45-6789"
               },
-              "Name": { "type": "string", "example": "JOHN SMIT" },
-              "Address": {
+              "name": { "type": "string", "example": "JOHN SMIT" },
+              "address": {
                 "type": "string",
                 "example": "123 HOME\n SUN CITY, CA 91111-6623"
               }
             }
           },
-          "Submission Type": {
+          "submission_type": {
             "type": "string",
             "example": "Original document"
           },
-          "Dividends": { "type": "number", "example": 0.0 },
-          "Interest": { "type": "number", "example": 12022.0 },
-          "Royalties": { "type": "number", "example": 0.0 },
-          "Ordinary Income K-1": { "type": "number", "example": 250000.0 },
-          "Real Estate": { "type": "number", "example": 0.0 },
-          "Other Rental": { "type": "number", "example": 0.0 },
-          "Section 179 Expenses": { "type": "number", "example": 14224.0 },
-          "Short Term Capital Gain": { "type": "number", "example": 0.0 },
-          "Long Term Capital Gain": { "type": "number", "example": 0.0 },
-          "Credits": { "type": "number", "example": 0.0 },
-          "Part III Other Income Loss": { "type": "number", "example": 0.0 },
-          "Part III Other Deduction": { "type": "number", "example": 0.0 },
-          "Credits Code 1": { "type": "string", "example": "Insignificant" },
-          "Credits Code 2": { "type": "string", "example": "Insignificant" },
-          "Shareholder's Percentage of Stock": {
+          "dividends": { "type": "number", "example": 0.0 },
+          "interest": { "type": "number", "example": 12022.0 },
+          "royalties": { "type": "number", "example": 0.0 },
+          "ordinary_income_k1": { "type": "number", "example": 250000.0 },
+          "real_estate": { "type": "number", "example": 0.0 },
+          "other_rental": { "type": "number", "example": 0.0 },
+          "section_179_expenses": { "type": "number", "example": 14224.0 },
+          "short_term_capital_gain": { "type": "number", "example": 0.0 },
+          "long_term_capital_gain": { "type": "number", "example": 0.0 },
+          "credits": { "type": "number", "example": 0.0 },
+          "part_iii_other_income_loss": { "type": "number", "example": 0.0 },
+          "part_iii_other_deduction": { "type": "number", "example": 0.0 },
+          "credits_code_1": { "type": "string", "example": "Insignificant" },
+          "credits_code_2": { "type": "string", "example": "Insignificant" },
+          "shareholder_percentage_of_stock": {
             "type": "string",
             "example": "33.333%"
           },
-          "Beginning Tax Period": { "type": "string", "example": "202301" },
-          "Ending Tax Period": { "type": "string", "example": "202312" }
+          "beginning_tax_period": { "type": "string", "example": "202301" },
+          "ending_tax_period": { "type": "string", "example": "202312" }
+        }
+      },
+      "ScheduleK1_1041": {
+        "type": "object",
+        "properties": {
+          "fiduciary": {
+            "type": "object",
+            "properties": {
+              "ein": { "type": "string", "example": "123456789" },
+              "name": { "type": "string", "example": "Test Fiduciary" },
+              "address": {
+                "type": "string",
+                "example": "123 Fiduciary St\nCity, State 12345"
+              }
+            }
+          },
+          "beneficiary": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string", "example": "987-65-4321" },
+              "name": { "type": "string", "example": "John Beneficiary" },
+              "address": {
+                "type": "string",
+                "example": "456 Beneficiary Ave\nCity, State 67890"
+              }
+            }
+          },
+          "submission_type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "dividends": { "type": "number", "example": 1000.0 },
+          "interest": { "type": "number", "example": 500.0 },
+          "ordinary_business_income": { "type": "number", "example": 2000.0 },
+          "short_term_capital_gain": { "type": "number", "example": 150.0 },
+          "long_term_capital_gain": { "type": "number", "example": 300.0 },
+          "net_rental_real_estate_income": {
+            "type": "number",
+            "example": 400.0
+          },
+          "other_rental_income": { "type": "number", "example": 250.0 },
+          "other_information": { "type": "number", "example": 50.0 },
+          "other_portfolio_and_non_business_income": {
+            "type": "number",
+            "example": 75.0
+          },
+          "other_information_codes": {
+            "type": "array",
+            "items": { "type": "string", "example": "Code1" }
+          },
+          "beginning_tax_period": { "type": "string", "example": "202301" },
+          "ending_tax_period": { "type": "string", "example": "202312" }
+        }
+      },
+      "Form5498IRA": {
+        "type": "object",
+        "properties": {
+          "trustee": {
+            "type": "object",
+            "properties": {
+              "fin": {
+                "type": "string",
+                "example": "123456789"
+              },
+              "name": {
+                "type": "string",
+                "example": "TEST CUSTODIAN"
+              },
+              "address": {
+                "type": "string",
+                "example": "1 MARKET ST\nSAN FRANCISCO, CA 80129-7382"
+              }
+            }
+          },
+          "participant": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "123-45-6789"
+              },
+              "name": {
+                "type": "string",
+                "example": "JOHN SMIT"
+              },
+              "address": {
+                "type": "string",
+                "example": "123 HOME\n SUN CITY, CA 91111-6623"
+              }
+            }
+          },
+          "submission_type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "account_number": {
+            "type": "string",
+            "example": "123435"
+          },
+          "ira_contributions": {
+            "type": "number",
+            "example": 0.0
+          },
+          "rollover_contributions": {
+            "type": "number",
+            "example": 0.0
+          },
+          "roth_conversion_amount": {
+            "type": "number",
+            "example": 0.0
+          },
+          "recharacterized_contributions": {
+            "type": "number",
+            "example": 0.0
+          },
+          "fair_market_value_of_account": {
+            "type": "number",
+            "example": 28988.0
+          },
+          "life_insurance_cost": {
+            "type": "number",
+            "example": 0.0
+          },
+          "sep_code": {
+            "type": "boolean",
+            "example": false
+          },
+          "ira_code": {
+            "type": "boolean",
+            "example": false
+          },
+          "simple_code": {
+            "type": "boolean",
+            "example": false
+          },
+          "roth_ira_code": {
+            "type": "boolean",
+            "example": true
+          },
+          "rmd_subsequent_year": {
+            "type": "string",
+            "example": "RMD box not checked"
+          },
+          "rmd_date": {
+            "type": "string",
+            "example": "00-00-0000"
+          },
+          "year": {
+            "type": "string",
+            "example": ""
+          },
+          "postponed_contribution_code": {
+            "type": "string",
+            "example": ""
+          },
+          "repayments_code": {
+            "type": "string",
+            "example": ""
+          },
+          "sep_contributions": {
+            "type": "number",
+            "example": 0.0
+          },
+          "simple_contributions": {
+            "type": "number",
+            "example": 0.0
+          },
+          "roth_ira_contributions": {
+            "type": "number",
+            "example": 6167.0
+          },
+          "required_minimum_distribution": {
+            "type": "number",
+            "example": 0.0
+          },
+          "postponed_contributions": {
+            "type": "number",
+            "example": 0.0
+          },
+          "fair_market_value_specified_assets": {
+            "type": "number",
+            "example": 0.0
+          }
+        }
+      },
+      "Form1042S": {
+        "type": "object",
+        "properties": {
+          "withholding_agent": {
+            "type": "object",
+            "properties": {
+              "ein": { "type": "string", "example": "XXXXX1234" },
+              "name": { "type": "string", "example": "YALE" },
+              "address": { "type": "string", "example": "P.O. B" }
+            }
+          },
+          "recipient": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string", "example": "XXX-XX-1234" },
+              "name": { "type": "string", "example": "JOHN SMIT" },
+              "address": { "type": "string", "example": "1 ST" }
+            }
+          },
+          "submission_type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "withholding_agent_province_code": {
+            "type": "string",
+            "example": ""
+          },
+          "withholding_agent_country_code": { "type": "string", "example": "" },
+          "unique_form_identifier": {
+            "type": "string",
+            "example": "0040000213"
+          },
+          "return_type": { "type": "string", "example": "Original" },
+          "number_or_space": { "type": "string", "example": "" },
+          "recipient_country_code": { "type": "string", "example": "" },
+          "recipient_account_number": {
+            "type": "string",
+            "example": "XXXX1234"
+          },
+          "withholding_occurred_in_subsequent_year": {
+            "type": "string",
+            "example": "Box not checked no withholding in subsequent year"
+          },
+          "withholding_agent_ein_type": { "type": "string", "example": "EIN" },
+          "pro_rata_basis_reporting": {
+            "type": "string",
+            "example": "Not Checked"
+          },
+          "income_code": {
+            "type": "string",
+            "example": "Scholarship or Fellowship Grants"
+          },
+          "recipient_foreign_tax_identifying_number": {
+            "type": "string",
+            "example": "XXXXXXX1234"
+          },
+          "gross_income": { "type": "number", "example": 10491.0 },
+          "withholding_allowance": { "type": "number", "example": 0.0 },
+          "net_income": { "type": "number", "example": 0.0 },
+          "tax_rate_chapter_3": { "type": "number", "example": 14.0 },
+          "exemption_code_chapter_3": { "type": "number", "example": 0.0 },
+          "tax_rate_chapter_4": { "type": "number", "example": 0.0 },
+          "exemption_code_chapter_4": {
+            "type": "string",
+            "example": "Excluded nonfinancial payment"
+          },
+          "us_federal_tax_withheld": { "type": "number", "example": 1469.0 },
+          "overwithheld_tax_repaid_to_recipient": {
+            "type": "number",
+            "example": 0.0
+          },
+          "nqi_flow_through_entity_ein": { "type": "string", "example": "" },
+          "nqi_flow_province_code": { "type": "string", "example": "" },
+          "nqi_flow_country_code": { "type": "string", "example": "" },
+          "nqi_flow_postal_code": { "type": "string", "example": "" },
+          "nqi_flow_through_name": { "type": "string", "example": "" },
+          "payer_tin": { "type": "string", "example": "" },
+          "payer_name": { "type": "string", "example": "" },
+          "state_income_tax_withheld": { "type": "number", "example": 0.0 },
+          "withholding_by_other_agents": { "type": "number", "example": 0.0 },
+          "payer_state_tax_no": { "type": "string", "example": "XXXXXX99-0" },
+          "state_code": { "type": "string", "example": "CT" },
+          "total_withholding_credit": { "type": "number", "example": 1469.0 },
+          "tax_paid_by_withholding_agent": { "type": "number", "example": 0.0 },
+          "chapter_3_or_chapter_4_indicator": {
+            "type": "string",
+            "example": "Form was filed Chapter 3"
+          },
+          "tax_not_deposited_under_escrow_procedure_checkbox": {
+            "type": "string",
+            "example": "Check box not checked"
+          },
+          "recipient_chapter_3_status_code": {
+            "type": "string",
+            "example": "Individual"
+          },
+          "recipient_chapter_4_status_code": {
+            "type": "string",
+            "example": ""
+          },
+          "recipient_giin": { "type": "string", "example": "" },
+          "recipient_birthdate": { "type": "string", "example": "01-13-2000" },
+          "primary_withholding_agent_name": { "type": "string", "example": "" },
+          "primary_withholding_agent_ein": {
+            "type": "string",
+            "example": "000000000"
+          },
+          "intermediary_or_flow_through_entity_chapter_3_status_code": {
+            "type": "string",
+            "example": ""
+          },
+          "intermediary_or_flow_through_entity_chapter_4_status_code": {
+            "type": "string",
+            "example": ""
+          },
+          "intermediary_or_flow_through_entity_foreign_tax_id_number": {
+            "type": "string",
+            "example": ""
+          },
+          "intermediary_or_flow_through_entity_giin": {
+            "type": "string",
+            "example": ""
+          },
+          "withholding_agent_chapter_3_status_code": {
+            "type": "string",
+            "example": "Tax Exempt Organization (Section 501(c) entities)"
+          },
+          "withholding_agent_chapter_4_status_code": {
+            "type": "string",
+            "example": "Section 501(c) Entities"
+          },
+          "withholding_agent_foreign_taxpayer_id_number": {
+            "type": "string",
+            "example": ""
+          },
+          "withholding_agent_giin": { "type": "string", "example": "" },
+          "payer_giin": { "type": "string", "example": "" },
+          "lob_code": { "type": "string", "example": "" },
+          "payer_chapter_3_status_code": { "type": "string", "example": "" },
+          "payer_chapter_4_status_code": { "type": "string", "example": "" }
+        }
+      },
+      "Form1099MISC": {
+        "type": "object",
+        "properties": {
+          "payer": {
+            "type": "object",
+            "properties": {
+              "fin": {
+                "type": "string",
+                "example": "464364776"
+              },
+              "name": {
+                "type": "string",
+                "example": "ROBINHOOD MARKETS INC. AS AGENT FOR\nROBINHOOD SECURITIES LLC"
+              },
+              "address": {
+                "type": "string",
+                "example": "85 WILLOW ROAD\nMENLO PARK, CA 94025-0000"
+              }
+            }
+          },
+          "recipient": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "123-45-6789"
+              },
+              "name": {
+                "type": "string",
+                "example": "JOHN SMIT"
+              },
+              "address": {
+                "type": "string",
+                "example": "123 HOME\n SUN CITY, CA 91111-6623"
+              }
+            }
+          },
+          "submission_type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "account_number": {
+            "type": "string",
+            "example": "11063535390"
+          },
+          "tax_withheld": {
+            "type": "number",
+            "example": 0.0
+          },
+          "medical_payments": {
+            "type": "number",
+            "example": 0.0
+          },
+          "fishing_income": {
+            "type": "number",
+            "example": 0.0
+          },
+          "rents": {
+            "type": "number",
+            "example": 0.0
+          },
+          "royalties": {
+            "type": "number",
+            "example": 0.0
+          },
+          "other_income": {
+            "type": "number",
+            "example": 0.0
+          },
+          "substitute_payments_for_dividends": {
+            "type": "number",
+            "example": 403.0
+          },
+          "excess_golden_parachute": {
+            "type": "number",
+            "example": 0.0
+          },
+          "crop_insurance": {
+            "type": "number",
+            "example": 0.0
+          },
+          "attorney_fees": {
+            "type": "number",
+            "example": 0.0
+          },
+          "foreign_tax_paid": {
+            "type": "number",
+            "example": 0.0
+          },
+          "section_409a_deferrals": {
+            "type": "number",
+            "example": 0.0
+          },
+          "nonqualified_deferred_compensation": {
+            "type": "number",
+            "example": 0.0
+          },
+          "fish_purchased_for_resale": {
+            "type": "number",
+            "example": 0.0
+          },
+          "direct_sales_indicator": {
+            "type": "boolean",
+            "example": false
+          },
+          "fatca": {
+            "type": "boolean",
+            "example": false
+          },
+          "second_notice_indicator": {
+            "type": "boolean",
+            "example": false
+          }
+        }
+      },
+      "Form1099INT": {
+        "type": "object",
+        "properties": {
+          "payer": {
+            "type": "object",
+            "properties": {
+              "fin": { "type": "string", "example": "XXXXX4085" },
+              "name": { "type": "string", "example": "MERR" },
+              "address": { "type": "string", "example": "1500 A" }
+            }
+          },
+          "recipient": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string", "example": "XXX-XX-1234" },
+              "name": { "type": "string", "example": "JOHN SMIT" },
+              "address": { "type": "string", "example": "123 WA" }
+            }
+          },
+          "submission_type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "account_number": {
+            "type": "string",
+            "example": "XXXX1T23"
+          },
+          "interest_income": {
+            "type": "number",
+            "example": 3300.0
+          },
+          "tax_withheld": {
+            "type": "number",
+            "example": 0.0
+          },
+          "savings_bonds": {
+            "type": "number",
+            "example": 0.0
+          },
+          "investment_expense": {
+            "type": "number",
+            "example": 0.0
+          },
+          "interest_forfeiture": {
+            "type": "number",
+            "example": 0.0
+          },
+          "foreign_tax_paid": {
+            "type": "number",
+            "example": 0.0
+          },
+          "tax_exempt_interest": {
+            "type": "number",
+            "example": 0.0
+          },
+          "specified_private_activity_bond_interest": {
+            "type": "number",
+            "example": 0.0
+          },
+          "market_discount": {
+            "type": "number",
+            "example": 0.0
+          },
+          "bond_premium": {
+            "type": "number",
+            "example": 0.0
+          },
+          "bond_premium_on_tax_exempt_bond": {
+            "type": "number",
+            "example": 0.0
+          },
+          "bond_premium_on_treasury_obligation": {
+            "type": "number",
+            "example": 0.0
+          },
+          "second_notice_indicator": {
+            "type": "string",
+            "example": "No Second Notice"
+          },
+          "cusip": {
+            "type": "string",
+            "example": "037833100"
+          },
+          "fatca": {
+            "type": "boolean",
+            "example": false
+          }
+        }
+      },
+      "Form1099G": {
+        "type": "object",
+        "properties": {
+          "payer": {
+            "type": "object",
+            "properties": {
+              "fin": {
+                "type": "string",
+                "example": "123456789"
+              },
+              "name": {
+                "type": "string",
+                "example": "CALIFORNIA STATE TAX COMMISSION"
+              },
+              "address": {
+                "type": "string",
+                "example": "1 MARKET ST\nSAN FRANCISCO, CA 80129-7382"
+              }
+            }
+          },
+          "recipient": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "123-45-6789"
+              },
+              "name": {
+                "type": "string",
+                "example": "JOHN SMIT"
+              },
+              "address": {
+                "type": "string",
+                "example": "123 HOME\n SUN CITY, CA 91111-6623"
+              }
+            }
+          },
+          "submission_type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "account_number": {
+            "type": "string",
+            "example": "79737472012312022"
+          },
+          "rtaa_payments": {
+            "type": "number",
+            "example": 0.0
+          },
+          "tax_withheld": {
+            "type": "number",
+            "example": 0.0
+          },
+          "taxable_grants": {
+            "type": "number",
+            "example": 0.0
+          },
+          "unemployment_compensation": {
+            "type": "number",
+            "example": 0.0
+          },
+          "agricultural_subsidies": {
+            "type": "number",
+            "example": 0.0
+          },
+          "prior_year_refund": {
+            "type": "number",
+            "example": 3678.0
+          },
+          "market_gain_commodity_credit_corporation_loans": {
+            "type": "number",
+            "example": 0.0
+          },
+          "year_of_refund": {
+            "type": "number",
+            "example": 2022
+          },
+          "offset": {
+            "type": "string",
+            "example": "Not Refund, Credit, or Offset for Trade or Business"
+          },
+          "second_tin_notice": {
+            "type": "boolean",
+            "example": false
+          }
+        }
+      },
+      "Form1099R": {
+        "type": "object",
+        "properties": {
+          "payer": {
+            "type": "object",
+            "properties": {
+              "fin": { "type": "string", "example": "123456789" },
+              "name": { "type": "string", "example": "Payer Name" },
+              "address": { "type": "string", "example": "Payer Address" }
+            }
+          },
+          "recipient": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string", "example": "123-45-6789" },
+              "name": { "type": "string", "example": "Recipient Name" },
+              "address": { "type": "string", "example": "Recipient Address" }
+            }
+          },
+          "submission_type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "account_number": {
+            "type": "string",
+            "example": "Optional Account Number"
+          },
+          "distribution_codes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "value": { "type": "string", "example": "Distribution Value" },
+                "code": { "type": "string", "example": "Distribution Code" }
+              }
+            }
+          },
+          "tax_amount_undetermined_code": {
+            "type": "boolean",
+            "example": false
+          },
+          "total_distribution_code": { "type": "boolean", "example": false },
+          "first_year_roth_contribution": {
+            "type": "string",
+            "example": "First Year Roth Contribution"
+          },
+          "sep_indicator": { "type": "string", "example": "SEP Indicator" },
+          "fatca": { "type": "boolean", "example": false },
+          "date_of_payment_for_reportable_death_benefits": {
+            "type": "string",
+            "example": "Date of Payment"
+          },
+          "Tax Withheld": { "type": "number", "example": 0.0 },
+          "total_employee_contributions": { "type": "number", "example": 0.0 },
+          "unrealized_appreciation": { "type": "number", "example": 0.0 },
+          "other_income": { "type": "number", "example": 0.0 },
+          "gross_distribution": { "type": "number", "example": 0.0 },
+          "taxable_amount": { "type": "number", "example": 0.0 },
+          "eligible_capital_gains": { "type": "number", "example": 0.0 },
+          "amount_to_irr": { "type": "number", "example": 0.0 }
+        }
+      },
+      "Form1099DIV": {
+        "type": "object",
+        "properties": {
+          "payer": {
+            "type": "object",
+            "properties": {
+              "fin": { "type": "string", "example": "123456789" },
+              "name": { "type": "string", "example": "Test, Inc." },
+              "address": {
+                "type": "string",
+                "example": "1 WHITE HOUSE\nDALLAS, TX 12345-0000"
+              }
+            }
+          },
+          "recipient": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string", "example": "123-45-6789" },
+              "name": { "type": "string", "example": "JOHN SMIT" },
+              "address": {
+                "type": "string",
+                "example": "123 HOME\n SUN CITY, CA 91111-6623"
+              }
+            }
+          },
+          "submission_type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "account_number": {
+            "type": "string",
+            "example": "3TQ26707000000000001"
+          },
+          "tax_withheld": { "type": "number", "example": 0.0 },
+          "capital_gains": { "type": "number", "example": 0.0 },
+          "non_dividend_distribution": { "type": "number", "example": 0.0 },
+          "cash_liquidation_distribution": { "type": "number", "example": 0.0 },
+          "non_cash_liquidation_distribution": {
+            "type": "number",
+            "example": 0.0
+          },
+          "investment_expense": { "type": "number", "example": 0.0 },
+          "ordinary_dividend": { "type": "number", "example": 29.0 },
+          "collectibles_28_percent_gain": { "type": "number", "example": 0.0 },
+          "unrecaptured_section_1250_gain": {
+            "type": "number",
+            "example": 0.0
+          },
+          "section_1202_gain": { "type": "number", "example": 0.0 },
+          "foreign_tax_paid": { "type": "number", "example": 0.0 },
+          "qualified_dividends": { "type": "number", "example": 29.0 },
+          "section_199a_reit_dividends": { "type": "number", "example": 0.0 },
+          "second_notice_indicator": {
+            "type": "string",
+            "example": "No Second Notice"
+          },
+          "fatca": { "type": "boolean", "example": false },
+          "exempt_interest_dividends": { "type": "number", "example": 0.0 },
+          "specified_private_activity_bond_interest_dividend": {
+            "type": "number",
+            "example": 0.0
+          },
+          "section_897_ordinary_dividends": {
+            "type": "number",
+            "example": 0.0
+          },
+          "section_897_capital_gain": { "type": "number", "example": 0.0 }
+        }
+      },
+      "Form1099B": {
+        "type": "object",
+        "properties": {
+          "payer": {
+            "type": "object",
+            "properties": {
+              "fin": { "type": "string", "example": "123456789" },
+              "name": {
+                "type": "string",
+                "example": "CHARLES SCHWAB & CO., INC."
+              },
+              "address": {
+                "type": "string",
+                "example": "9800 SCHWAB WAY\nLONE TREE, CO 80124-0000"
+              }
+            }
+          },
+          "recipient": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string", "example": "123-45-6789" },
+              "name": { "type": "string", "example": "JOHN SMIT" },
+              "address": {
+                "type": "string",
+                "example": "123 HOME\n SUN CITY, CA 91111-6623"
+              }
+            }
+          },
+          "submission_type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "account_number": { "type": "string", "example": "1242542353" },
+          "date_sold_or_disposed": {
+            "type": "string",
+            "example": "10-11-2023"
+          },
+          "cusip": { "type": "string", "example": "123456789" },
+          "gross_proceeds": { "type": "number", "example": 0.0 },
+          "federal_income_tax_withheld": { "type": "number", "example": 0.0 },
+          "proceeds": { "type": "number", "example": 0.0 },
+          "aggregate_profit_loss": { "type": "number", "example": 0.0 },
+          "realized_profit_loss": { "type": "number", "example": 0.0 },
+          "unrealized_profit_loss_prior_year": {
+            "type": "number",
+            "example": 0.0
+          },
+          "unrealized_profit_loss_current_year": {
+            "type": "number",
+            "example": 0.0
+          },
+          "cost_basis": { "type": "number", "example": 0.0 },
+          "wash_sale_loss_disallowed": { "type": "number", "example": 0.0 },
+          "accrued_market_discount": { "type": "number", "example": 0.0 },
+          "description": {
+            "type": "string",
+            "example": "50 SHARES ISHARES SHORT TREASURY"
+          },
+          "second_notice_indicator": {
+            "type": "string",
+            "example": "No Second Notice"
+          },
+          "date_acquired": { "type": "string", "example": "00-00-0000" },
+          "noncovered_security_indicator": {
+            "type": "string",
+            "example": "Nothing checked"
+          },
+          "type_gain_loss": { "type": "string", "example": "Short-term" },
+          "loss_not_allowed_indicator": { "type": "string", "example": "" },
+          "fatca": { "type": "boolean", "example": false },
+          "proceeds_from": { "type": "string", "example": "Box not checked" }
+        }
+      },
+      "Form1099NEC": {
+        "type": "object",
+        "properties": {
+          "issuer_provider": {
+            "type": "object",
+            "properties": {
+              "fin": { "type": "string", "example": "123456789" },
+              "name": { "type": "string", "example": "ISSUER NAME" },
+              "address": {
+                "type": "string",
+                "example": "123 ISSUER ADDRESS\nCITY, STATE ZIP"
+              }
+            }
+          },
+          "recipient": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string", "example": "123-45-6789" },
+              "name": { "type": "string", "example": "RECIPIENT NAME" },
+              "address": {
+                "type": "string",
+                "example": "123 RECIPIENT ADDRESS\nCITY, STATE ZIP"
+              }
+            }
+          },
+          "submission_type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "second_notice_indicator": { "type": "boolean", "example": false },
+          "federal_income_tax_withheld": { "type": "number", "example": 0.0 },
+          "non_employee_compensation": { "type": "number", "example": 5000.0 },
+          "direct_sales_indicator": { "type": "boolean", "example": false }
+        }
+      },
+      "FormSSA1099": {
+        "type": "object",
+        "properties": {
+          "payer": {
+            "type": "object",
+            "properties": {
+              "fin": { "type": "string", "example": "123456789" },
+              "name": { "type": "string", "example": "PAYER NAME" },
+              "address": {
+                "type": "string",
+                "example": "123 PAYER ADDRESS\nCITY, STATE ZIP"
+              }
+            }
+          },
+          "payee": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string", "example": "123-45-6789" },
+              "name": { "type": "string", "example": "PAYEE NAME" },
+              "address": {
+                "type": "string",
+                "example": "123 PAYEE ADDRESS\nCITY, STATE ZIP"
+              }
+            }
+          },
+          "submission_type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "account_number": { "type": "string", "example": "1234567890" },
+          "pensions_and_annuities": { "type": "number", "example": 10000.0 },
+          "tax_withheld": { "type": "number", "example": 1000.0 },
+          "repayments": { "type": "number", "example": 500.0 },
+          "workmans_compensation_offset": {
+            "type": "number",
+            "example": 200.0
+          },
+          "payments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "year": { "type": "string", "example": "2023" },
+                "payment": { "type": "number", "example": 1200.0 }
+              }
+            }
+          },
+          "trust_fund_indicator": { "type": "string", "example": "A" },
+          "SSA/RRB Payments": { "type": "string", "example": "5000.0" }
+        }
+      },
+      "Form1098": {
+        "type": "object",
+        "properties": {
+          "recipient_lender": {
+            "type": "object",
+            "properties": {
+              "fin": { "type": "string", "example": "123456789" },
+              "name": { "type": "string", "example": "TEST FSB" },
+              "address": {
+                "type": "string",
+                "example": "1 MARKET ST\nSAN FRANCISCO, CA 80129-7382"
+              }
+            }
+          },
+          "payer_borrower": {
+            "type": "object",
+            "properties": {
+              "ssn": { "type": "string", "example": "123-45-6789" },
+              "name": { "type": "string", "example": "JOHN SMIT" },
+              "address": {
+                "type": "string",
+                "example": "123 HOME\n SUN CITY, CA 91111-6623"
+              }
+            }
+          },
+          "submission_type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "account_number": { "type": "string", "example": "MTG013534664" },
+          "mortgage_interest_received": { "type": "number", "example": 694.0 },
+          "points_paid_on_purchase": { "type": "number", "example": 0.0 },
+          "refund_of_overpaid_interest": { "type": "number", "example": 0.0 },
+          "mortgage_insurance_premiums": { "type": "number", "example": 0.0 },
+          "outstanding_mortgage_principal": {
+            "type": "number",
+            "example": 200000.0
+          },
+          "mortgage_origination_date": {
+            "type": "string",
+            "example": "02-12-2018"
+          },
+          "address_of_property_securing_mortgage": {
+            "type": "string",
+            "example": "123 W 20th"
+          },
+          "other_information_from_recipient": {
+            "type": "string",
+            "example": "SAN FRANCISCO CA 94117"
+          },
+          "number_of_mortgaged_properties": { "type": "integer", "example": 0 },
+          "mortgage_acquisition_date": {
+            "type": "string",
+            "example": "00-00-0000"
+          }
+        }
+      },
+      "Form1098T": {
+        "type": "object",
+        "properties": {
+          "payer": {
+            "type": "object",
+            "properties": {
+              "fin": { "type": "string", "example": "XXXXX1234" },
+              "name": { "type": "string", "example": "YALE" },
+              "address": { "type": "string", "example": "246 CH" }
+            }
+          },
+          "recipient": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string", "example": "XXX-XX-1234" },
+              "name": { "type": "string", "example": "SMIT JOHN" },
+              "address": { "type": "string", "example": "1 ST" }
+            }
+          },
+          "submission_type": {
+            "type": "string",
+            "example": "Original document"
+          },
+          "account_number": { "type": "string", "example": "XXXXXXXXXXXX1234" },
+          "qualified_tuition_and_related_expenses": {
+            "type": "number",
+            "example": 0.0
+          },
+          "scholarships_grants": { "type": "number", "example": 38241.0 },
+          "half_time_student_indicator": {
+            "type": "string",
+            "example": "Grtr than or Eq to Half Time Student"
+          },
+          "graduate_student_indicator": {
+            "type": "string",
+            "example": "Not a Graduate Student"
+          },
+          "academic_period_code": {
+            "type": "string",
+            "example": "Academic Period Box Not Checked"
+          },
+          "tin_checkbox": { "type": "boolean", "example": true },
+          "adjustments_made_for_prior_year": {
+            "type": "number",
+            "example": 0.0
+          },
+          "adjustments_to_scholarships_or_grants_for_a_prior_year": {
+            "type": "number",
+            "example": 0.0
+          },
+          "reimbursements_refunds_from_an_insurance_contract": {
+            "type": "number",
+            "example": 0.0
+          }
+        }
+      },
+      "RECA": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/RECA_Individual"
+          },
+          {
+            "$ref": "#/components/schemas/RECA_Business"
+          }
+        ]
+      },
+      "RECA_Individual": {
+        "type": "object",
+        "properties": {
+          "form_number": { "type": "string" },
+          "name": { "type": "string" },
+          "address": { "type": "string" },
+          "filing_status": { "type": "string" },
+          "tin": { "type": "string" },
+          "spouse_tin": { "type": "string" },
+          "remittance": { "type": "number" },
+          "ptin": { "type": "string" },
+          "preparer_ein": { "type": "string" },
+          "account_summary": {
+            "$ref": "#/components/schemas/AccountSummaryModel"
+          },
+          "return_summary": {
+            "$ref": "#/components/schemas/ReturnSummaryModel"
+          },
+          "transactions": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/TransactionModel" }
+          },
+          "dependents": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/DependentModel" }
+          },
+          "original_return": {
+            "type": "object",
+            "properties": {
+              "income": { "$ref": "#/components/schemas/IncomeModel" },
+              "income_adjustments": {
+                "$ref": "#/components/schemas/AdjustmentsToIncomeModel"
+              },
+              "tax_and_credits": {
+                "$ref": "#/components/schemas/TaxAndCreditsModel"
+              },
+              "sch_c": { "$ref": "#/components/schemas/ScheduleCModel" }
+            },
+            "required": ["income", "income_adjustments", "tax_and_credits"]
+          }
+        },
+        "required": [
+          "form_number",
+          "name",
+          "address",
+          "filing_status",
+          "tin",
+          "account_summary",
+          "return_summary",
+          "transactions",
+          "dependents",
+          "original_return"
+        ]
+      },
+      "RECA_Business": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "address": { "type": "string" },
+          "form_number": { "type": "string" },
+          "taxpayer_identification_number": { "type": "string" },
+          "account_summary": {
+            "$ref": "#/components/schemas/AccountSummaryModel"
+          },
+          "transactions": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/TransactionModel" }
+          },
+          "return_summary": {
+            "$ref": "#/components/schemas/ReturnSummaryBusinessModel"
+          }
+        },
+        "required": [
+          "name",
+          "address",
+          "form_number",
+          "taxpayer_identification_number",
+          "account_summary"
+        ]
+      },
+      "AccruedAmountModel": {
+        "type": "object",
+        "properties": {
+          "amount": { "type": "number" },
+          "as_of": { "type": "string" }
+        },
+        "required": ["amount", "as_of"]
+      },
+      "AccountSummaryModel": {
+        "type": "object",
+        "properties": {
+          "account_balance": {
+            "type": "number"
+          },
+          "accrued_interest": {
+            "$ref": "#/components/schemas/AccruedAmountModel"
+          },
+          "accrued_penalty": {
+            "$ref": "#/components/schemas/AccruedAmountModel"
+          },
+          "account_balance_plus_accruals": {
+            "$ref": "#/components/schemas/AccruedAmountModel"
+          },
+          "exemptions": { "type": "integer" }
+        },
+        "required": ["account_balance", "accrued_interest", "accrued_penalty"]
+      },
+      "ReturnSummaryModel": {
+        "type": "object",
+        "properties": {
+          "filing_status": { "type": "string" },
+          "adjusted_gross_income": { "type": "number" },
+          "taxable_income": { "type": "number" },
+          "tax_per_return": { "type": "number" },
+          "se_taxable_income_taxpayer": { "type": "number" },
+          "se_taxable_income_spouse": { "type": "number" },
+          "total_self_employment_tax": { "type": "number" },
+          "return_due_received_date": { "type": "string" },
+          "processing_date": { "type": "string" }
+        },
+        "required": ["filing_status", "adjusted_gross_income"]
+      },
+      "ReturnSummaryBusinessModel": {
+        "type": "object",
+        "properties": {
+          "net_receipts": { "type": "number" },
+          "total_income": { "type": "number" },
+          "total_deductions": { "type": "number" },
+          "net_taxable_income": { "type": "number" },
+          "minimum_tax_amount": { "type": "number" },
+          "estimated_tax_credits": { "type": "number" },
+          "personal_holding_tax": { "type": "number" },
+          "es_7004_payments_claimed": { "type": "number" },
+          "tax_per_return": { "type": "number" },
+          "naics": { "type": "string" },
+          "return_due_received_date": { "type": "string" },
+          "processing_date": { "type": "string" }
+        }
+      },
+      "DependentModel": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "ssn": { "type": "string" }
+        },
+        "required": ["name", "ssn"]
+      },
+      "TransactionModel": {
+        "type": "object",
+        "properties": {
+          "code": { "type": "string" },
+          "explanation": { "type": "string" },
+          "cycle": { "type": "string" },
+          "date": { "type": "string" },
+          "amount": { "type": "number" }
+        },
+        "required": ["code", "date"]
+      },
+      "IncomeModel": {
+        "type": "object",
+        "properties": {
+          "total_wages": { "type": "number" },
+          "w2_wages": { "type": "number" },
+          "sch_b_taxable_interest_income": { "type": "number" },
+          "tax_exempt_interest": { "type": "number" },
+          "sch_b_ordinary_dividend_income": { "type": "number" },
+          "qualified_dividends": { "type": "number" },
+          "state_local_refunds": { "type": "number" },
+          "alimony_received": { "type": "number" },
+          "sch_c_business_income_or_loss": { "type": "number" },
+          "sch_c_business_income_or_loss_per_computer": { "type": "number" },
+          "sch_d_capital_gain_or_loss": { "type": "number" },
+          "sch_d_capital_gain_or_loss_per_computer": { "type": "number" },
+          "form4797_gains_or_losses": { "type": "number" },
+          "total_ira_distributions": { "type": "number" },
+          "taxable_ira_distributions": { "type": "number" },
+          "total_pensions_and_annuities": { "type": "number" },
+          "taxable_pension_annuity_amount": { "type": "number" },
+          "additional_income": { "type": "number" },
+          "additional_income_per_computer": { "type": "number" },
+          "refundable_credits_per_computer": { "type": "number" },
+          "refundable_education_credit_per_computer": { "type": "number" },
+          "qualified_business_income_deduction": { "type": "number" },
+          "sch_e_rent_royalty_partnership_estate": { "type": "number" },
+          "sch_e_rent_royalty_partnership_estate_per_computer": {
+            "type": "number"
+          },
+          "sch_e_rent_royalty_income_loss_per_computer": { "type": "number" },
+          "estate_trust_income_loss_per_computer": { "type": "number" },
+          "partnership_s_corp_income_loss_per_computer": { "type": "number" },
+          "sch_f_farm_income_or_loss": { "type": "number" },
+          "sch_f_farm_income_or_loss_per_computer": { "type": "number" },
+          "unemployment_compensation": { "type": "number" },
+          "total_social_security_benefits": { "type": "number" },
+          "taxable_social_security_benefits": { "type": "number" },
+          "taxable_social_security_benefits_per_computer": { "type": "number" },
+          "other_income": { "type": "number" },
+          "sch_eic_self_employment_income_per_computer": { "type": "number" },
+          "sch_eic_earned_income_per_computer": { "type": "number" },
+          "sch_eic_disqualified_income_per_computer": { "type": "number" },
+          "excess_advance_child_tax_credit_per_computer": { "type": "number" },
+          "primary_advanced_child_tax_credit_payments": { "type": "number" },
+          "secondary_advanced_child_tax_credit_payments": { "type": "number" },
+          "additional_child_tax_credit_earned_income": { "type": "number" },
+          "eic_prior_year_earned_income": { "type": "number" },
+          "ctc_prior_year_earned_income": { "type": "number" },
+          "qualified_business_income_deduction_duplicate": { "type": "number" },
+          "form8995_qualified_business_income_deduction_computer": {
+            "type": "number"
+          },
+          "form8995_net_capital_gains_computer": { "type": "number" },
+          "primary_economic_impact_payment": { "type": "number" },
+          "secondary_economic_impact_payment": { "type": "number" },
+          "scholarship_fellowship_grant": { "type": "number" },
+          "total_income": { "type": "number" },
+          "total_income_per_computer": { "type": "number" },
+          "treaty_exempt_income": { "type": "number" },
+          "total_eff_connected_income": { "type": "number" },
+          "total_eff_connected_income_per_computer": { "type": "number" },
+          "farm_income_loss_schedule_f": { "type": "number" },
+          "farm_income_loss_schedule_f_per_computer": { "type": "number" }
+        }
+      },
+      "AdjustmentsToIncomeModel": {
+        "type": "object",
+        "properties": {
+          "educator_expenses": { "type": "number" },
+          "educator_expenses_per_computer": { "type": "number" },
+          "reservist_and_other_business_expense": { "type": "number" },
+          "health_savings_account_deduction": { "type": "number" },
+          "health_savings_account_deduction_per_computer": { "type": "number" },
+          "moving_expenses_f3903": { "type": "number" },
+          "self_employment_tax_deduction": { "type": "number" },
+          "self_employment_tax_deduction_per_computer": { "type": "number" },
+          "self_employment_tax_deduction_verified": { "type": "number" },
+          "keogh_sep_contribution_deduction": { "type": "number" },
+          "self_employment_health_insurance_deduction": { "type": "number" },
+          "early_withdrawal_of_savings_penalty": { "type": "number" },
+          "alimony_paid_ssn": { "type": "string" },
+          "alimony_paid": { "type": "number" },
+          "ira_deduction": { "type": "number" },
+          "ira_deduction_per_computer": { "type": "number" },
+          "student_loan_interest_deduction": { "type": "number" },
+          "student_loan_interest_deduction_per_computer": { "type": "number" },
+          "student_loan_interest_deduction_verified": { "type": "number" },
+          "total_other_payment_refundable_credit_per_computer": {
+            "type": "number"
+          },
+          "total_other_payment_refund_verified": { "type": "number" },
+          "other_adjustments": { "type": "number" },
+          "archer_msa_deduction": { "type": "number" },
+          "archer_msa_deduction_per_computer": { "type": "number" },
+          "domestic_production_activities_deduction": { "type": "number" },
+          "total_adjustments": { "type": "number" },
+          "total_adjustments_per_computer": { "type": "number" },
+          "adjusted_gross_income": { "type": "number" },
+          "adjusted_gross_income_per_computer": { "type": "number" },
+          "qualified_business_income_deduction": { "type": "number" },
+          "f8995_qualified_business_income_deduction_computer": {
+            "type": "number"
+          },
+          "primary_economic_impact_payment": { "type": "number" },
+          "secondary_economic_impact_payment": { "type": "number" },
+          "scholarship_fellowship_grant": { "type": "number" },
+          "scholarship_fellowship_excluded": { "type": "number" }
+        }
+      },
+      "TaxAndCreditsModel": {
+        "type": "object",
+        "properties": {
+          "over_65": { "type": "boolean" },
+          "blind": { "type": "boolean" },
+          "spouse_over_65": { "type": "boolean" },
+          "spouse_blind": { "type": "boolean" },
+          "standard_deduction_per_computer": { "type": "number" },
+          "additional_standard_deduction_per_computer": { "type": "number" },
+          "tax_table_income_per_computer": { "type": "number" },
+          "exemption_per_computer": { "type": "number" },
+          "taxable_income": { "type": "number" },
+          "taxable_income_per_computer": { "type": "number" },
+          "total_positive_income_per_computer": { "type": "number" },
+          "tentative_tax": { "type": "number" },
+          "tentative_tax_per_computer": { "type": "number" },
+          "form_8814_additional_tax": { "type": "number" },
+          "tax_on_income_less_social_security_income_per_computer": {
+            "type": "number"
+          },
+          "form_6251_alternative_minimum_tax": { "type": "number" },
+          "form_6251_alternative_minimum_tax_per_computer": {
+            "type": "number"
+          },
+          "foreign_tax_credit": { "type": "number" },
+          "foreign_tax_credit_per_computer": { "type": "number" },
+          "foreign_income_exclusion_per_computer": { "type": "number" },
+          "foreign_income_exclusion_tax_per_computer": { "type": "number" },
+          "excess_advance_premium_tax_credit_repayment_amount": {
+            "type": "number"
+          },
+          "excess_advance_premium_tax_credit_repayment_verified_amount": {
+            "type": "number"
+          },
+          "child_dependent_care_credit": { "type": "number" },
+          "child_dependent_care_credit_per_computer": { "type": "number" },
+          "credit_for_elderly_and_disabled": { "type": "number" },
+          "credit_for_elderly_and_disabled_per_computer": { "type": "number" },
+          "education_credit": { "type": "number" },
+          "education_credit_per_computer": { "type": "number" },
+          "gross_education_credit_per_computer": { "type": "number" },
+          "retirement_savings_contribution_credit": { "type": "number" },
+          "retirement_savings_contribution_credit_per_computer": {
+            "type": "number"
+          },
+          "total_retirement_savings_contribution_f8880_computer": {
+            "type": "number"
+          },
+          "residential_clean_energy_credit": { "type": "number" },
+          "residential_energy_credit_per_computer": { "type": "number" },
+          "child_and_other_dependent_credit": { "type": "number" },
+          "child_and_other_dependent_credit_per_computer": { "type": "number" },
+          "adoption_credit_f8839": { "type": "number" },
+          "adoption_credit_per_computer": { "type": "number" },
+          "form_8396_mortgage_certificate_credit": { "type": "number" },
+          "form_8396_mortgage_certificate_credit_per_computer": {
+            "type": "number"
+          },
+          "total_other_non_refundable_credit": { "type": "number" },
+          "form_3800_general_business_credits": { "type": "number" },
+          "form_3800_general_business_credits_per_computer": {
+            "type": "number"
+          },
+          "prior_year_minimum_tax_credit_f8801": { "type": "number" },
+          "prior_year_minimum_tax_credit_f8801_per_computer": {
+            "type": "number"
+          },
+          "earlier_year_income_repayment_credit": { "type": "number" },
+          "clean_vehicle_credit": { "type": "number" },
+          "clean_vehicle_credit_per_computer": { "type": "number" },
+          "f8910_alternative_motor_vehicle_credit_amount": { "type": "number" },
+          "f8910_alternative_motor_vehicle_credit_per_computer": {
+            "type": "number"
+          },
+          "Sick_family_leave_credit": { "type": "number" },
+          "non_itemized_charitable_contribution_deduction": {
+            "type": "number"
+          },
+          "non_itemized_charitable_contribution_per_computer": {
+            "type": "number"
+          },
+          "refundable_child_care_credit": { "type": "number" },
+          "sick_family_leave_credit_after_331": { "type": "number" },
+          "eefundable_child_care_credit_verified": { "type": "number" },
+          "recovery_rebate_credit": { "type": "number" },
+          "recovery_rebate_credit_per_computer": { "type": "number" },
+          "recovery_rebate_credit_verified": { "type": "number" },
+          "other_credits": { "type": "number" },
+          "total_credits": { "type": "number" },
+          "total_credits_per_computer": { "type": "number" },
+          "income_tax_after_credits_per_computer": { "type": "number" },
+          "advanced_manufacturing_credit_per_computer": { "type": "number" },
+          "advanced_manufacturing_invest_credit_per_computer": {
+            "type": "number"
+          },
+          "clean_hydrogen_production_credit_per_computer": { "type": "number" },
+          "carbon_oxide_sequestration_credit_per_computer": {
+            "type": "number"
+          },
+          "energy_efficient_home_credit_per_computer": { "type": "number" },
+          "energy_efficient_home_credit": { "type": "number" },
+          "pre_owned_clean_vehicle_credit_per_computer": { "type": "number" },
+          "pre_owned_clean_vehicle_credit": { "type": "number" },
+          "pre_owned_clean_vehicle_verified": { "type": "number" },
+          "new_clean_vehicle_bus_credit_per_computer": { "type": "number" },
+          "new_clean_vehicle_bus_verified": { "type": "number" },
+          "commercial_clean_vehicle_credit_per_computer": { "type": "number" },
+          "commercial_clean_vehicle_verified": { "type": "number" },
+          "clean_vehicle_credit_verified": { "type": "number" }
+        }
+      },
+      "ScheduleCModel": {
+        "type": "object",
+        "properties": {
+          "ssn": { "type": "string" },
+          "ein": { "type": "string" },
+          "business_name": { "type": "string" },
+          "description": { "type": "string" },
+          "naics": { "type": "string" },
+          "account_method": { "type": "string" },
+          "first_time_schedule_c_filed": { "type": "string" },
+          "statutory_employee_indicator": { "type": "string" },
+          "income": {
+            "type": "object",
+            "properties": {
+              "gross_receipts_or_sales": { "type": "number" },
+              "returns_allowances": { "type": "number" },
+              "net_gross_receipts_sales": { "type": "number" },
+              "cogs": { "type": "number" },
+              "sch_c_form1099_required": { "type": "string" },
+              "sch_c_form1099_filed": { "type": "string" },
+              "other_income": { "type": "number" }
+            }
+          },
+          "expenses": {
+            "type": "object",
+            "properties": {
+              "car_truck_expenses": { "type": "number" },
+              "depreciation": { "type": "number" },
+              "insurance_other_than_health": { "type": "number" },
+              "mortgage_interest": { "type": "number" },
+              "legal_professional_services": { "type": "number" },
+              "repairs_maintenance": { "type": "number" },
+              "travel": { "type": "number" },
+              "meals_entertainment": { "type": "number" },
+              "wages": { "type": "number" },
+              "other_expenses": { "type": "number" },
+              "total_expenses": { "type": "number" },
+              "expense_business_use_home": { "type": "number" },
+              "schedule_c_net_profit_loss_per_computer": { "type": "number" },
+              "at_risk_cd_amount": { "type": "number" },
+              "office_expense": { "type": "number" },
+              "utilities_expense": { "type": "number" }
+            }
+          },
+          "cogs": {
+            "type": "object",
+            "properties": {
+              "inventory_beginning": { "type": "number" },
+              "inventory_end": { "type": "number" }
+            }
+          }
         }
       },
       "Error": {
