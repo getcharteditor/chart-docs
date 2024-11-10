@@ -223,7 +223,7 @@
     },
     "/client-links": {
       "post": {
-        "description": "Submit an IRS 8821 form.",
+        "description": "Create a custom client link.",
         "requestBody": {
           "content": {
             "application/json": {
