@@ -29,6 +29,10 @@
       "pages": ["api-reference/irs-8821-form/post"]
     },
     {
+      "group": "Client Links",
+      "pages": ["api-reference/client-links/post"]
+    },
+    {
       "group": "Management",
       "pages": [
         "api-reference/taxpayer/get",

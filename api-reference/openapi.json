@@ -220,6 +220,44 @@
           }
         }
       }
+    },
+    "/client-links": {
+      "post": {
+        "description": "Submit an IRS 8821 form.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientLinkInput"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "clientAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "IRS 8821 Form Submission Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "example": "https://dashboard.trychart.com/c/1234567890"
+                    }
+                  },
+                  "required": ["url"]
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -235,8 +273,9 @@
             "type": "string",
             "example": "Joe Doe"
           },
-          "session": {
-            "type": "object"
+          "metadata": {
+            "type": "object",
+            "description": "Custom metadata identifying external fields about the taxpayer"
           },
           "providerId": {
             "type": "string",
@@ -701,6 +740,18 @@
             "description": "The tax record provider associated with the access_token.",
             "type": "string",
             "example": "turbotax"
+          }
+        }
+      },
+      "ClientLinkInput": {
+        "type": "object",
+        "properties": {
+          "sandbox": {
+            "type": "boolean"
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Custom metadata identifying external fields about the taxpayer"
           }
         }
       },
