@@ -2588,7 +2588,7 @@
           "f8910_alternative_motor_vehicle_credit_per_computer": {
             "type": "number"
           },
-          "Sick_family_leave_credit": { "type": "number" },
+          "sick_family_leave_credit": { "type": "number" },
           "non_itemized_charitable_contribution_deduction": {
             "type": "number"
           },
