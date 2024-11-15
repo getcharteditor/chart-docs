@@ -33,9 +33,12 @@
       "pages": ["api-reference/client-links/post"]
     },
     {
+      "group": "Taxpayer",
+      "pages": ["api-reference/taxpayer/get", "api-reference/taxpayer/refresh"]
+    },
+    {
       "group": "Management",
       "pages": [
-        "api-reference/taxpayer/get",
         "api-reference/management/providers",
         "api-reference/management/introspect",
         "api-reference/management/disconnect"

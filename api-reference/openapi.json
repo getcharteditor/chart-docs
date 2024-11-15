@@ -195,25 +195,29 @@
         }
       }
     },
-    "/mef/submit": {
+    "/tax-payer/{id}/refresh": {
       "post": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Return"
-              }
-            }
+        "description": "Refresh taxpayer data.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ChartAPIVersion"
           },
-          "required": true
-        },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Taxpaer Refresh Response",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/TaxpayerRefreshResponse"
                 }
               }
             }
@@ -298,6 +302,24 @@
           }
         },
         "required": ["id", "name", "providerId", "createdAt", "status"]
+      },
+      "TaxpayerRefreshResponse": {
+        "type": "object",
+        "properties": {
+          "jobId": {
+            "type": "string",
+            "example": "job_12345"
+          },
+          "taxpayerId": {
+            "type": "string",
+            "example": "clxjfvx74000f11di1uq2u8xm"
+          },
+          "name": {
+            "type": "string",
+            "example": "Joe Doe"
+          }
+        },
+        "required": ["jobId", "taxpayerId", "name"]
       },
       "IRS56FormState": {
         "type": "object",
