@@ -225,6 +225,44 @@
         }
       }
     },
+    "/tax-payer/{taxpayerId}/refresh/{jobId}": {
+      "get": {
+        "description": "Get the status of a refresh job.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ChartAPIVersion"
+          },
+          {
+            "name": "taxpayerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Taxpayer Refresh Status Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaxpayerRefreshStatusResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/client-links": {
       "post": {
         "description": "Create a custom client link.",
@@ -320,6 +358,25 @@
           }
         },
         "required": ["jobId", "taxpayerId", "name"]
+      },
+      "TaxpayerRefreshStatusResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["processing", "completed", "failed"]
+          },
+          "jobId": {
+            "type": "string"
+          },
+          "taxpayerId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": ["status", "jobId", "taxpayerId", "name"]
       },
       "IRS56FormState": {
         "type": "object",

@@ -34,7 +34,11 @@
     },
     {
       "group": "Taxpayer",
-      "pages": ["api-reference/taxpayer/get", "api-reference/taxpayer/refresh"]
+      "pages": [
+        "api-reference/taxpayer/get",
+        "api-reference/taxpayer/refresh",
+        "api-reference/taxpayer/refresh-status"
+      ]
     },
     {
       "group": "Management",
