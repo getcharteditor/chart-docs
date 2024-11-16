@@ -2362,7 +2362,14 @@
               "tax_and_credits": {
                 "$ref": "#/components/schemas/TaxAndCreditsModel"
               },
-              "sch_c": { "$ref": "#/components/schemas/ScheduleCModel" }
+              "sch_c": {
+                "type": "array",
+                "items": { "$ref": "#/components/schemas/ScheduleCModel" }
+              },
+              "sch_se": {
+                "type": "array",
+                "items": { "$ref": "#/components/schemas/ScheduleSEModel" }
+              }
             },
             "required": ["income", "income_adjustments", "tax_and_credits"]
           }
@@ -2753,6 +2760,33 @@
             "properties": {
               "inventory_beginning": { "type": "number" },
               "inventory_end": { "type": "number" }
+            }
+          }
+        }
+      },
+      "ScheduleSEModel": {
+        "type": "object",
+        "properties": {
+          "ssn": { "type": "string" },
+          "net_farm_profit_loss": { "type": "number" },
+          "conservation_reserve_program_payments": { "type": "number" },
+          "net_nonfarm_profit_loss": { "type": "number" },
+          "total_se_income": { "type": "number" },
+          "se_quarters_covered": { "type": "integer" },
+          "total_se_tax_per_computer": { "type": "number" },
+          "se_income_computer_verified": { "type": "number" },
+          "se_income_per_computer": { "type": "number" },
+          "total_net_earnings_per_computer": { "type": "number" },
+          "long_form_only": {
+            "type": "object",
+            "properties": {
+              "tentative_church_earnings": { "type": "number" },
+              "total_soc_sec_rr_wages": { "type": "number" },
+              "se_ss_tax_computer": { "type": "number" },
+              "se_medicare_income_per_computer": { "type": "number" },
+              "se_medicare_tax_per_computer": { "type": "number" },
+              "se_farm_option_method_used": { "type": "integer" },
+              "se_optional_method_income": { "type": "number" }
             }
           }
         }
