@@ -43,6 +43,7 @@
     {
       "group": "Management",
       "pages": [
+        "api-reference/management/token",
         "api-reference/management/providers",
         "api-reference/management/introspect",
         "api-reference/management/disconnect"

@@ -71,6 +71,59 @@
         }
       }
     },
+    "/auth/token": {
+      "post": {
+        "description": "Exchange authorization code for access token.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "client_id": { "type": "string" },
+                  "client_secret": { "type": "string" },
+                  "code": { "type": "string" },
+                  "redirect_uri": {
+                    "type": "string",
+                    "description": "In cases where a redirect URI is not needed such as the embedded SDK flow, please use the trusted domain 'https://trychart.com' as the redirect_uri."
+                  }
+                },
+                "required": [
+                  "client_id",
+                  "client_secret",
+                  "code",
+                  "redirect_uri"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Token Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "account_id": { "type": "string" },
+                    "provider_id": { "type": "string" },
+                    "access_token": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": []
+      }
+    },
     "/providers": {
       "get": {
         "description": "Return details on all available tax record providers.",
