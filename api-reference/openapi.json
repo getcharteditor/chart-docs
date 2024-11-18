@@ -2701,6 +2701,12 @@
           "total_retirement_savings_contribution_f8880_computer": {
             "type": "number"
           },
+          "primary_retirement_savings_contribution_f8880_ln6a": {
+            "type": "number"
+          },
+          "secondary_retirement_savings_contribution_f8880_ln6b": {
+            "type": "number"
+          },
           "residential_clean_energy_credit": { "type": "number" },
           "residential_energy_credit_per_computer": { "type": "number" },
           "child_and_other_dependent_credit": { "type": "number" },
@@ -2727,6 +2733,8 @@
           "f8910_alternative_motor_vehicle_credit_per_computer": {
             "type": "number"
           },
+          "f8936_electric_motor_vehicle_credit_amount": { "type": "number" },
+          "f8936_electric_motor_vehicle_credit_per_computer": { "type": "number" },
           "sick_family_leave_credit": { "type": "number" },
           "non_itemized_charitable_contribution_deduction": {
             "type": "number"
@@ -2736,7 +2744,7 @@
           },
           "refundable_child_care_credit": { "type": "number" },
           "sick_family_leave_credit_after_331": { "type": "number" },
-          "eefundable_child_care_credit_verified": { "type": "number" },
+          "refundable_child_care_credit_verified": { "type": "number" },
           "recovery_rebate_credit": { "type": "number" },
           "recovery_rebate_credit_per_computer": { "type": "number" },
           "recovery_rebate_credit_verified": { "type": "number" },
