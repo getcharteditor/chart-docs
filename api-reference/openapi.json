@@ -2418,6 +2418,9 @@
               "payments": {
                 "$ref": "#/components/schemas/PaymentsModel"
               },
+              "other_taxes": {
+                "$ref": "#/components/schemas/OtherTaxesModel"
+              },
               "sch_c": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/ScheduleCModel" }
@@ -2431,7 +2434,8 @@
               "income",
               "income_adjustments",
               "tax_and_credits",
-              "payments"
+              "payments",
+              "other_taxes"
             ]
           }
         },
@@ -2833,6 +2837,57 @@
           "total_other_payments_refundable": { "type": "number" },
           "total_payments": { "type": "number" },
           "total_payments_per_computer": { "type": "number" }
+        }
+      },
+      "OtherTaxesModel": {
+        "type": "object",
+        "properties": {
+          "self_employment_tax": { "type": "number" },
+          "self_employment_tax_per_computer": { "type": "number" },
+          "social_security_and_medicare_tax_on_unreported_tips": {
+            "type": "number"
+          },
+          "tax_on_qualified_plans_f5329_pr": { "type": "number" },
+          "tax_on_qualified_plans_f5329_per_computer": { "type": "number" },
+          "individual_retirement_account_file_iraf_tax_per_computer": {
+            "type": "number"
+          },
+          "taxpayer_tax_figures_reduced_by_iraf_per_computer": {
+            "type": "number"
+          },
+          "individual_master_file_imf_total_tax_reduced_by_iraf_per_computer": {
+            "type": "number"
+          },
+          "total_other_taxes_per_computer": { "type": "number" },
+          "unpaid_federal_insurance_contributions_act_fica_on_reported_tips": {
+            "type": "number"
+          },
+          "f8959_additional_medicare_tax": { "type": "number" },
+          "f8960_net_investment_income_tax": { "type": "number" },
+          "interest_on_deferred_tax": { "type": "number" },
+          "total_other_taxes": { "type": "number" },
+          "recapture_tax_f8611": { "type": "number" },
+          "household_employment_taxes": { "type": "number" },
+          "household_employment_taxes_per_computer": { "type": "number" },
+          "interest_due_on_installment": { "type": "number" },
+          "sch_8812_additional_tax_computer": { "type": "number" },
+          "refundable_child_care_computer": { "type": "number" },
+          "health_coverage_recapture_f8885": { "type": "number" },
+          "excess_social_security_tax_withheld_verified": { "type": "number" },
+          "excess_social_security_tax_withheld_per_computer": {
+            "type": "number"
+          },
+          "total_additional_taxes": { "type": "number" },
+          "total_assessment_per_computer": { "type": "number" },
+          "total_tax_liability_taxpayer_figures": { "type": "number" },
+          "total_tax_liability_taxpayer_figures_per_computer": {
+            "type": "number"
+          },
+          "deferred_tax_sch_h_se": { "type": "number" },
+          "max_deferred_tax_per_computer": { "type": "number" },
+          "social_security_and_medicare_tax_on_unreported_tips_per_computer": {
+            "type": "number"
+          }
         }
       },
       "ScheduleCModel": {
