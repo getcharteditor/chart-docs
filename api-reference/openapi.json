@@ -2415,6 +2415,9 @@
               "tax_and_credits": {
                 "$ref": "#/components/schemas/TaxAndCreditsModel"
               },
+              "payments": {
+                "$ref": "#/components/schemas/PaymentsModel"
+              },
               "sch_c": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/ScheduleCModel" }
@@ -2424,7 +2427,12 @@
                 "items": { "$ref": "#/components/schemas/ScheduleSEModel" }
               }
             },
-            "required": ["income", "income_adjustments", "tax_and_credits"]
+            "required": [
+              "income",
+              "income_adjustments",
+              "tax_and_credits",
+              "payments"
+            ]
           }
         },
         "required": [
@@ -2734,7 +2742,9 @@
             "type": "number"
           },
           "f8936_electric_motor_vehicle_credit_amount": { "type": "number" },
-          "f8936_electric_motor_vehicle_credit_per_computer": { "type": "number" },
+          "f8936_electric_motor_vehicle_credit_per_computer": {
+            "type": "number"
+          },
           "sick_family_leave_credit": { "type": "number" },
           "non_itemized_charitable_contribution_deduction": {
             "type": "number"
@@ -2770,6 +2780,59 @@
           "commercial_clean_vehicle_credit_per_computer": { "type": "number" },
           "commercial_clean_vehicle_verified": { "type": "number" },
           "clean_vehicle_credit_verified": { "type": "number" }
+        }
+      },
+      "PaymentsModel": {
+        "type": "object",
+        "properties": {
+          "federal_income_tax_withheld": { "type": "number" },
+          "sch_8812_additional_tax": { "type": "number" },
+          "estimated_tax_payments": { "type": "number" },
+          "other_payment_credit": { "type": "number" },
+          "refundable_education_credit": { "type": "number" },
+          "refundable_education_credit_per_computer": { "type": "number" },
+          "refundable_education_credit_verified": { "type": "number" },
+          "refundable_credits": { "type": "number" },
+          "earned_income_credit": { "type": "number" },
+          "earned_income_credit_per_computer": { "type": "number" },
+          "nontaxable_combat_pay": { "type": "number" },
+          "earned_income_credit_nontaxable_combat_pay": { "type": "number" },
+          "sch_8812_nontaxable_combat_pay": { "type": "number" },
+          "sch_8812_tot_ss_medicare_withheld": { "type": "number" },
+          "excess_social_security_rrta_tax_withheld": { "type": "number" },
+          "sch_8812_additional_child_tax_credit": { "type": "number" },
+          "sch_8812_additional_child_tax_credit_per_computer": {
+            "type": "number"
+          },
+          "sch_8812_additional_child_tax_credit_verified": { "type": "number" },
+          "amount_paid_with_form_4868": { "type": "number" },
+          "form_2439_regulated_investment_company_credit": { "type": "number" },
+          "form_4136_credit_for_federal_tax_on_fuels": { "type": "number" },
+          "form_4136_credit_for_federal_tax_on_fuels_per_computer": {
+            "type": "number"
+          },
+          "health_coverage_tax_credit_f8885": { "type": "number" },
+          "sec_965_tax_installment": { "type": "number" },
+          "sec_965_tax_liability": { "type": "number" },
+          "premium_tax_credit_amount": { "type": "number" },
+          "premium_tax_credit_verified_amount": { "type": "number" },
+          "primary_nap_first_time_home_buyer_installment_amount": {
+            "type": "number"
+          },
+          "secondary_nap_first_time_home_buyer_installment_amount": {
+            "type": "number"
+          },
+          "first_time_homebuyer_credit_repayment_amount": { "type": "number" },
+          "form_5405_total_homebuyers_credit_repayment_per_computer": {
+            "type": "number"
+          },
+          "small_employer_health_insurance_per_computer": { "type": "number" },
+          "small_employer_health_insurance_per_computer_2": {
+            "type": "number"
+          },
+          "total_other_payments_refundable": { "type": "number" },
+          "total_payments": { "type": "number" },
+          "total_payments_per_computer": { "type": "number" }
         }
       },
       "ScheduleCModel": {
