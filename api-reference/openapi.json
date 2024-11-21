@@ -787,11 +787,6 @@
             "type": "string",
             "description": "A pre-signed URL pointing to the raw tax file retrieved from the provider."
           },
-          "type": {
-            "description": "The type of the tax record.",
-            "type": "string",
-            "enum": ["F1040"]
-          },
           "forms": {
             "description": "The parsed tax form data associated with the tax record.",
             "type": "array",
