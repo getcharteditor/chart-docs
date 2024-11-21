@@ -2423,6 +2423,10 @@
               "sch_se": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/ScheduleSEModel" }
+              },
+              "sch_a": {
+                "type": "array",
+                "items": { "$ref": "#/components/schemas/ScheduleAModel" }
               }
             },
             "required": [
@@ -2961,6 +2965,88 @@
               "se_medicare_tax_per_computer": { "type": "number" },
               "se_farm_option_method_used": { "type": "integer" },
               "se_optional_method_income": { "type": "number" }
+            }
+          }
+        }
+      },
+      "ScheduleAModel": {
+        "type": "object",
+        "properties": {
+          "medical_dental": {
+            "type": "object",
+            "properties": {
+              "medical_and_dental_expenses": { "type": "number" },
+              "adjusted_gross_income_percentage": { "type": "number" },
+              "adjusted_gross_income_percentage_per_computer_10_percent": {
+                "type": "number"
+              },
+              "adjusted_gross_income_percentage_per_computer_7_5_percent": {
+                "type": "number"
+              },
+              "net_medical_deduction": { "type": "number" },
+              "net_medical_deduction_per_computer": { "type": "number" }
+            }
+          },
+          "taxes_paid": {
+            "type": "object",
+            "properties": {
+              "state_and_local_income_or_sales_taxes": { "type": "number" },
+              "real_estate_taxes": { "type": "number" },
+              "personal_property_taxes": { "type": "number" },
+              "other_taxes_amount": { "type": "number" },
+              "sch_a_tax_deductions": { "type": "number" },
+              "sch_a_tax_per_computer": { "type": "number" }
+            }
+          },
+          "interest_paid": {
+            "type": "object",
+            "properties": {
+              "mortgage_interest_financial": { "type": "number" },
+              "mortgage_interest_individual": { "type": "number" },
+              "deductible_points": { "type": "number" },
+              "qualified_mortgage_insurance_premiums": { "type": "number" },
+              "deductible_investment_interest": { "type": "number" },
+              "total_interest_deduction": { "type": "number" },
+              "total_interest_deduction_per_computer": { "type": "number" }
+            }
+          },
+          "charitable_contributions": {
+            "type": "object",
+            "properties": {
+              "cash_contributions": { "type": "number" },
+              "other_than_cash_form_8283": { "type": "number" },
+              "carryover_from_prior_year": { "type": "number" },
+              "sch_a_total_contributions": { "type": "number" },
+              "sch_a_total_contributions_per_computer": { "type": "number" }
+            }
+          },
+          "casualty_and_theft_loss": {
+            "type": "object",
+            "properties": {
+              "casualty_or_theft_loss": { "type": "number" }
+            }
+          },
+          "jobs_and_miscellaneous": {
+            "type": "object",
+            "properties": {
+              "unreimbursed_employee_expense_amount": { "type": "number" },
+              "total_limited_misc_expenses": { "type": "number" },
+              "net_limited_misc_deduction": { "type": "number" },
+              "net_limited_misc_deduction_per_computer": { "type": "number" }
+            }
+          },
+          "other_miscellaneous": {
+            "type": "object",
+            "properties": {
+              "other_than_gambling_amount": { "type": "number" },
+              "other_misc_deductions": { "type": "number" }
+            }
+          },
+          "total_itemized_deductions": {
+            "type": "object",
+            "properties": {
+              "total_itemized_deductions": { "type": "number" },
+              "total_itemized_deductions_per_computer": { "type": "number" }
             }
           }
         }
