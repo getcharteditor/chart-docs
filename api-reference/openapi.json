@@ -937,7 +937,32 @@
             "pattern": "^[0-9]{10}$",
             "example": "1112223344"
           },
-          "title": { "type": "string", "example": "CEO" }
+          "title": {
+            "type": "string",
+            "enum": [
+              "Managing Member",
+              "Partner",
+              "Limited Partner",
+              "Director",
+              "Chief Accounting Officer",
+              "Chief Executive Officer",
+              "Chief Operating Officer",
+              "Chief Financial Officer",
+              "President",
+              "Vice President",
+              "Secretary",
+              "Treasurer",
+              "Assistant Treasurer",
+              "Controller",
+              "Owner",
+              "Sole Proprietor",
+              "Executor",
+              "Beneficiary",
+              "Trustee",
+              "Administrator"
+            ],
+            "example": "Chief Executive Officer"
+          }
         },
         "required": ["name", "taxId", "type", "phone", "title"]
       },
