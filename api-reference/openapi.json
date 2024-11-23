@@ -344,9 +344,13 @@
                     "url": {
                       "type": "string",
                       "example": "https://dashboard.trychart.com/c/1234567890"
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "cm3tj5p2g000e674soxr2brbl"
                     }
                   },
-                  "required": ["url"]
+                  "required": ["url", "id"]
                 }
               }
             }
@@ -660,78 +664,13 @@
             "type": "boolean"
           },
           "personalInfo": {
-            "type": "object",
-            "properties": {
-              "firstName": {
-                "type": "string",
-                "minLength": 1,
-                "example": "John"
-              },
-              "lastName": {
-                "type": "string",
-                "minLength": 1,
-                "example": "Doe"
-              },
-              "ssn": {
-                "type": "string",
-                "minLength": 9,
-                "maxLength": 9,
-                "example": "123456789"
-              }
-            },
-            "required": ["firstName", "lastName"]
+            "$ref": "#/components/schemas/PersonalInfoInput"
           },
           "businessInfo": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string",
-                "minLength": 1,
-                "example": "Test, Inc."
-              },
-              "taxId": {
-                "type": "string",
-                "description": "EIN or SSN of the taxpayer",
-                "minLength": 9,
-                "maxLength": 9,
-                "example": "123456789"
-              },
-              "type": {
-                "type": "string",
-                "enum": [
-                  "S-Corporation",
-                  "C-Corporation",
-                  "Sole Proprietorship",
-                  "Partnerships"
-                ]
-              },
-              "phone": {
-                "type": "string",
-                "pattern": "^[0-9]{10}$",
-                "example": "1112223344"
-              },
-              "title": { "type": "string", "example": "CEO" }
-            },
-            "required": ["name", "taxId", "type", "phone", "title"]
+            "$ref": "#/components/schemas/BusinessInfoInput"
           },
           "address": {
-            "type": "object",
-            "properties": {
-              "street": {
-                "type": "string",
-                "minLength": 1,
-                "example": "123 Main St"
-              },
-              "other": { "type": "string", "example": "Apt 1" },
-              "city": {
-                "type": "string",
-                "minLength": 1,
-                "example": "San Francisco"
-              },
-              "state": { "type": "string", "minLength": 1, "example": "CA" },
-              "zip": { "type": "string", "minLength": 1, "example": "94101" }
-            },
-            "required": ["street", "city", "state", "zip"]
+            "$ref": "#/components/schemas/AddressInput"
           },
           "signatureBase64": {
             "type": "string",
@@ -879,8 +818,147 @@
           "metadata": {
             "type": "object",
             "description": "Custom metadata identifying external fields about the taxpayer"
+          },
+          "settings": {
+            "type": "object",
+            "properties": {
+              "flowType": {
+                "type": "string",
+                "enum": [
+                  "full",
+                  "personal",
+                  "business",
+                  "irs-8821",
+                  "irs-online-account",
+                  "full-irs-online-account"
+                ]
+              },
+              "transcripts": {
+                "type": "object",
+                "properties": {
+                  "ACTR": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^\\d{4}$",
+                      "minLength": 4
+                    }
+                  },
+                  "RECA": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^\\d{4}$",
+                      "minLength": 4
+                    }
+                  },
+                  "WAID": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^\\d{4}$",
+                      "minLength": 4
+                    }
+                  },
+                  "NOTICE": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^\\d{4}$",
+                      "minLength": 4
+                    }
+                  }
+                }
+              },
+              "prefillData": {
+                "type": "object",
+                "properties": {
+                  "personalInfo": {
+                    "$ref": "#/components/schemas/PersonalInfoInput"
+                  },
+                  "businessInfo": {
+                    "$ref": "#/components/schemas/BusinessInfoInput"
+                  },
+                  "address": { "$ref": "#/components/schemas/AddressInput" }
+                }
+              }
+            }
           }
         }
+      },
+      "PersonalInfoInput": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "minLength": 1,
+            "example": "John"
+          },
+          "lastName": {
+            "type": "string",
+            "minLength": 1,
+            "example": "Doe"
+          },
+          "ssn": {
+            "type": "string",
+            "minLength": 9,
+            "maxLength": 9,
+            "example": "123456789"
+          }
+        },
+        "required": ["firstName", "lastName"]
+      },
+      "BusinessInfoInput": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "example": "Test, Inc."
+          },
+          "taxId": {
+            "type": "string",
+            "description": "EIN or SSN of the taxpayer",
+            "minLength": 9,
+            "maxLength": 9,
+            "example": "123456789"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "S-Corporation",
+              "C-Corporation",
+              "Sole Proprietorship",
+              "Partnerships"
+            ]
+          },
+          "phone": {
+            "type": "string",
+            "pattern": "^[0-9]{10}$",
+            "example": "1112223344"
+          },
+          "title": { "type": "string", "example": "CEO" }
+        },
+        "required": ["name", "taxId", "type", "phone", "title"]
+      },
+      "AddressInput": {
+        "type": "object",
+        "properties": {
+          "street": {
+            "type": "string",
+            "minLength": 1,
+            "example": "123 Main St"
+          },
+          "other": { "type": "string", "example": "Apt 1" },
+          "city": {
+            "type": "string",
+            "minLength": 1,
+            "example": "San Francisco"
+          },
+          "state": { "type": "string", "minLength": 1, "example": "CA" },
+          "zip": { "type": "string", "minLength": 1, "example": "94101" }
+        },
+        "required": ["street", "city", "state", "zip"]
       },
       "WAID": {
         "type": "object",
