@@ -150,7 +150,6 @@ a taxpayer is deleted from Chart's database.
         "id": "ev_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
         "data": {
             "taxpayer_id": "tx_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
-            "access_token": "access_token",
             "provider_id": "turbotax"
             "records": [
                 {
@@ -172,48 +171,6 @@ a taxpayer is deleted from Chart's database.
             "taxpayer_id": "tx_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
             "name": "John Doe",
             "provider_id": "turbotax"
-        },
-        "created_at": "2021-08-17T03:29:59.397Z"
-    }
-    ```
-  </Accordion>
-</AccordionGroup>
-
-### IRS Form events
-
-IRS Form flow is the only non-realtime provider. On average, it takes 2-3 days for the IRS to
-process the form and give authorization to Chart to pull the taxpayers' data. The events below
-reflext the stages of the IRS Form flow.
-
-<AccordionGroup>
-  <Accordion title="irs_form.submitted">
-    ```json IRS Form submitted event
-    {
-        "event": "irs_form.submitted",
-        "id": "ev_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
-        "data": {
-            "taxpayer_id": "tx_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
-            "form": {
-                "personalInfo": {
-                    "firstName": "John",
-                    "lastName": "Doe",
-                    "ssn": "123456789"
-                },
-                "businessInfo": {
-                    "name": "Test, Inc.",
-                    "taxId": "123456789",
-                    "type": "S-Corporation",
-                    "phone": "1112223344",
-                    "title": "CEO"
-                },
-                "address": {
-                    "street": "123 Main St",
-                    "other": "Apt 1",
-                    "city": "San Francisco",
-                    "state": "CA",
-                    "zip": "94101"
-                }
-            }
         },
         "created_at": "2021-08-17T03:29:59.397Z"
     }
