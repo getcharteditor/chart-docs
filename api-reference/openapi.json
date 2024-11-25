@@ -660,9 +660,6 @@
       "IRS8821FormState": {
         "type": "object",
         "properties": {
-          "sandbox": {
-            "type": "boolean"
-          },
           "personalInfo": {
             "$ref": "#/components/schemas/PersonalInfoInput"
           },
@@ -812,9 +809,6 @@
       "ClientLinkInput": {
         "type": "object",
         "properties": {
-          "sandbox": {
-            "type": "boolean"
-          },
           "metadata": {
             "type": "object",
             "description": "Custom metadata identifying external fields about the taxpayer"
