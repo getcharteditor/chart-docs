@@ -4,13 +4,12 @@ description: "This API Quickstart guide will help you send your first request to
 ---
 
 To get started, sign up for a free account [here](https://auth.trychart.com/sign-up).
-After registration, you will have access to your OAuth application `client_id` and `client_secret`
-to build and test how Chart works.
+After registration, you will have access to a sandbox application `client_id` and `client_secret`
+to build and test how Chart works using simulated data.
 
 <Note>
-  This client_id and client_secret will only work for the TurboTax provider and
-  only for a limited number of submissions. If you would like to test all the
-  providers with unrestricted submissions, please contact
+  This `client_id` and `client_secret` will only work for the sandbox provider. 
+  If you would like to test real providers with live data, you must request developer keys from
   developers@trychart.com.
 </Note>
 
@@ -46,9 +45,9 @@ In production, you will want to use your own application's urls for the Redirect
 
 Redirect URIs are only needed if you are redirecting to Chart Connect.
 If you decide to use our embedded Chart Connect flow, you do not need to specify a `redirect_uri`;
-the SDK does this for you.
+the [SDK](/sdk) does this for you.
 
-We will launch **Chart Connect** - our secure and elegant authorization flow
+We will launch **Chart Connect** - our secure authorization flow
 for your users to grant your application access to their systems - by constructing and navigating
 to the following URL on your browser. Copy the url below, open up your favorite text editor
 (Notes, TextEdit, VS Code, etc), paste, and replace `<your_client_id>` with the client id found
