@@ -50,10 +50,6 @@
       ]
     },
     {
-      "group": "Modernized E-File",
-      "pages": ["api-reference/mef/submit"]
-    },
-    {
       "group": "Implementation Guide",
       "pages": [
         "implementation/guide",
