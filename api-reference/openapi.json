@@ -798,21 +798,6 @@
             "type": "string",
             "example": "TurboTax"
           },
-          "record_types": {
-            "description": "The list of record types supported on this tax record provider.",
-            "type": "array",
-            "items": {
-              "enum": [
-                "federal_tax_return",
-                "state_tax_return",
-                "federal_tax_transcript"
-              ]
-            }
-          },
-          "category": {
-            "description": "The category of the tax record provider.",
-            "enum": ["tax_prep_software", "irs", "state_tax_agency"]
-          },
           "icon": {
             "description": "The url to the official icon of the tax record provider.",
             "type": "string",
