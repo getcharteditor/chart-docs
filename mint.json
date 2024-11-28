@@ -69,7 +69,7 @@
     },
     {
       "group": "Developer Resources",
-      "pages": ["sdk", "events", "webhooks", "changelog"]
+      "pages": ["api-versioning", "sdk", "events", "webhooks", "changelog"]
     }
   ],
   "topbarLinks": [
