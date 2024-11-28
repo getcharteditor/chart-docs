@@ -18,7 +18,7 @@
   "navigation": [
     {
       "group": "How Chart Works",
-      "pages": ["quickstart", "chart-overview", "connect"]
+      "pages": ["overview/quickstart", "overview/chart-overview", "overview/connect"]
     },
     {
       "group": "Records",
@@ -69,7 +69,13 @@
     },
     {
       "group": "Developer Resources",
-      "pages": ["api-versioning", "sdk", "events", "webhooks", "changelog"]
+      "pages": [
+        "developer/api-versioning",
+        "developer/sdk",
+        "developer/events",
+        "developer/webhooks",
+        "developer/changelog"
+      ]
     }
   ],
   "topbarLinks": [
@@ -93,7 +99,7 @@
       "name": "Changelog",
       "icon": "megaphone",
       "iconType": "solid",
-      "url": "https://developer.trychart.com/changelog"
+      "url": "https://developer.trychart.com/developer/changelog"
     }
   ],
   "tabs": [
