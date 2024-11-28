@@ -18,19 +18,15 @@
   "navigation": [
     {
       "group": "How Chart Works",
-      "pages": ["overview/quickstart", "overview/chart-overview", "overview/connect"]
+      "pages": [
+        "overview/quickstart",
+        "overview/chart-overview",
+        "overview/connect"
+      ]
     },
     {
       "group": "Records",
       "pages": ["api-reference/records/get_all", "api-reference/records/get"]
-    },
-    {
-      "group": "IRS Forms",
-      "pages": ["api-reference/irs-8821-form/post"]
-    },
-    {
-      "group": "Client Links",
-      "pages": ["api-reference/client-links/post"]
     },
     {
       "group": "Taxpayer",
@@ -39,6 +35,14 @@
         "api-reference/taxpayer/refresh",
         "api-reference/taxpayer/refresh-status"
       ]
+    },
+    {
+      "group": "IRS Forms",
+      "pages": ["api-reference/irs-8821-form/post"]
+    },
+    {
+      "group": "Client Links",
+      "pages": ["api-reference/client-links/post"]
     },
     {
       "group": "Management",
