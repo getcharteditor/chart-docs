@@ -721,7 +721,7 @@
           },
           "raw_file": {
             "type": "string",
-            "description": "A pre-signed URL pointing to the raw tax file retrieved from the provider."
+            "description": "A pre-signed URL pointing to the raw tax file retrieved from the provider. Returns a PDF file. The URL expires after 12 hours."
           },
           "forms": {
             "description": "The parsed tax form data associated with the tax record.",
