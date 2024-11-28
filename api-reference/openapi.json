@@ -852,7 +852,7 @@
       "Introspection": {
         "type": "object",
         "properties": {
-          "taxpayer_id": {
+          "account_id": {
             "description": "The Chart UUID identifying the taxpayer for a specific submission.",
             "type": "string",
             "example": "clt0szoxp0001p82z45ufj6t4"
