@@ -107,7 +107,24 @@
                   "type": "object",
                   "properties": {
                     "taxpayer_id": { "type": "string" },
-                    "provider_id": { "type": "string" },
+                    "provider_id": {
+                      "type": "string",
+                      "enum": [
+                        "turbotax",
+                        "hr",
+                        "taxact",
+                        "tax_slayer",
+                        "jackson",
+                        "free_tax_usa",
+                        "irs",
+                        "irs_tax_pro",
+                        "pilot",
+                        "cch_axcess",
+                        "drake",
+                        "proconnect",
+                        "chart-sandbox"
+                      ]
+                    },
                     "access_token": { "type": "string" }
                   }
                 }
@@ -366,7 +383,8 @@
         "properties": {
           "id": {
             "type": "string",
-            "example": "clxjfvx74000f11di1uq2u8xm"
+            "example": "clxjfvx74000f11di1uq2u8xm",
+            "description": "The Chart UUID of the taxpayer. Returned from the /auth/token endpoint."
           },
           "name": {
             "type": "string",
@@ -376,11 +394,26 @@
             "type": "object",
             "description": "Custom metadata identifying external fields about the taxpayer."
           },
-          "providerId": {
+          "provider_id": {
             "type": "string",
+            "enum": [
+              "turbotax",
+              "hr",
+              "taxact",
+              "tax_slayer",
+              "jackson",
+              "free_tax_usa",
+              "irs",
+              "irs_tax_pro",
+              "pilot",
+              "cch_axcess",
+              "drake",
+              "proconnect",
+              "chart-sandbox"
+            ],
             "example": "irs-tax-pro"
           },
-          "createdAt": {
+          "created_at": {
             "type": "string",
             "format": "date-time",
             "example": "2024-06-17T20:40:03.965Z"
@@ -388,15 +421,17 @@
           "status": {
             "type": "string",
             "enum": [
+              "CREATED",
               "CONSENT_RECEIVED",
               "TAX_AUTHORIZATION_SUBMITTED",
+              "AUTHORIZED",
               "REJECTED",
               "COMPLETED"
             ],
             "example": "TAX_AUTHORIZATION_SUBMITTED"
           }
         },
-        "required": ["id", "name", "providerId", "createdAt", "status"]
+        "required": ["id", "name", "provider_id", "created_at", "status"]
       },
       "TaxpayerRefreshResponse": {
         "type": "object",
@@ -711,6 +746,21 @@
           "provider_id": {
             "description": "The tax record provider associated with the access_token.",
             "type": "string",
+            "enum": [
+              "turbotax",
+              "hr",
+              "taxact",
+              "tax_slayer",
+              "jackson",
+              "free_tax_usa",
+              "irs",
+              "irs_tax_pro",
+              "pilot",
+              "cch_axcess",
+              "drake",
+              "proconnect",
+              "chart-sandbox"
+            ],
             "example": "turbotax"
           },
           "date": {
@@ -802,6 +852,21 @@
           "provider_id": {
             "description": "The tax record provider associated with the access_token.",
             "type": "string",
+            "enum": [
+              "turbotax",
+              "hr",
+              "taxact",
+              "tax_slayer",
+              "jackson",
+              "free_tax_usa",
+              "irs",
+              "irs_tax_pro",
+              "pilot",
+              "cch_axcess",
+              "drake",
+              "proconnect",
+              "chart-sandbox"
+            ],
             "example": "turbotax"
           }
         }
