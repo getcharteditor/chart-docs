@@ -17,6 +17,61 @@ All event objects share a similar structure.
 | data       | Event payload.                              |
 | created_at | Timestamp of when the event occurred.       |
 
+### Taxpayer events
+
+Events emitted when data about a taxpayer changes such as when a taxpayer's status changes,
+a taxpayer is disconnected from a provider, or a taxpayer's records are synced.
+
+<AccordionGroup>
+  <Accordion title="taxpayer.status_changed">
+    ```json Taxpayer status changed event
+    {
+        "event": "taxpayer.status_changed",
+        "id": "ev_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
+        "data": {
+            "taxpayer_id": "tx_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
+            "status": "COMPLETED",
+            "provider_id": "turbotax"
+        },
+        "created_at": "2021-08-17T03:29:59.397Z"
+    }
+    ```
+  </Accordion>
+  <Accordion title="taxpayer.records_synced">
+    ```json Taxpayer records synced event
+    {
+        "event": "taxpayer.records_synced",
+        "id": "ev_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
+        "data": {
+            "taxpayer_id": "tx_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
+            "provider_id": "turbotax"
+            "records": [
+                {
+                    "record_id": "record_id",
+                    "tax_year": 2021,
+                }
+            ]
+        },
+        "created_at": "2021-08-17T03:29:59.397Z"
+    }
+    ```
+  </Accordion>
+  <Accordion title="taxpayer.disconnected">
+    ```json Taxpayer disconnected event
+    {
+        "event": "taxpayer.disconnected",
+        "id": "ev_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
+        "data": {
+            "taxpayer_id": "tx_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
+            "name": "John Doe",
+            "provider_id": "turbotax"
+        },
+        "created_at": "2021-08-17T03:29:59.397Z"
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
 ### Widget events
 
 Events emitted when end users (taxpayers) interact with Chart Connect widget.
@@ -114,62 +169,6 @@ Events emitted when end users (taxpayers) interact with the no-code client links
         "event": "client_link.succeeded",
         "id": "ev_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
         "data": {
-            "provider_id": "turbotax"
-        },
-        "created_at": "2021-08-17T03:29:59.397Z"
-    }
-    ```
-  </Accordion>
-</AccordionGroup>
-
-### Taxpayer events
-
-These events are emitted to identify the specific actions a taxpayer has taken in Chart's user
-interface and also to identify events related to a taxpayer that is not user-initiated such as when
-a taxpayer is deleted from Chart's database.
-
-<AccordionGroup>
-  <Accordion title="taxpayer.status_changed">
-    ```json Taxpayer status changed event
-    {
-        "event": "taxpayer.status_changed",
-        "id": "ev_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
-        "data": {
-            "taxpayer_id": "tx_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
-            "status": "COMPLETED",
-            "provider_id": "turbotax"
-        },
-        "created_at": "2021-08-17T03:29:59.397Z"
-    }
-    ```
-  </Accordion>
-  <Accordion title="taxpayer.records_synced">
-    ```json Taxpayer records synced event
-    {
-        "event": "taxpayer.records_synced",
-        "id": "ev_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
-        "data": {
-            "taxpayer_id": "tx_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
-            "provider_id": "turbotax"
-            "records": [
-                {
-                    "record_id": "record_id",
-                    "tax_year": 2021,
-                }
-            ]
-        },
-        "created_at": "2021-08-17T03:29:59.397Z"
-    }
-    ```
-  </Accordion>
-  <Accordion title="taxpayer.disconnected">
-    ```json Taxpayer disconnected event
-    {
-        "event": "taxpayer.disconnected",
-        "id": "ev_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
-        "data": {
-            "taxpayer_id": "tx_1bxJqfif_-EJjbl9DNwilJCt5D2tC5Q5",
-            "name": "John Doe",
             "provider_id": "turbotax"
         },
         "created_at": "2021-08-17T03:29:59.397Z"
