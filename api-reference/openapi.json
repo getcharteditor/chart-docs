@@ -779,7 +779,8 @@
             "items": {
               "anyOf": [
                 { "$ref": "#/components/schemas/WAID" },
-                { "$ref": "#/components/schemas/RECA" }
+                { "$ref": "#/components/schemas/RECA" },
+                { "$ref": "#/components/schemas/VENF" }
               ]
             }
           }
@@ -897,6 +898,14 @@
                     }
                   },
                   "WAID": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^\\d{4}$",
+                      "minLength": 4
+                    }
+                  },
+                  "VENF": {
                     "type": "array",
                     "items": {
                       "type": "string",
@@ -1035,6 +1044,13 @@
           "zip": { "type": "string", "minLength": 1, "example": "94101" }
         },
         "required": ["street", "city", "state", "zip"]
+      },
+      "VENF": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string", "enum": ["VENF"], "example": "VENF" },
+          "year": { "type": "string", "example": "2023" }
+        }
       },
       "WAID": {
         "type": "object",
