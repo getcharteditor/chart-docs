@@ -2550,7 +2550,16 @@
           "form_number": { "type": "string" },
           "name": { "type": "string" },
           "address": { "type": "string" },
-          "filing_status": { "type": "string" },
+          "filing_status": {
+            "type": "string",
+            "enum": [
+              "SINGLE",
+              "MARRIED_FILING_JOINTLY",
+              "MARRIED_FILING_SEPARATELY",
+              "HEAD_OF_HOUSEHOLD",
+              "QUALIFYING_WIDOW_ER"
+            ]
+          },
           "tin": { "type": "string" },
           "spouse_tin": { "type": "string" },
           "remittance": { "type": "number" },
@@ -2677,7 +2686,16 @@
       "ReturnSummaryModel": {
         "type": "object",
         "properties": {
-          "filing_status": { "type": "string" },
+          "filing_status": {
+            "type": "string",
+            "enum": [
+              "SINGLE",
+              "MARRIED_FILING_JOINTLY",
+              "MARRIED_FILING_SEPARATELY",
+              "HEAD_OF_HOUSEHOLD",
+              "QUALIFYING_WIDOW_ER"
+            ]
+          },
           "adjusted_gross_income": { "type": "number" },
           "taxable_income": { "type": "number" },
           "tax_per_return": { "type": "number" },
