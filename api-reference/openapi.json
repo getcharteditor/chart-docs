@@ -141,10 +141,19 @@
         "security": []
       }
     },
-    "/auth/taxpayer/{taxpayer_id}/token": {
+    "/auth/taxpayer/{id}/token": {
       "get": {
         "description": "Get the access token for a taxpayer.",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The Chart UUID of the taxpayer."
+            }
+          },
           {
             "$ref": "#/components/parameters/ChartAPIVersion"
           }
