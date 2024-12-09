@@ -50,7 +50,8 @@
         "api-reference/management/token",
         "api-reference/management/introspect",
         "api-reference/management/disconnect",
-        "api-reference/management/providers"
+        "api-reference/management/providers",
+        "api-reference/management/access_token"
       ]
     },
     {

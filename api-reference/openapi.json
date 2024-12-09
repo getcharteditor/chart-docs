@@ -141,6 +141,71 @@
         "security": []
       }
     },
+    "/auth/taxpayer/{taxpayer_id}/token": {
+      "get": {
+        "description": "Get the access token for a taxpayer.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ChartAPIVersion"
+          }
+        ],
+        "security": [
+          {
+            "clientAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Access Token Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": { "type": "string" },
+                    "taxpayer_id": { "type": "string" },
+                    "name": { "type": "string" },
+                    "metadata": { "type": "object" },
+                    "provider_id": {
+                      "type": "string",
+                      "enum": [
+                        "turbotax",
+                        "hr",
+                        "taxact",
+                        "tax_slayer",
+                        "jackson",
+                        "free_tax_usa",
+                        "irs",
+                        "irs_tax_pro",
+                        "pilot",
+                        "cch_axcess",
+                        "drake",
+                        "proconnect",
+                        "chart-sandbox"
+                      ],
+                      "example": "irs-tax-pro"
+                    },
+                    "created_at": { "type": "string", "format": "date-time" },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "CREATED",
+                        "CONSENT_RECEIVED",
+                        "TAX_AUTHORIZATION_SUBMITTED",
+                        "AUTHORIZED",
+                        "REJECTED",
+                        "COMPLETED"
+                      ],
+                      "example": "TAX_AUTHORIZATION_SUBMITTED"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/providers": {
       "get": {
         "description": "Return details on all available tax record providers.",

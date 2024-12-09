@@ -1,0 +1,10 @@
+---
+title: 'Get Access Token'
+openapi: 'GET /auth/taxpayer/{taxpayer_id}/token'
+---
+In certain cases such as client links, you may not have access to the `access_token` created for the taxpayer.
+However, all Chart endpoints returning sensitive taxpayer data require an `access_token`.
+This endpoint allows you to retrieve the `access_token` using your Chart `client_id` and `client_secret`.
+
+**Important:** This endpoint should be used sparingly and only when absolutely necessary.
+Please reach out to Chart support if you need to use this endpoint frequently.
