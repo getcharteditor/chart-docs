@@ -141,7 +141,7 @@
         "security": []
       }
     },
-    "/auth/taxpayer/{id}/token": {
+    "/auth/tax-payer/{id}/token": {
       "get": {
         "description": "Get the access token for a taxpayer.",
         "parameters": [
