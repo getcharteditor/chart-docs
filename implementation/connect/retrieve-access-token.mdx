@@ -23,7 +23,7 @@ In this step, you'll set up a secure server-side process to exchange the authori
         - `client_id`: Your unique client ID from the Chart developer dashboard.
         - `client_secret`: Your unique client secret from the Chart developer dashboard.
         - `code`: The authorization code obtained from Chart Connect in the [Set Up Chart Connect](/implementation/connect/set-up-chart-connect).
-        - `redirect_uri` (optional): If using the Redirect Chart Connect Flow, include the `redirect_uri`
+        - `redirect_uri` (optional): If using the Redirect Chart Connect Flow, include the `redirect_uri`. Not required for the Embedded Flow.
         This is the same redirect URI you used when setting up Chart Connect. If you using Embedded Flow, do not include `redirect_uri` in the payload.
 
         ```shell Token exchange example

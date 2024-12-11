@@ -85,15 +85,10 @@
                   "code": { "type": "string" },
                   "redirect_uri": {
                     "type": "string",
-                    "description": "In cases where a redirect URI is not needed such as the embedded SDK flow, please use the trusted domain 'https://trychart.com' as the redirect_uri."
+                    "description": "redirect_uri is optional for the embedded SDK flow."
                   }
                 },
-                "required": [
-                  "client_id",
-                  "client_secret",
-                  "code",
-                  "redirect_uri"
-                ]
+                "required": ["client_id", "client_secret", "code"]
               }
             }
           }
