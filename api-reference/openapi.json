@@ -944,7 +944,12 @@
                   "business",
                   "irs-8821",
                   "irs-online-account",
-                  "full-irs-online-account"
+                  "irs-8821-personal",
+                  "irs-8821-business",
+                  "irs-online-account-business",
+                  "full-irs-online-account",
+                  "full-irs-online-account-business",
+                  "tax-prep"
                 ]
               },
               "transcripts": {
