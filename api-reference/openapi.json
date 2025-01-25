@@ -498,6 +498,10 @@
               "COMPLETED"
             ],
             "example": "TAX_AUTHORIZATION_SUBMITTED"
+          },
+          "analysis": {
+            "$ref": "#/components/schemas/TaxpayerAnalysis",
+            "description": "Aggregated analysis of the taxpayer's tax situation across all tax records."
           }
         },
         "required": ["id", "name", "provider_id", "created_at", "status"]
@@ -1118,6 +1122,16 @@
           "zip": { "type": "string", "minLength": 1, "example": "94101" }
         },
         "required": ["street", "city", "state", "zip"]
+      },
+      "TaxpayerAnalysis": {
+        "type": "object",
+        "properties": {
+          "total_liabilities": {
+            "type": "number",
+            "example": "5000",
+            "description": "The total tax liabilities of the taxpayer."
+          }
+        }
       },
       "VENF": {
         "type": "object",
