@@ -2635,6 +2635,8 @@
       "RECA_Individual": {
         "type": "object",
         "properties": {
+          "type": { "type": "string", "enum": ["RECA"], "example": "RECA" },
+          "year": { "type": "string", "example": "2023" },
           "form_number": { "type": "string" },
           "name": { "type": "string" },
           "address": { "type": "string" },
@@ -2706,6 +2708,8 @@
           }
         },
         "required": [
+          "type",
+          "year",
           "form_number",
           "name",
           "address",
@@ -2721,6 +2725,8 @@
       "RECA_Business": {
         "type": "object",
         "properties": {
+          "type": { "type": "string", "enum": ["RECA"], "example": "RECA" },
+          "year": { "type": "string", "example": "2023" },
           "name": { "type": "string" },
           "address": { "type": "string" },
           "form_number": { "type": "string" },
@@ -2737,6 +2743,8 @@
           }
         },
         "required": [
+          "type",
+          "year",
           "name",
           "address",
           "form_number",
