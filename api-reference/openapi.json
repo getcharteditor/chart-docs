@@ -2678,6 +2678,9 @@
             "type": "object",
             "properties": {
               "income": { "$ref": "#/components/schemas/IncomeModel" },
+              "refund_or_amount_owed": {
+                "$ref": "#/components/schemas/RefundOrAmountOwedModel"
+              },
               "income_adjustments": {
                 "$ref": "#/components/schemas/AdjustmentsToIncomeModel"
               },
@@ -2907,6 +2910,19 @@
           "total_eff_connected_income_per_computer": { "type": "number" },
           "farm_income_loss_schedule_f": { "type": "number" },
           "farm_income_loss_schedule_f_per_computer": { "type": "number" }
+        }
+      },
+      "RefundOrAmountOwedModel": {
+        "type": "object",
+        "properties": {
+          "refund_amount": { "type": "number" },
+          "amount_you_owe": { "type": "number" },
+          "estimated_tax_credit_applied_to_next_year": { "type": "number" },
+          "estimated_tax_penalty": { "type": "number" },
+          "tax_on_income_less_state_refund_per_computer": { "type": "number" },
+          "bal_due_over_pymt_using_tp_fig_per_computer": { "type": "number" },
+          "bal_due_over_pymt_using_computer_figures": { "type": "number" },
+          "form_8888_total_refund_per_computer": { "type": "number" }
         }
       },
       "AdjustmentsToIncomeModel": {
