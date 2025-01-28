@@ -1130,6 +1130,11 @@
             "type": "number",
             "example": "5000",
             "description": "The total tax liabilities of the taxpayer."
+          },
+          "liabilities_with_lien_filed": {
+            "type": "number",
+            "example": "3000",
+            "description": "The total tax liabilities of the taxpayer calculated for each year with a federal tax lien filed."
           }
         }
       },
