@@ -785,12 +785,16 @@
             "type": "string",
             "description": "Base64 encoded signature image. Only supply the base64 string, not the 'data:image/png;base64,' prefix."
           },
+          "signatureText": {
+            "type": "string",
+            "description": "The typed name of the signer."
+          },
           "form56": {
             "$ref": "#/components/schemas/IRS56FormState",
             "description": "IRS Form 56 (https://www.irs.gov/pub/irs-pdf/f56.pdf). Only required if the signer of the form 8821 is the fiduciary and not the taxpayer."
           }
         },
-        "required": ["personalInfo", "address", "signatureBase64"]
+        "required": ["personalInfo", "address"]
       },
       "Disconnect": {
         "type": "object",
