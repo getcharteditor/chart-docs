@@ -787,14 +787,41 @@
           },
           "signatureText": {
             "type": "string",
-            "description": "The typed name of the signer."
+            "description": "The typed name of the signer.",
+            "minLength": 1
           },
           "form56": {
             "$ref": "#/components/schemas/IRS56FormState",
             "description": "IRS Form 56 (https://www.irs.gov/pub/irs-pdf/f56.pdf). Only required if the signer of the form 8821 is the fiduciary and not the taxpayer."
+          },
+          "extraDesignees": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CAFDesignee"
+            }
           }
         },
         "required": ["personalInfo", "address"]
+      },
+      "CAFDesignee": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "address": {
+            "$ref": "#/components/schemas/AddressInput"
+          },
+          "cafNumber": {
+            "type": "string",
+            "minLength": 1
+          },
+          "monitorIRSNotices": {
+            "type": "boolean"
+          }
+        },
+        "required": ["name", "address", "cafNumber"]
       },
       "Disconnect": {
         "type": "object",
