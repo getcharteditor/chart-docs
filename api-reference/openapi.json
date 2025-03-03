@@ -888,7 +888,8 @@
               "anyOf": [
                 { "$ref": "#/components/schemas/WAID" },
                 { "$ref": "#/components/schemas/RECA" },
-                { "$ref": "#/components/schemas/VENF" }
+                { "$ref": "#/components/schemas/VENF" },
+                { "$ref": "#/components/schemas/W2" }
               ]
             }
           }
@@ -1019,6 +1020,14 @@
                     }
                   },
                   "VENF": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^\\d{4}$",
+                      "minLength": 4
+                    }
+                  },
+                  "W2": {
                     "type": "array",
                     "items": {
                       "type": "string",
@@ -1178,6 +1187,64 @@
         "properties": {
           "type": { "type": "string", "enum": ["VENF"], "example": "VENF" },
           "year": { "type": "string", "example": "2023" }
+        }
+      },
+      "W2": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string", "enum": ["W2"], "example": "W2" },
+          "year": { "type": "string", "example": "2023" },
+          "forms": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "employer": {
+                  "type": "object",
+                  "properties": {
+                    "ein": { "type": "string", "example": "XX-XXX4005" },
+                    "name": {
+                      "type": "string",
+                      "example": "ACME INC."
+                    },
+                    "address": {
+                      "type": "string",
+                      "example": "123 Main St, Anytown, USA 12345"
+                    }
+                  }
+                },
+                "employee": {
+                  "type": "object",
+                  "properties": {
+                    "ssn": { "type": "string", "example": "XXX-XX-1234" },
+                    "name": { "type": "string", "example": "JOHN DOE" },
+                    "address": {
+                      "type": "string",
+                      "example": "123 Main St, Anytown, USA 12345"
+                    }
+                  }
+                },
+                "wages": { "type": "string", "example": "55738.00" },
+                "social_security_wages": {
+                  "type": "string",
+                  "example": "55738.00"
+                },
+                "medicare_wages": { "type": "string", "example": "55738.00" },
+                "federal_income_tax_withheld": {
+                  "type": "string",
+                  "example": "5490.00"
+                },
+                "social_security_tax_witheld": {
+                  "type": "string",
+                  "example": "3455.00"
+                },
+                "medicare_tax_witheld": {
+                  "type": "string",
+                  "example": "808.00"
+                }
+              }
+            }
+          }
         }
       },
       "WAID": {
