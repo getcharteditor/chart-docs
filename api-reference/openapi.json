@@ -1224,23 +1224,23 @@
                     }
                   }
                 },
-                "wages": { "type": "string", "example": "55738.00" },
+                "wages": { "type": "number", "example": 55738 },
                 "social_security_wages": {
-                  "type": "string",
-                  "example": "55738.00"
+                  "type": "number",
+                  "example": 55738
                 },
-                "medicare_wages": { "type": "string", "example": "55738.00" },
+                "medicare_wages": { "type": "number", "example": 55738 },
                 "federal_income_tax_withheld": {
-                  "type": "string",
-                  "example": "5490.00"
+                  "type": "number",
+                  "example": 5490
                 },
                 "social_security_tax_witheld": {
-                  "type": "string",
-                  "example": "3455.00"
+                  "type": "number",
+                  "example": 3455
                 },
                 "medicare_tax_witheld": {
-                  "type": "string",
-                  "example": "808.00"
+                  "type": "number",
+                  "example": 808
                 }
               }
             }
