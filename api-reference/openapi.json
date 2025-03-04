@@ -2803,6 +2803,10 @@
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/ScheduleSEModel" }
               },
+              "sch_eic": {
+                "type": "array",
+                "items": { "$ref": "#/components/schemas/ScheduleEICModel" }
+              },
               "sch_a": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/ScheduleAModel" }
@@ -3372,6 +3376,27 @@
               "se_medicare_tax_per_computer": { "type": "number" },
               "se_farm_option_method_used": { "type": "integer" },
               "se_optional_method_income": { "type": "number" }
+            }
+          }
+        }
+      },
+      "ScheduleEICModel": {
+        "type": "object",
+        "properties": {
+          "qualified_dependents_count": { "type": "integer" },
+          "dependents": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" },
+                "ssn": { "type": "string" },
+                "sch_eic_qualifying": { "type": "integer" },
+                "year_of_birth": { "type": "string" },
+                "student_disabled": { "type": "integer" },
+                "months_lived_with_you": { "type": "integer" },
+                "relationship": { "type": "string" }
+              }
             }
           }
         }
