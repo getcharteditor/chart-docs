@@ -1254,99 +1254,119 @@
               }
             }
           }
-        }
+        },
+        "required": [
+          "type",
+          "year",
+          "forms"
+        ]
       },
       "Form1095A": {
         "type": "object",
         "properties": {
-          "recipient_info": {
-            "type": "object",
-            "properties": {
-              "policy_number": { "type": "string" },
-              "policy_issuer": { "type": "string" },
-              "name": { "type": "string" },
-              "ssn": { "type": "string" },
-              "dob": { "type": "string" },
-              "spouse_name": { "type": "string" },
-              "spouse_ssn": { "type": "string" },
-              "spouse_dob": { "type": "string" },
-              "policy_start": { "type": "string" },
-              "policy_termination": { "type": "string" },
-              "street_address": { "type": "string" },
-              "city": { "type": "string" },
-              "state": { "type": "string" },
-              "zip_code": { "type": "string" }
-            },
-            "required": [
-              "policy_number",
-              "policy_issuer",
-              "name",
-              "ssn",
-              "dob",
-              "policy_start",
-              "policy_termination",
-              "street_address",
-              "city",
-              "state",
-              "zip_code"
-            ]
-          },
-          "covered_individuals": {
+          "type": { "type": "string", "enum": ["1095A"], "example": "1095A" },
+          "year": { "type": "string", "example": "2023" },
+          "forms": {
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
-                "name": { "type": "string" },
-                "ssn": { "type": "string" },
-                "dob": { "type": "string" },
-                "coverage_start": { "type": "string" },
-                "coverage_termination": { "type": "string" }
+                "recipient_info": {
+                  "type": "object",
+                  "properties": {
+                    "policy_number": { "type": "string" },
+                    "policy_issuer": { "type": "string" },
+                    "name": { "type": "string" },
+                    "ssn": { "type": "string" },
+                    "dob": { "type": "string" },
+                    "spouse_name": { "type": "string" },
+                    "spouse_ssn": { "type": "string" },
+                    "spouse_dob": { "type": "string" },
+                    "policy_start": { "type": "string" },
+                    "policy_termination": { "type": "string" },
+                    "street_address": { "type": "string" },
+                    "city": { "type": "string" },
+                    "state": { "type": "string" },
+                    "zip_code": { "type": "string" }
+                  },
+                  "required": [
+                    "policy_number",
+                    "policy_issuer", 
+                    "name",
+                    "ssn",
+                    "dob",
+                    "policy_start",
+                    "policy_termination",
+                    "street_address",
+                    "city",
+                    "state",
+                    "zip_code"
+                  ]
+                },
+                "covered_individuals": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": { "type": "string" },
+                      "ssn": { "type": "string" },
+                      "dob": { "type": "string" },
+                      "coverage_start": { "type": "string" },
+                      "coverage_termination": { "type": "string" }
+                    },
+                    "required": [
+                      "name",
+                      "ssn", 
+                      "dob",
+                      "coverage_start",
+                      "coverage_termination"
+                    ]
+                  }
+                },
+                "coverage_months": {
+                  "type": "array",
+                  "description": "each month is an item ordered by month number",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "monthly_enrollment_premium": { "type": "number" },
+                      "monthly_slcsp_premium": { "type": "number" },
+                      "monthly_advance_payment": { "type": "number" }
+                    },
+                    "required": [
+                      "monthly_enrollment_premium",
+                      "monthly_slcsp_premium",
+                      "monthly_advance_payment"
+                    ]
+                  }
+                },
+                "annual_totals": {
+                  "type": "object",
+                  "properties": {
+                    "monthly_enrollment_premium": { "type": "number" },
+                    "monthly_slcsp_premium": { "type": "number" },
+                    "monthly_advance_payment": { "type": "number" }
+                  },
+                  "required": [
+                    "monthly_enrollment_premium",
+                    "monthly_slcsp_premium",
+                    "monthly_advance_payment"
+                  ]
+                }
               },
               "required": [
-                "name",
-                "ssn",
-                "dob",
-                "coverage_start",
-                "coverage_termination"
+                "recipient_info",
+                "covered_individuals",
+                "coverage_months", 
+                "annual_totals"
               ]
             }
-          },
-          "coverage_months": {
-            "type": "array",
-            "description": "each month is an item ordered by month number",
-            "items": {
-              "type": "object",
-              "properties": {
-                "monthly_enrollment_premium": { "type": "number" },
-                "monthly_slcsp_premium": { "type": "number" },
-                "monthly_advance_payment": { "type": "number" }
-              },
-              "required": [
-                "monthly_enrollment_premium",
-                "monthly_slcsp_premium",
-                "monthly_advance_payment"
-              ]
-            }
-          },
-          "annual_totals": {
-            "type": "object",
-            "properties": {
-              "monthly_enrollment_premium": { "type": "number" },
-              "monthly_slcsp_premium": { "type": "number" },
-              "monthly_advance_payment": { "type": "number" }
-            },
-            "required": [
-              "monthly_enrollment_premium",
-              "monthly_slcsp_premium",
-              "monthly_advance_payment"
-            ]
           }
         },
         "required": [
-          "recipient_info",
-          "covered_individuals",
-          "coverage_months",
-          "annual_totals"
+          "type",
+          "year",
+          "forms"
         ]
       },
       "WAID": {
