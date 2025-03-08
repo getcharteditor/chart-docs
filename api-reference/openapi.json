@@ -2966,7 +2966,7 @@
           "name": { "type": "string" },
           "address": { "type": "string" },
           "form_number": { "type": "string" },
-          "taxpayer_identification_number": { "type": "string" },
+          "tin": { "type": "string" },
           "account_summary": {
             "$ref": "#/components/schemas/AccountSummaryModel"
           },
@@ -2984,7 +2984,7 @@
           "name",
           "address",
           "form_number",
-          "taxpayer_identification_number",
+          "tin",
           "account_summary"
         ]
       },
