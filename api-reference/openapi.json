@@ -503,6 +503,17 @@
             "$ref": "#/components/schemas/TaxpayerAnalysis",
             "description": "Aggregated analysis of the taxpayer's tax situation across all tax records."
           },
+          "details": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/IRSOnlineAccountDetails"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Taxpayer's account details depending on the provider."
+          },
           "form8821": {
             "type": "string",
             "description": "A pre-signed URL pointing to the raw IRS Form 8821 file retrieved from the provider. Returns a PDF file. The URL expires after 12 hours."
@@ -1191,6 +1202,58 @@
           }
         }
       },
+      "IRSOnlineAccountDetails": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "object",
+            "properties": {
+              "street_address": {
+                "type": "string",
+                "example": "123 Main St"
+              },
+              "city": {
+                "type": "string",
+                "example": "San Francisco"
+              },
+              "state": {
+                "type": "string",
+                "example": "CA"
+              },
+              "zip_code": {
+                "type": "string",
+                "example": "94101"
+              }
+            }
+          },
+          "balance_summary": {
+            "type": "object",
+            "properties": {
+              "balance_due": {
+                "type": "number",
+                "example": 5000
+              },
+              "tax_years": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "amount": {
+                      "type": "number",
+                      "example": 2500
+                    },
+                    "year": {
+                      "type": "string",
+                      "example": "2023"
+                    }
+                  }
+                },
+                "required": ["amount", "year"]
+              }
+            }
+          }
+        }
+      },
       "VENF": {
         "type": "object",
         "properties": {
@@ -1255,11 +1318,7 @@
             }
           }
         },
-        "required": [
-          "type",
-          "year",
-          "forms"
-        ]
+        "required": ["type", "year", "forms"]
       },
       "Form1095A": {
         "type": "object",
@@ -1291,7 +1350,7 @@
                   },
                   "required": [
                     "policy_number",
-                    "policy_issuer", 
+                    "policy_issuer",
                     "name",
                     "ssn",
                     "dob",
@@ -1316,7 +1375,7 @@
                     },
                     "required": [
                       "name",
-                      "ssn", 
+                      "ssn",
                       "dob",
                       "coverage_start",
                       "coverage_termination"
@@ -1357,17 +1416,13 @@
               "required": [
                 "recipient_info",
                 "covered_individuals",
-                "coverage_months", 
+                "coverage_months",
                 "annual_totals"
               ]
             }
           }
         },
-        "required": [
-          "type",
-          "year",
-          "forms"
-        ]
+        "required": ["type", "year", "forms"]
       },
       "WAID": {
         "type": "object",
