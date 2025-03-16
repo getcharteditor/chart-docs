@@ -504,12 +504,10 @@
             "description": "Aggregated analysis of the taxpayer's tax situation across all tax records."
           },
           "details": {
+            "type": "object",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/IRSOnlineAccountDetails"
-              },
-              {
-                "type": "null"
               }
             ],
             "description": "Taxpayer's account details depending on the provider."
