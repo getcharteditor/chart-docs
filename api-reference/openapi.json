@@ -830,7 +830,7 @@
             "type": "boolean"
           }
         },
-        "required": ["name", "address", "cafNumber"]
+        "required": ["name", "address"]
       },
       "Disconnect": {
         "type": "object",
