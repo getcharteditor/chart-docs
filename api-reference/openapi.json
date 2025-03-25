@@ -2922,16 +2922,7 @@
           "form_number": { "type": "string" },
           "name": { "type": "string" },
           "address": { "type": "string" },
-          "filing_status": {
-            "type": "string",
-            "enum": [
-              "SINGLE",
-              "MARRIED_FILING_JOINTLY",
-              "MARRIED_FILING_SEPARATELY",
-              "HEAD_OF_HOUSEHOLD",
-              "QUALIFYING_WIDOW_ER"
-            ]
-          },
+          "filing_status": { "$ref": "#/components/schemas/FilingStatusEnum" },
           "tin": { "type": "string" },
           "spouse_tin": { "type": "string" },
           "remittance": { "type": "number" },
@@ -2985,6 +2976,27 @@
               "sch_a": {
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/ScheduleAModel" }
+              },
+              "interest_dividends": {
+                "$ref": "#/components/schemas/InterestAndDividendsModel"
+              },
+              "sch_d": {
+                "$ref": "#/components/schemas/ScheduleDModel"
+              },
+              "third_party_designee": {
+                "$ref": "#/components/schemas/ThirdPartyDesigneeDetailsModel"
+              },
+              "form8863": {
+                "$ref": "#/components/schemas/Form8863Model"
+              },
+              "form2441": {
+                "$ref": "#/components/schemas/Form2441Model"
+              },
+              "form8995": {
+                "$ref": "#/components/schemas/Form8995Model"
+              },
+              "form8867": {
+                "$ref": "#/components/schemas/Form8867Model"
               }
             },
             "required": [
@@ -3041,13 +3053,99 @@
           "account_summary"
         ]
       },
+      "Form2441Model": {
+        "type": "object",
+        "properties": {
+          "qualifying_filing_separate": { "type": "integer" },
+          "f2441_principal_abode": { "type": "integer" },
+          "prov_name": { "type": "string" },
+          "care_prov_ssn": { "type": "string" },
+          "dependent_care_employer_benefits_amt": { "type": "number" },
+          "qualified_expenses_employer_incurred_amt": { "type": "number" },
+          "dependent_care_exclusion_amount": { "type": "number" },
+          "credit_for_child_and_dependent_care_expenses": {
+            "type": "object",
+            "properties": {
+              "number_of_qualifying_persons": { "type": "integer" },
+              "ssns_not_reqd_ind": { "type": "integer" },
+              "children": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": { "type": "string" },
+                    "ssn": { "type": "string" },
+                    "qualified_expense": { "type": "number" }
+                  }
+                }
+              },
+              "amount_of_qualified_expenses": { "type": "number" },
+              "earned_income_primary": { "type": "number" },
+              "earned_income_secondary": { "type": "number" },
+              "prior_year_child_care_expenses": { "type": "number" },
+              "prior_year_child_care_expenses_per_computer": {
+                "type": "number"
+              },
+              "child_and_dependent_care_base_amount_per_computer": {
+                "type": "number"
+              }
+            }
+          },
+          "dependent_care_benefits": {
+            "type": "object",
+            "properties": {
+              "dependent_care_employer_benefits": { "type": "number" },
+              "qualified_expenses_employer_incurred": { "type": "number" },
+              "dependent_care_excluded_benefits": { "type": "number" },
+              "gross_child_care_credit_per_computer": { "type": "number" },
+              "total_qualifying_expenses_per_computer": { "type": "number" }
+            }
+          }
+        }
+      },
+      "Form8867Model": {
+        "type": "object",
+        "properties": {
+          "incorrect_information_aotc": { "type": "string" },
+          "f8867_certification": { "type": "boolean" },
+          "eic_claimed": { "type": "boolean" },
+          "ctc_actc_claimed": { "type": "boolean" },
+          "aotc_claimed": { "type": "boolean" },
+          "head_of_household_filing_status_claimed": { "type": "boolean" }
+        }
+      },
+      "Form8995Model": {
+        "type": "object",
+        "properties": {
+          "qualified_business_income_component": { "type": "number" },
+          "reit_and_ptp_component": { "type": "number" },
+          "f8995_net_capital_gains": { "type": "number" },
+          "f8995_domestic_production_deduction": { "type": "number" },
+          "qualified_business_net_loss_carryforward": { "type": "number" },
+          "qualified_reit_div_and_ptp_loss_carryforward": { "type": "number" },
+          "total_qualified_business_loss_carryforward": { "type": "number" },
+          "total_reit_div_loss_carryforward": { "type": "number" },
+          "total_qualified_business_income_or_loss": { "type": "number" },
+          "qualified_reit_div_and_ptp_income_or_loss": { "type": "number" }
+        }
+      },
       "AccruedAmountModel": {
         "type": "object",
         "properties": {
           "amount": { "type": "number" },
           "as_of": { "type": "string" }
         },
-        "required": ["amount", "as_of"]
+        "required": ["amount"]
+      },
+      "FilingStatusEnum": {
+        "type": "string",
+        "enum": [
+          "SINGLE",
+          "MARRIED_FILING_JOINTLY",
+          "MARRIED_FILING_SEPARATELY",
+          "HEAD_OF_HOUSEHOLD",
+          "QUALIFYING_WIDOW_ER"
+        ]
       },
       "AccountSummaryModel": {
         "type": "object",
@@ -3072,14 +3170,7 @@
         "type": "object",
         "properties": {
           "filing_status": {
-            "type": "string",
-            "enum": [
-              "SINGLE",
-              "MARRIED_FILING_JOINTLY",
-              "MARRIED_FILING_SEPARATELY",
-              "HEAD_OF_HOUSEHOLD",
-              "QUALIFYING_WIDOW_ER"
-            ]
+            "$ref": "#/components/schemas/FilingStatusEnum"
           },
           "adjusted_gross_income": { "type": "number" },
           "taxable_income": { "type": "number" },
@@ -3121,12 +3212,12 @@
         "type": "object",
         "properties": {
           "code": { "type": "string" },
-          "explanation": { "type": "string" },
+          "explanation_of_transaction": { "type": "string" },
           "cycle": { "type": "string" },
           "date": { "type": "string" },
           "amount": { "type": "number" }
         },
-        "required": ["code", "date"]
+        "required": ["code", "explanation_of_transaction", "amount"]
       },
       "IncomeModel": {
         "type": "object",
@@ -3654,6 +3745,205 @@
             "properties": {
               "total_itemized_deductions": { "type": "number" },
               "total_itemized_deductions_per_computer": { "type": "number" }
+            }
+          }
+        }
+      },
+      "InterestAndDividendsModel": {
+        "type": "object",
+        "properties": {
+          "gross_schedule_b_interest": { "type": "number" },
+          "taxable_interest_income": { "type": "number" },
+          "excludable_savings_from_bond_interest": { "type": "number" },
+          "gross_schedule_b_dividends": { "type": "number" },
+          "dividend_income": { "type": "number" },
+          "foreign_accounts_indicator": { "type": "string" },
+          "required_to_file_fincen_form_114": { "type": "string" }
+        }
+      },
+      "ShortTermCapitalGainsAndLossesModel": {
+        "type": "object",
+        "properties": {
+          "short_term_basis_no_adjustments_sale_amount": { "type": "number" },
+          "short_term_basis_no_adjustments_cost_amount": { "type": "number" },
+          "short_term_basis_sale_amount": { "type": "number" },
+          "short_term_basis_cost_amount": { "type": "number" },
+          "short_term_basis_adjustments": { "type": "number" },
+          "short_term_no_basis_sale_amount": { "type": "number" },
+          "short_term_no_basis_cost_amount": { "type": "number" },
+          "short_term_no_basis_adjustments": { "type": "number" },
+          "short_term_no_1099b_sale_amount": { "type": "number" },
+          "short_term_no_1099b_cost_amount": { "type": "number" },
+          "short_term_no_1099b_adjustments": { "type": "number" },
+          "short_term_schedule_k1_amount": { "type": "number" },
+          "net_short_term_gain_loss": { "type": "number" },
+          "f8949_y_qualified_opportunity_funds_short_term_investments": {
+            "type": "string"
+          },
+          "f8949_y_qualified_opportunity_funds_short_term_ein": {
+            "type": "string"
+          },
+          "f8949_y_qualified_opportunity_funds_short_term_sold_date": {
+            "type": "string"
+          },
+          "f8949_y_qualified_opportunity_funds_short_term_deferred": {
+            "type": "number"
+          },
+          "f8949_z_qualified_opportunity_funds_short_term_adjustments": {
+            "type": "number"
+          },
+          "f8949_z_qualified_opportunity_funds_short_term_investments": {
+            "type": "integer"
+          },
+          "f8949_z_qualified_opportunity_funds_short_term_ein": {
+            "type": "string"
+          },
+          "f8949_z_qualified_opportunity_funds_short_term_acquired_date": {
+            "type": "string"
+          }
+        }
+      },
+      "LongTermCapitalGainsAndLossesModel": {
+        "type": "object",
+        "properties": {
+          "long_term_basis_no_adjustments_sale_amount": { "type": "number" },
+          "long_term_basis_no_adjustments_cost_amount": { "type": "number" },
+          "long_term_basis_sale_amount": { "type": "number" },
+          "long_term_basis_cost_amount": { "type": "number" },
+          "long_term_basis_adjustments": { "type": "number" },
+          "long_term_no_basis_sale_amount": { "type": "number" },
+          "long_term_no_basis_cost_amount": { "type": "number" },
+          "long_term_no_basis_adjustments": { "type": "number" },
+          "long_term_no_1099b_sale_amount": { "type": "number" },
+          "long_term_no_1099b_cost_amount": { "type": "number" },
+          "long_term_no_1099b_adjustments": { "type": "number" },
+          "long_term_schedule_k1_amount": { "type": "number" },
+          "capital_gain_distributions_pr": { "type": "number" },
+          "net_long_term_gain_loss": { "type": "number" },
+          "f8949_y_qualified_opportunity_funds_long_term_investments": {
+            "type": "integer"
+          },
+          "f8949_y_qualified_opportunity_funds_long_term_ein": {
+            "type": "string"
+          },
+          "f8949_y_qualified_opportunity_funds_long_term_sold_date": {
+            "type": "string"
+          },
+          "f8949_y_qualified_opportunity_funds_long_term_deferred": {
+            "type": "number"
+          },
+          "qualified_opportunity_funds_disposal": { "type": "string" },
+          "f8949_z_qualified_opportunity_funds_long_term_investments": {
+            "type": "integer"
+          },
+          "f8949_z_qualified_opportunity_funds_long_term_ein": {
+            "type": "string"
+          },
+          "f8949_z_qualified_opportunity_funds_long_term_acquired_date": {
+            "type": "string"
+          },
+          "f8949_z_qualified_opportunity_funds_long_term_adjustments": {
+            "type": "number"
+          }
+        }
+      },
+      "TaxComputationUsingMaximumCapitalGainsRatesModel": {
+        "type": "object",
+        "properties": {
+          "rate_gain_28_percent": { "type": "number" },
+          "unrecaptured_section_1250_gain": { "type": "number" },
+          "schedule_d_15_percent_tax_computer": { "type": "number" },
+          "capital_gains_less_invest_income_per_computer": { "type": "number" },
+          "capital_gains_per_computer": { "type": "number" },
+          "capital_gains_tax_per_computer": { "type": "number" },
+          "capital_gains_tax_amt_per_computer_5": { "type": "number" },
+          "capital_gains_tax_amt_per_computer_6": { "type": "number" },
+          "schedule_d_tax_per_computer": { "type": "number" }
+        }
+      },
+      "ScheduleDModel": {
+        "type": "object",
+        "properties": {
+          "short_term_capital_gains_and_losses": {
+            "$ref": "#/components/schemas/ShortTermCapitalGainsAndLossesModel"
+          },
+          "long_term_capital_gains_and_losses": {
+            "$ref": "#/components/schemas/LongTermCapitalGainsAndLossesModel"
+          },
+          "tax_computation_using_maximum_capital_gains_rates": {
+            "$ref": "#/components/schemas/TaxComputationUsingMaximumCapitalGainsRatesModel"
+          }
+        }
+      },
+      "ThirdPartyDesigneeDetailsModel": {
+        "type": "object",
+        "properties": {
+          "payments_third_party_designee_id_number": { "type": "string" },
+          "authorization_indicator": { "type": "string" },
+          "no_third_party_designee_name": { "type": "string" }
+        }
+      },
+      "Form8863Model": {
+        "type": "object",
+        "properties": {
+          "education_credits": {
+            "type": "object",
+            "properties": {
+              "students": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": { "type": "string" },
+                    "ssn": { "type": "string" }
+                  }
+                }
+              },
+              "tentative_credit_amount": { "type": "number" }
+            }
+          },
+          "lifetime_learning_credits": {
+            "type": "object",
+            "properties": {
+              "total_lifetime_learning_cr_qlfd_exp": { "type": "number" },
+              "educational_institution_federal_id_numbers": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "second_educational_institution_federal_id_numbers": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "prior_year_hope_scholarship_or_aot_credit_claimed": {
+                "type": "array",
+                "items": { "type": "boolean" }
+              },
+              "academic_eligibility": {
+                "type": "array",
+                "items": { "type": "boolean" }
+              },
+              "post_secondary_complete": {
+                "type": "array",
+                "items": { "type": "boolean" }
+              },
+              "felony_conviction": {
+                "type": "array",
+                "items": { "type": "boolean" }
+              },
+              "verified_number_of_education_credit_eligible_students": {
+                "type": "integer"
+              },
+              "total_lifetime_learning_cr_qlfd_exp_per_computer": {
+                "type": "number"
+              }
+            }
+          },
+          "allowable_education_credits": {
+            "type": "object",
+            "properties": {
+              "gross_education_cr_per_computer": { "type": "number" },
+              "total_education_credit_amount": { "type": "number" },
+              "total_education_credit_amount_per_computer": { "type": "number" }
             }
           }
         }
