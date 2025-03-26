@@ -2977,9 +2977,6 @@
                 "type": "array",
                 "items": { "$ref": "#/components/schemas/ScheduleAModel" }
               },
-              "interest_dividends": {
-                "$ref": "#/components/schemas/InterestAndDividendsModel"
-              },
               "sch_d": {
                 "$ref": "#/components/schemas/ScheduleDModel"
               },
@@ -3878,9 +3875,9 @@
       "ThirdPartyDesigneeDetailsModel": {
         "type": "object",
         "properties": {
-          "payments_third_party_designee_id_number": { "type": "string" },
-          "authorization_indicator": { "type": "string" },
-          "no_third_party_designee_name": { "type": "string" }
+          "third_party_designee_id_number": { "type": "string" },
+          "authorization_indicator": { "type": "integer" },
+          "third_party_designee_name": { "type": "string" }
         }
       },
       "Form8863Model": {
