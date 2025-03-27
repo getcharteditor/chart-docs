@@ -3101,6 +3101,18 @@
       "RETR_Individual": {
         "type": "object",
         "properties": {
+          "type": { "type": "string", "enum": ["RETR"], "example": "RETR" },
+          "year": { "type": "string", "example": "2023" },
+          "form_number": { "type": "string" },
+          "name": { "type": "string" },
+          "address": { "type": "string" },
+          "filing_status": { "$ref": "#/components/schemas/FilingStatusEnum" },
+          "tin": { "type": "string" },
+          "spouse_tin": { "type": "string" },
+          "dependents": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/DependentModel" }
+          },
           "income": { "$ref": "#/components/schemas/IncomeModel" },
           "refund_or_amount_owed": {
             "$ref": "#/components/schemas/RefundOrAmountOwedModel"
@@ -3166,6 +3178,12 @@
       "RETR_Business": {
         "type": "object",
         "properties": {
+          "type": { "type": "string", "enum": ["RETR"], "example": "RETR" },
+          "year": { "type": "string", "example": "2023" },
+          "name": { "type": "string" },
+          "address": { "type": "string" },
+          "form_number": { "type": "string" },
+          "tin": { "type": "string" },
           "indicators_codes_misc": {
             "$ref": "#/components/schemas/IndicatorsCodesAndMiscellaneousInformationBusinessModel"
           },
