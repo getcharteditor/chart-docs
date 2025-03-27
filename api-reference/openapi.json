@@ -897,6 +897,7 @@
               "anyOf": [
                 { "$ref": "#/components/schemas/WAID" },
                 { "$ref": "#/components/schemas/RECA" },
+                { "$ref": "#/components/schemas/RETR" },
                 { "$ref": "#/components/schemas/VENF" },
                 { "$ref": "#/components/schemas/W2" },
                 { "$ref": "#/components/schemas/Form1095A" }
@@ -3041,6 +3042,36 @@
           },
           "return_summary": {
             "$ref": "#/components/schemas/ReturnSummaryBusinessModel"
+          },
+          "original_return": {
+            "type": "object",
+            "properties": {
+              "indicators_codes_misc": {
+                "$ref": "#/components/schemas/IndicatorsCodesAndMiscellaneousInformationBusinessModel"
+              },
+              "income": { "$ref": "#/components/schemas/IncomeBusinessModel" },
+              "deductions": {
+                "$ref": "#/components/schemas/DeductionsBusinessModel"
+              },
+              "tax_and_payments": {
+                "$ref": "#/components/schemas/TaxAndPaymentsBusinessModel"
+              },
+              "sch_a": {
+                "$ref": "#/components/schemas/ScheduleABusinessModel"
+              },
+              "sch_k": {
+                "$ref": "#/components/schemas/ScheduleKBusinessModel"
+              },
+              "sch_l": {
+                "$ref": "#/components/schemas/ScheduleLBusinessModel"
+              },
+              "form5884b": {
+                "$ref": "#/components/schemas/Form5884BModel"
+              },
+              "form4626": {
+                "$ref": "#/components/schemas/Form4626Model"
+              }
+            }
           }
         },
         "required": [
@@ -3050,8 +3081,117 @@
           "address",
           "form_number",
           "tin",
-          "account_summary"
+          "account_summary",
+          "transactions",
+          "return_summary",
+          "original_return"
         ]
+      },
+      "RETR": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/RETR_Individual"
+          },
+          {
+            "$ref": "#/components/schemas/RETR_Business"
+          }
+        ]
+      },
+      "RETR_Individual": {
+        "type": "object",
+        "properties": {
+          "income": { "$ref": "#/components/schemas/IncomeModel" },
+          "refund_or_amount_owed": {
+            "$ref": "#/components/schemas/RefundOrAmountOwedModel"
+          },
+          "income_adjustments": {
+            "$ref": "#/components/schemas/AdjustmentsToIncomeModel"
+          },
+          "tax_and_credits": {
+            "$ref": "#/components/schemas/TaxAndCreditsModel"
+          },
+          "payments": {
+            "$ref": "#/components/schemas/PaymentsModel"
+          },
+          "other_taxes": {
+            "$ref": "#/components/schemas/OtherTaxesModel"
+          },
+          "sch_c": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ScheduleCModel" }
+          },
+          "sch_se": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ScheduleSEModel" }
+          },
+          "sch_eic": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ScheduleEICModel" }
+          },
+          "sch_a": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ScheduleAModel" }
+          },
+          "sch_d": {
+            "$ref": "#/components/schemas/ScheduleDModel"
+          },
+          "third_party_designee": {
+            "$ref": "#/components/schemas/ThirdPartyDesigneeDetailsModel"
+          },
+          "form8863": {
+            "$ref": "#/components/schemas/Form8863Model"
+          },
+          "form8962": {
+            "$ref": "#/components/schemas/Form8962Model"
+          },
+          "form2441": {
+            "$ref": "#/components/schemas/Form2441Model"
+          },
+          "form8995": {
+            "$ref": "#/components/schemas/Form8995Model"
+          },
+          "form8867": {
+            "$ref": "#/components/schemas/Form8867Model"
+          }
+        },
+        "required": [
+          "income",
+          "income_adjustments",
+          "tax_and_credits",
+          "payments",
+          "other_taxes"
+        ]
+      },
+      "RETR_Business": {
+        "type": "object",
+        "properties": {
+          "indicators_codes_misc": {
+            "$ref": "#/components/schemas/IndicatorsCodesAndMiscellaneousInformationBusinessModel"
+          },
+          "income": { "$ref": "#/components/schemas/IncomeBusinessModel" },
+          "deductions": {
+            "$ref": "#/components/schemas/DeductionsBusinessModel"
+          },
+          "tax_and_payments": {
+            "$ref": "#/components/schemas/TaxAndPaymentsBusinessModel"
+          },
+          "sch_a": {
+            "$ref": "#/components/schemas/ScheduleABusinessModel"
+          },
+          "sch_k": {
+            "$ref": "#/components/schemas/ScheduleKBusinessModel"
+          },
+          "sch_l": {
+            "$ref": "#/components/schemas/ScheduleLBusinessModel"
+          },
+          "form5884b": {
+            "$ref": "#/components/schemas/Form5884BModel"
+          },
+          "form4626": {
+            "$ref": "#/components/schemas/Form4626Model"
+          }
+        }
       },
       "Form8962Model": {
         "type": "object",
@@ -3975,6 +4115,190 @@
               "total_education_credit_amount_per_computer": { "type": "number" }
             }
           }
+        }
+      },
+      "IndicatorsCodesAndMiscellaneousInformationBusinessModel": {
+        "type": "object",
+        "properties": {
+          "tax_year_beginning": { "type": "string" },
+          "correspondence_received_date": { "type": "string" },
+          "parent_corp_ein": { "type": "string" },
+          "designee_checkbox": { "type": "boolean" },
+          "designee_phone_number": { "type": "string" },
+          "total_assets": { "type": "number" },
+          "sch_k_net_operating_loss_carryover_prior_tax_years": {
+            "type": "number"
+          },
+          "f8996_qualified_opportunity_fund": { "type": "number" },
+          "number_shareholders": { "type": "integer" },
+          "sch_m2_balance_at_beginning_of_tax_year": { "type": "number" },
+          "sch_n_total_estimated_income_exclusion": { "type": "number" },
+          "f8586_low_income_housing_credit": { "type": "number" },
+          "f8611_total_recapture_amount": { "type": "number" },
+          "f8825_total_gross_rents_amount": { "type": "number" }
+        }
+      },
+      "IncomeBusinessModel": {
+        "type": "object",
+        "properties": {
+          "gross_receipts_sales": { "type": "number" },
+          "returns_allowances": { "type": "number" },
+          "net_receipts_per_computer": { "type": "number" },
+          "cogs": { "type": "number" },
+          "cogs_per_computer": { "type": "number" },
+          "gross_profit_per_computer": { "type": "number" },
+          "dividends_income": { "type": "number" },
+          "interest_income": { "type": "number" },
+          "gross_rents": { "type": "number" },
+          "gross_royalties": { "type": "number" },
+          "capital_gain_net_income": { "type": "number" },
+          "net_gain_loss": { "type": "number" },
+          "other_income": { "type": "number" },
+          "total_receipts_per_computer": { "type": "number" },
+          "total_income": { "type": "number" },
+          "total_income_per_computer": { "type": "number" },
+          "merchant_card_and_third_party_payment": { "type": "number" }
+        }
+      },
+      "DeductionsBusinessModel": {
+        "type": "object",
+        "properties": {
+          "compensation_of_officers": { "type": "number" },
+          "salaries_and_wages_less_job_credits": { "type": "number" },
+          "repairs_maintenance": { "type": "number" },
+          "bad_debts": { "type": "number" },
+          "rents": { "type": "number" },
+          "taxes_and_licenses": { "type": "number" },
+          "interest": { "type": "number" },
+          "charitable_contributions": { "type": "number" },
+          "charitable_contributions_per_computer": { "type": "number" },
+          "net_depreciation": { "type": "number" },
+          "depletion": { "type": "number" },
+          "domestic_production_activities_deduction": { "type": "number" },
+          "f7205_energy_efficient_commercial_building_deduction": {
+            "type": "number"
+          },
+          "advertising": { "type": "number" },
+          "pension_profit_share_plans": { "type": "number" },
+          "employee_benefits": { "type": "number" },
+          "other_deductions": { "type": "number" },
+          "total_deductions": { "type": "number" },
+          "total_deductions_per_computer": { "type": "number" },
+          "net_income_per_computer": { "type": "number" },
+          "taxable_income_pre_net_operating_loss_deduction_per_computer": {
+            "type": "number"
+          },
+          "net_operating_loss_deduction": { "type": "number" },
+          "special_deductions": { "type": "number" },
+          "special_deductions_per_computer": { "type": "number" },
+          "ordinary_income_loss": { "type": "number" },
+          "ordinary_income_loss_per_computer": { "type": "number" }
+        }
+      },
+      "TaxAndPaymentsBusinessModel": {
+        "type": "object",
+        "properties": {
+          "taxable_income_per_computer": { "type": "number" },
+          "manually_corrected_total_tax": { "type": "number" },
+          "total_income_tax": { "type": "number" },
+          "total_income_tax_per_computer": { "type": "number" },
+          "total_payments_and_refundable_credits": { "type": "number" },
+          "credit_from_regulated_investment_company_per_computer": {
+            "type": "number"
+          },
+          "estimated_tax_payments": { "type": "number" },
+          "f7004_tax_deposited": { "type": "number" },
+          "total_payments": { "type": "number" },
+          "foreign_investment_in_real_property_tax_act_credit": {
+            "type": "number"
+          },
+          "credit_from_federal_tax_fuels_per_computer": { "type": "number" },
+          "net_965_tax_liability_paid": { "type": "number" },
+          "total_payments_per_computer": { "type": "number" },
+          "overpayment_windfall_profit_tax": { "type": "number" },
+          "tax_shown_on_return": { "type": "number" },
+          "deferred_965_tax": { "type": "number" },
+          "estimated_tax_penalty": { "type": "number" },
+          "tax_due": { "type": "number" },
+          "tax_due_per_computer": { "type": "number" },
+          "credit_elect_amount": { "type": "number" },
+          "credit_next_year_estimated_tax": { "type": "number" },
+          "total_tax_settlement_per_computer": { "type": "number" },
+          "f8996_qualified_opportunity_fund": { "type": "number" },
+          "total_phone_tax_refund": { "type": "number" },
+          "total_phone_tax_verified": { "type": "number" },
+          "phone_tax_refund": { "type": "number" },
+          "phone_tax_interest": { "type": "number" },
+          "phone_tax_refund_per_computer": { "type": "number" },
+          "international_tax_report_checkbox": { "type": "boolean" }
+        }
+      },
+      "ScheduleABusinessModel": {
+        "type": "object",
+        "properties": {
+          "inventory_beginning": { "type": "number" },
+          "inventory_end": { "type": "number" },
+          "total_cost_of_sales": { "type": "number" },
+          "cogs_per_computer": { "type": "number" }
+        }
+      },
+      "ScheduleKBusinessModel": {
+        "type": "object",
+        "properties": {
+          "portfolio_interest_income": { "type": "number" },
+          "alcohol_fuels_tax_credit": { "type": "number" },
+          "total_property_distribution": { "type": "number" },
+          "income_loss": { "type": "number" }
+        }
+      },
+      "ScheduleLBusinessModel": {
+        "type": "object",
+        "properties": {
+          "trade_notes_and_accounts_receivable_end": { "type": "number" },
+          "less_accumulated_depreciation": { "type": "number" },
+          "loans_to_shareholders_end": { "type": "number" },
+          "total_assets_begin": { "type": "number" },
+          "total_assets_end": { "type": "number" },
+          "other_current_liabilities_end": { "type": "number" },
+          "other_liabilities_end": { "type": "number" },
+          "preferred_stock": { "type": "array", "items": { "type": "number" } },
+          "common_stock": { "type": "array", "items": { "type": "number" } },
+          "common_stock_end": { "type": "number" },
+          "retained_earnings_begin": { "type": "number" },
+          "lost_cost_treasury_stock_begin": { "type": "number" },
+          "lost_cost_treasury_stock_end": { "type": "number" },
+          "total_liabilities_and_stock_equity_end": { "type": "number" },
+          "loans_for_shareholders_end": { "type": "number" },
+          "loans_from_shareholders_end": { "type": "number" },
+          "capital_stock_end": { "type": "number" },
+          "additional_paid_in_capital_end": { "type": "number" },
+          "retained_earnings_end": { "type": "number" }
+        }
+      },
+      "Form5884BModel": {
+        "type": "object",
+        "properties": {
+          "preliminary_new_hire_retention_credit": { "type": "number" },
+          "number_of_retained_workers": { "type": "integer" },
+          "merchant_card_gross_receipts_per_computer": { "type": "number" },
+          "net_receipts_per_computer": { "type": "number" }
+        }
+      },
+      "Form4626Model": {
+        "type": "object",
+        "properties": {
+          "taxable_income_before_nold_per_computer": { "type": "number" },
+          "pre_adjustment_amount": { "type": "number" },
+          "adjusted_current_earnings": { "type": "number" },
+          "amti_before_energy_preference_per_computer": { "type": "number" },
+          "alt_tax_net_operating_loss_deduction": { "type": "number" },
+          "alt_tax_net_operating_loss_deduction_computer": { "type": "number" },
+          "alt_min_taxable_income_per_computer": { "type": "number" },
+          "exemption_per_computer": { "type": "number" },
+          "alt_min_foreign_tax_per_computer": { "type": "number" },
+          "tentative_amt": { "type": "number" },
+          "tentative_amt_per_computer": { "type": "number" },
+          "environmental_tax_per_computer": { "type": "number" }
         }
       },
       "Error": {
