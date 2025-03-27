@@ -2986,6 +2986,9 @@
               "form8863": {
                 "$ref": "#/components/schemas/Form8863Model"
               },
+              "form8962": {
+                "$ref": "#/components/schemas/Form8962Model"
+              },
               "form2441": {
                 "$ref": "#/components/schemas/Form2441Model"
               },
@@ -3049,6 +3052,35 @@
           "tin",
           "account_summary"
         ]
+      },
+      "Form8962Model": {
+        "type": "object",
+        "properties": {
+          "married_filing_separately_premium_tax_credit_exception_checkbox_indicator": {
+            "type": "integer"
+          },
+          "federal_poverty_level_checkbox": { "type": "string" },
+          "dependents_modified_agi": { "type": "number" },
+          "monthly_contribution_for_health_care": { "type": "number" },
+          "annual_premium": { "type": "number" },
+          "annual_premium_slcsp": { "type": "number" },
+          "annual_advance_payment_of_ptc": { "type": "number" },
+          "monthly_premiums": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "premium": { "type": "number" },
+                "premium_slcsp": { "type": "number" },
+                "advance_ptc": { "type": "number" }
+              },
+              "required": ["premium", "premium_slcsp", "advance_ptc"]
+            },
+            "description": "Monthly premiums for each month of the year. Array indices follow the order of the months of the year starting with 0 for January."
+          },
+          "total_premium_tax_credit": { "type": "number" },
+          "net_premium_tax_credit": { "type": "number" }
+        }
       },
       "Form2441Model": {
         "type": "object",
