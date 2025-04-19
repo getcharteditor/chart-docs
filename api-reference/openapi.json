@@ -900,7 +900,8 @@
                 { "$ref": "#/components/schemas/RETR" },
                 { "$ref": "#/components/schemas/VENF" },
                 { "$ref": "#/components/schemas/W2" },
-                { "$ref": "#/components/schemas/Form1095A" }
+                { "$ref": "#/components/schemas/Form1095A" },
+                { "$ref": "#/components/schemas/FormIrs1099IntModel" }
               ]
             }
           }
@@ -1419,6 +1420,81 @@
                 "covered_individuals",
                 "coverage_months",
                 "annual_totals"
+              ]
+            }
+          }
+        },
+        "required": ["type", "year", "forms"]
+      },
+      "FormIrs1099IntModel": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["1099INT"],
+            "example": "1099INT"
+          },
+          "year": { "type": "string", "example": "2023" },
+          "forms": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "payer_info": {
+                  "type": "object",
+                  "properties": {
+                    "name": { "type": "string" },
+                    "tin": { "type": "string" },
+                    "address": { "type": "string" }
+                  },
+                  "required": ["name", "tin", "address"]
+                },
+                "recipient_info": {
+                  "type": "object",
+                  "properties": {
+                    "name": { "type": "string" },
+                    "tin": { "type": "string" },
+                    "address": { "type": "string" }
+                  },
+                  "required": ["name", "tin", "address"]
+                },
+                "interest_income": { "type": "number" },
+                "early_withdrawal_penalty": { "type": "number" },
+                "savings_bonds_and_treasury_interest": { "type": "number" },
+                "federal_income_tax_withheld": { "type": "number" },
+                "investment_expenses": { "type": "number" },
+                "foreign_tax_paid": { "type": "number" },
+                "foreign_country": { "type": "string" },
+                "tax_exempt_interest": { "type": "number" },
+                "specified_private_activity_bond_interest": {
+                  "type": "number"
+                },
+                "market_discount": { "type": "number" },
+                "bond_premium": { "type": "number" },
+                "bond_premium_on_treasury_obligations": { "type": "number" },
+                "bond_premium_on_tax_exempt_bond": { "type": "number" },
+                "fatca_checked": { "type": "boolean" },
+                "account_number": { "type": "string" },
+                "tax_exempt_and_tax_credit_bond_cusip_no": { "type": "string" }
+              },
+              "required": [
+                "form_corrected",
+                "payer_info",
+                "recipient_info",
+                "interest_income",
+                "early_withdrawal_penalty",
+                "savings_bonds_and_treasury_interest",
+                "federal_income_tax_withheld",
+                "investment_expenses",
+                "foreign_tax_paid",
+                "tax_exempt_interest",
+                "specified_private_activity_bond_interest",
+                "market_discount",
+                "bond_premium",
+                "bond_premium_on_treasury_obligations",
+                "bond_premium_on_tax_exempt_bond",
+                "fatca_checked",
+                "account_number"
               ]
             }
           }
