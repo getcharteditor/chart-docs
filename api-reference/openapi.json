@@ -334,6 +334,23 @@
         }
       }
     },
+    "/tax-payer/clear-records": {
+      "post": {
+        "description": "Clear all tax records associated with a taxpayer.",
+        "responses": {
+          "200": {
+            "description": "Clear Records Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClearRecords"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/tax-payer/{id}/refresh": {
       "post": {
         "description": "Refresh taxpayer data.",
@@ -833,6 +850,15 @@
         "required": ["name", "address"]
       },
       "Disconnect": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "success"
+          }
+        }
+      },
+      "ClearRecords": {
         "type": "object",
         "properties": {
           "status": {
