@@ -33,7 +33,8 @@
       "pages": [
         "api-reference/taxpayer/get",
         "api-reference/taxpayer/refresh",
-        "api-reference/taxpayer/refresh-status"
+        "api-reference/taxpayer/refresh-status",
+        "api-reference/taxpayer/clear-records"
       ]
     },
     {
