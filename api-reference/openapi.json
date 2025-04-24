@@ -317,6 +317,71 @@
         }
       }
     },
+    "/providers/irs/f8821/unsigned": {
+      "post": {
+        "description": "Download an unsigned IRS Form 8821.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnsignedIRS8821FormState"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "clientAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Unsigned IRS Form 8821 Response",
+            "headers": {
+              "Content-Disposition": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Failed to generate PDF",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
     "/tax-payer": {
       "get": {
         "description": "Retrieve taxpayer information associated with an `access_token`.",
@@ -815,6 +880,31 @@
             "type": "string",
             "description": "The typed name of the signer.",
             "minLength": 1
+          },
+          "form56": {
+            "$ref": "#/components/schemas/IRS56FormState",
+            "description": "IRS Form 56 (https://www.irs.gov/pub/irs-pdf/f56.pdf). Only required if the signer of the form 8821 is the fiduciary and not the taxpayer."
+          },
+          "extraDesignees": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CAFDesignee"
+            }
+          }
+        },
+        "required": ["personalInfo", "address"]
+      },
+      "UnsignedIRS8821FormState": {
+        "type": "object",
+        "properties": {
+          "personalInfo": {
+            "$ref": "#/components/schemas/PersonalInfoInput"
+          },
+          "businessInfo": {
+            "$ref": "#/components/schemas/BusinessInfoInput"
+          },
+          "address": {
+            "$ref": "#/components/schemas/AddressInput"
           },
           "form56": {
             "$ref": "#/components/schemas/IRS56FormState",
