@@ -335,7 +335,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "Unsigned IRS Form 8821 Response",
             "headers": {
               "Content-Disposition": {
@@ -381,7 +381,100 @@
         }
       }
     },
-
+    "/providers/irs/f8821/upload/{documentId}": {
+      "post": {
+        "description": "Upload a wet-signed IRS Form 8821 PDF file",
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "path",
+            "required": true,
+            "description": "The document ID returned from the unsigned form generation endpoint",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "The signed PDF file to upload"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "clientAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully uploaded signed form",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": {
+                      "type": "string",
+                      "description": "Access token for the created taxpayer"
+                    },
+                    "taxpayer_id": {
+                      "type": "string",
+                      "description": "ID of the created taxpayer"
+                    },
+                    "provider_id": {
+                      "type": "string",
+                      "description": "ID of the provider (irs_tax_pro)"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid file or document ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Failed to process uploaded file",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/tax-payer": {
       "get": {
         "description": "Retrieve taxpayer information associated with an `access_token`.",
