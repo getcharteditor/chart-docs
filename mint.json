@@ -41,7 +41,8 @@
       "group": "IRS Forms",
       "pages": [
         "api-reference/irs-8821-form/post",
-        "api-reference/irs-8821-form/unsigned"
+        "api-reference/irs-8821-form/unsigned",
+        "api-reference/irs-8821-form/upload"
       ]
     },
     {
