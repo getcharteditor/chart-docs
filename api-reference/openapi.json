@@ -1410,6 +1410,59 @@
             "type": "number",
             "example": "3000",
             "description": "The total tax liabilities of the taxpayer calculated for each year with a federal tax lien filed."
+          },
+          "employment_history": {
+            "type": "array",
+            "description": "Historical employment records from W2s and wage and income documents",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": ["W2", "WAID"],
+                  "description": "Document type - W2 or Wage and Income Document",
+                  "example": "WAID"
+                },
+                "year": {
+                  "type": "string",
+                  "description": "Tax year",
+                  "example": "2023"
+                },
+                "employer": {
+                  "type": "object",
+                  "properties": {
+                    "ein": {
+                      "type": "string",
+                      "description": "Employer Identification Number",
+                      "example": "XXXXX1234"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Employer name",
+                      "example": "ACME INC."
+                    },
+                    "address": {
+                      "type": "string",
+                      "description": "Employer address",
+                      "example": "123 Main St, Anytown, USA 12345"
+                    }
+                  },
+                  "required": ["ein", "name", "address"]
+                }
+              },
+              "required": ["type", "year", "employer"]
+            },
+            "example": [
+              {
+                "type": "WAID",
+                "year": "2023",
+                "employer": {
+                  "ein": "XXXXX2003",
+                  "name": "CHAR",
+                  "address": "609 WA"
+                }
+              }
+            ]
           }
         }
       },
