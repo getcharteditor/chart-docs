@@ -1211,8 +1211,10 @@
                   "full-irs-online-account",
                   "full-irs-online-account-combined",
                   "full-irs-online-account-business",
-
-                  "tax-prep"
+                  "irs-online-verify-first",
+                  "irs-online-verify-first-business",
+                  "tax-prep",
+                  "irs-8821-and-online-account"
                 ]
               },
               "transcripts": {
