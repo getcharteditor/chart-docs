@@ -1214,7 +1214,9 @@
                   "irs-online-verify-first",
                   "irs-online-verify-first-business",
                   "tax-prep",
-                  "irs-8821-and-online-account"
+                  "irs-8821-and-online-account",
+                  "irs-8821-and-online-account-personal",
+                  "irs-8821-and-online-account-business"
                 ]
               },
               "transcripts": {
