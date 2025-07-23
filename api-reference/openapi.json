@@ -1106,6 +1106,7 @@
               "anyOf": [
                 { "$ref": "#/components/schemas/WAID" },
                 { "$ref": "#/components/schemas/RECA" },
+                { "$ref": "#/components/schemas/ACTR" },
                 { "$ref": "#/components/schemas/RETR" },
                 { "$ref": "#/components/schemas/VENF" },
                 { "$ref": "#/components/schemas/W2" },
@@ -3262,6 +3263,13 @@
           }
         ]
       },
+      "ACTR": {
+        "type": "object",
+        "oneOf": [
+          { "$ref": "#/components/schemas/ACTR_Individual" },
+          { "$ref": "#/components/schemas/ACTR_Business" }
+        ]
+      },
       "RECA_Individual": {
         "type": "object",
         "properties": {
@@ -3432,6 +3440,78 @@
           "transactions",
           "return_summary",
           "original_return"
+        ]
+      },
+      "ACTR_Individual": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string", "enum": ["ACTR"], "example": "ACTR" },
+          "year": { "type": "string", "example": "2023" },
+          "form_number": { "type": "string" },
+          "name": { "type": "string" },
+          "address": { "type": "string" },
+          "filing_status": { "$ref": "#/components/schemas/FilingStatusEnum" },
+          "tin": { "type": "string" },
+          "spouse_tin": { "type": "string" },
+          "remittance": { "type": "number" },
+          "ptin": { "type": "string" },
+          "preparer_ein": { "type": "string" },
+          "account_summary": {
+            "$ref": "#/components/schemas/AccountSummaryModel"
+          },
+          "return_summary": {
+            "$ref": "#/components/schemas/ReturnSummaryModel"
+          },
+          "transactions": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/TransactionModel" }
+          }
+        },
+        "required": [
+          "type",
+          "year",
+          "name", 
+          "address",
+          "form_number",
+          "tin",
+          "account_summary",
+          "transactions",
+          "return_summary"
+        ]
+      },
+      "ACTR_Business": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string", "enum": ["ACTR"], "example": "ACTR" },
+          "year": { "type": "string", "example": "2023" },
+          "form_number": { "type": "string" },
+          "name": { "type": "string" },
+          "address": { "type": "string" },
+          "tin": { "type": "string" },
+          "remittance": { "type": "number" },
+          "ptin": { "type": "string" },
+          "preparer_ein": { "type": "string" },
+          "account_summary": {
+            "$ref": "#/components/schemas/AccountSummaryModel"
+          },
+          "transactions": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/TransactionModel" }
+          },
+          "return_summary": {
+            "$ref": "#/components/schemas/ReturnSummaryBusinessModel"
+          }
+        },
+        "required": [
+          "type",
+          "year",
+          "name",
+          "address", 
+          "form_number",
+          "tin",
+          "account_summary",
+          "transactions",
+          "return_summary"
         ]
       },
       "RETR": {
