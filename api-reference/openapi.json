@@ -1111,7 +1111,8 @@
                 { "$ref": "#/components/schemas/VENF" },
                 { "$ref": "#/components/schemas/W2" },
                 { "$ref": "#/components/schemas/Form1095A" },
-                { "$ref": "#/components/schemas/FormIrs1099IntModel" }
+                { "$ref": "#/components/schemas/FormIrs1099IntModel" },
+                { "$ref": "#/components/schemas/FormIrs1099GModel" }
               ]
             }
           }
@@ -1770,6 +1771,52 @@
           }
         },
         "required": ["type", "year", "forms"]
+      },
+      "FormIrs1099GModel": {
+        "type": "object",
+        "properties": {
+          "payer": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "tin": { "type": "string" },
+              "address": { "type": "string" }
+            },
+            "required": ["name", "tin", "address"]
+          },
+          "recipient": {
+            "type": "object", 
+            "properties": {
+              "name": { "type": "string" },
+              "tin": { "type": "string" },
+              "address": { "type": "string" }
+            },
+            "required": ["name", "tin", "address"]
+          },
+          "unemployment_compensation": { "type": "number" },
+          "state_local_income_tax_refunds": { "type": "number" },
+          "year_of_refund": { "type": "integer" },
+          "federal_income_tax_withheld": { "type": "number" },
+          "rtaa_payments": { "type": "number" },
+          "taxable_grants": { "type": "number" },
+          "agriculture_payments": { "type": "number" },
+          "trade_or_business_income": { "type": "boolean" },
+          "market_gain": { "type": "number" },
+          "account_number": { "type": "string", "nullable": true }
+        },
+        "required": [
+          "payer",
+          "recipient", 
+          "unemployment_compensation",
+          "state_local_income_tax_refunds",
+          "year_of_refund",
+          "federal_income_tax_withheld",
+          "rtaa_payments",
+          "taxable_grants",
+          "agriculture_payments",
+          "trade_or_business_income",
+          "market_gain"
+        ]
       },
       "WAID": {
         "type": "object",
