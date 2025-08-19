@@ -74,6 +74,18 @@
     "/auth/token": {
       "post": {
         "description": "Exchange authorization code for access token.",
+        "parameters": [
+          {
+            "name": "x-chart-async",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["true"]
+            },
+            "description": "When set to 'true', the API returns immediately after pulling documents from the provider without waiting for parsing to complete. You must wait for taxpayer_status to change to COMPLETED via webhooks before accessing parsed JSON data."
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {

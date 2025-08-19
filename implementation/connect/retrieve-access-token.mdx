@@ -37,6 +37,32 @@ In this step, you'll set up a secure server-side process to exchange the authori
         }'
         ```
 
+        **Optional Header for Async Processing**
+
+        You can add the optional `x-chart-async: "true"` header to prevent network timeouts during long document parsing operations:
+
+        ```shell Token exchange with async header
+        curl https://api.trychart.com/auth/token \
+        -X POST \
+        -H "Content-Type: application/json" \
+        -H "x-chart-async: true" \
+        --data-raw '{
+            "client_id": "<your_client_id>",
+            "client_secret": "<your_client_secret>",
+            "code": "<your_authorization_code>"
+        }'
+        ```
+
+        <Note>
+        We recommend adding the `x-chart-async: "true"` header to avoid network timeouts when parsing takes longer than expected.
+        </Note>
+
+        <Warning>
+        **Important Caveat**: When using the `x-chart-async: "true"` header, the token exchange will return immediately after pulling documents from the provider, without waiting for parsing to complete. This means there's no longer a guarantee that tax records are fully parsed when the API call ends.
+
+        You must wait for the `taxpayer_status` to change to `COMPLETED` through webhooks before you can reliably access the parsed JSON data of the retrieved documents.
+        </Warning>
+
 3.  **Handle the response**: Chart's `/auth/token` endpoint will respond with a JSON object containing an `access_token`
     if the request is successful. Parse the JSON response body and extract the `access_token`.
 
