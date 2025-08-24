@@ -3473,6 +3473,9 @@
               "sch_a": {
                 "$ref": "#/components/schemas/ScheduleABusinessModel"
               },
+              "sch_j": {
+                "$ref": "#/components/schemas/ScheduleJBusinessModel"
+              },
               "sch_k": {
                 "$ref": "#/components/schemas/ScheduleKBusinessModel"
               },
@@ -3484,6 +3487,12 @@
               },
               "form4626": {
                 "$ref": "#/components/schemas/Form4626Model"
+              },
+              "form8941": {
+                "$ref": "#/components/schemas/Form8941BusinessModel"
+              },
+              "form3800": {
+                "$ref": "#/components/schemas/Form3800BusinessModel"
               }
             }
           }
@@ -4422,6 +4431,70 @@
           }
         }
       },
+      "ScheduleJBusinessModel": {
+        "type": "object",
+        "properties": {
+          "taxable_income_bracket_amount_50k": { "type": "number" },
+          "taxable_income_bracket_amount_25k": { "type": "number" },
+          "taxable_income_bracket_amount_9_925k": { "type": "number" },
+          "controlled_group_5_percent_additional_tax": { "type": "number" },
+          "additional_tax_post_199301": { "type": "number" },
+          "income_tax": { "type": "number" },
+          "income_tax_per_computer": { "type": "number" },
+          "base_erosion_tax": { "type": "number" },
+          "alternative_minimum_tax": { "type": "number" },
+          "alternative_minimum_tax_per_computer": { "type": "number" },
+          "corporate_alternative_minimum_tax": { "type": "number" },
+          "gross_income_tax_verified": { "type": "number" },
+          "foreign_tax_credit": { "type": "number" },
+          "foreign_tax_credit_per_computer": { "type": "number" },
+          "qualified_electric_vehicle_credit_form_8834": { "type": "number" },
+          "form_8834_credit_amount_per_computer": { "type": "number" },
+          "general_business_credit": { "type": "number" },
+          "general_business_credit_verified_amount": { "type": "number" },
+          "general_business_credit_per_computer": { "type": "number" },
+          "orphan_drug_credit_per_computer": { "type": "number" },
+          "research_credit_per_computer": { "type": "number" },
+          "non_energy_investment_credit_per_computer": { "type": "number" },
+          "non_refundable_energy_credit_per_computer": { "type": "number" },
+          "jobs_credit_per_computer": { "type": "number" },
+          "alcohol_fuels_credit_per_computer": { "type": "number" },
+          "employee_stock_ownership_credit": { "type": "number" },
+          "employee_stock_ownership_credit_per_computer": { "type": "number" },
+          "community_development_credit": { "type": "number" },
+          "academy_bond_tax_credit": { "type": "number" },
+          "renewable_energy_bond": { "type": "number" },
+          "welfare_to_work_tax_credit": { "type": "number" },
+          "ny_liberty_zone_credit": { "type": "number" },
+          "employer_retention_credit": { "type": "number" },
+          "investment_credit_per_computer": { "type": "number" },
+          "prior_year_minimum_tax_credit": { "type": "number" },
+          "prior_year_minimum_tax_per_computer": { "type": "number" },
+          "f8827_prior_year_minimum_tax_credit": { "type": "number" },
+          "total_statutory_credits": { "type": "number" },
+          "total_statutory_credits_per_computer": { "type": "number" },
+          "statutory_credit_verified": { "type": "number" },
+          "gross_tax_less_credit_per_computer": { "type": "number" },
+          "personal_holding_co_tax": { "type": "number" },
+          "recomputed_invest_credit": { "type": "number" },
+          "recapture_of_investment_credit": { "type": "number" },
+          "recaptured_low_income_housing_credit": { "type": "number" },
+          "f8697_interest_due_under_the_look_back_method": { "type": "number" },
+          "f8866_interest_due_under_the_look_back_method": { "type": "number" },
+          "f8902_alternative_tax_on_qualifying_shipping": { "type": "number" },
+          "sec453_interest_tax_due": { "type": "number" },
+          "other_taxes_and_interest": { "type": "number" },
+          "estimated_tax_credit": { "type": "number" },
+          "tax_deposited_7004": { "type": "number" },
+          "withholding": { "type": "number" },
+          "credit_from_regulated_investment_company": { "type": "number" },
+          "form_8827_refundable_credit": { "type": "number" },
+          "other_refundable_credits": { "type": "number" },
+          "net_965_tax_liability": { "type": "number" },
+          "elective_payment_election": { "type": "number" },
+          "elective_payment_election_verified": { "type": "number" }
+        }
+      },
       "InterestAndDividendsModel": {
         "type": "object",
         "properties": {
@@ -4803,6 +4876,231 @@
           "tentative_amt": { "type": "number" },
           "tentative_amt_per_computer": { "type": "number" },
           "environmental_tax_per_computer": { "type": "number" }
+        }
+      },
+      "Form8941BusinessModel": {
+        "type": "object",
+        "properties": {
+          "premiums_paid_for_employee_health_insurance_through_shop": {
+            "type": "string"
+          },
+          "ein_used_to_report_employment_taxes": { "type": "string" },
+          "previously_filed_f8941_checkbox": { "type": "boolean" },
+          "number_of_employees": { "type": "integer" },
+          "number_of_full_time_employees": { "type": "integer" },
+          "average_annual_wages_amount": { "type": "number" },
+          "health_insurance_premiums_paid_amount": { "type": "number" },
+          "premiums_you_would_have_paid_amount": { "type": "number" },
+          "premium_subsidies_paid_amount": { "type": "number" },
+          "premium_paid_less_premium_subsidies_computer_amount": {
+            "type": "number"
+          },
+          "number_of_employees_with_premiums_paid": { "type": "integer" },
+          "number_of_full_time_employees_premiums_paid": { "type": "integer" },
+          "small_business_health_insurance_premium_credit": {
+            "type": "number"
+          },
+          "small_employer_health_insurance_credit_amount": { "type": "number" },
+          "f8941_small_employer_credit_verified_amount": { "type": "number" },
+          "f8941_small_employer_credit_computer_amount": { "type": "number" }
+        }
+      },
+      "Form3800BusinessModel": {
+        "type": "object",
+        "properties": {
+          "section1": {
+            "$ref": "#/components/schemas/Form3800Part1BusinessModel"
+          },
+          "section2": {
+            "$ref": "#/components/schemas/Form3800Part2BusinessModel"
+          }
+        }
+      },
+      "Form3800Part1BusinessModel": {
+        "type": "object",
+        "properties": {
+          "general_business_credit_non_passive_activity": { "type": "number" },
+          "general_business_credit_passive_activity": { "type": "number" },
+          "passive_activity_current_credit": { "type": "number" },
+          "carryforward_general_business_credit": { "type": "number" },
+          "carryback_general_business_credit": { "type": "number" },
+          "f7207_registration_number": { "type": "string" },
+          "f7207_credit_trans_election": { "type": "string" },
+          "f7207_gross_elective_payment_election": {
+            "type": "number"
+          },
+          "f7207_net_elective_payment": { "type": "number" },
+          "f7207_net_general_business_credit": { "type": "number" },
+          "f7207_gross_minus_net_computer": { "type": "number" },
+          "certain_allowable_credits": { "type": "number" },
+          "f8844_passive_activity_credit": { "type": "number" },
+          "allowable_credit": { "type": "number" },
+          "general_business_credit": { "type": "number" },
+          "eligible_small_business_credit": { "type": "number" },
+          "passive_activity_credit_box_b_f": { "type": "number" },
+          "passive_activity_credit_allowed": { "type": "number" },
+          "carryforward_general_business_credit_box_c_g": { "type": "number" },
+          "carryback_general_business_credit_box_d_h": { "type": "number" },
+          "f3468_investment_credit": { "type": "number" },
+          "research_credit": { "type": "number" },
+          "low_income_housing_credit": { "type": "number" },
+          "f3468_registration_number": { "type": "string" },
+          "f3468_credit_trans_election": { "type": "string" },
+          "f3468_gross_elective_payment_election": {
+            "type": "number"
+          },
+          "f3468_net_elective_payment_election": { "type": "number" },
+          "f3468_net_general_business_credit": { "type": "number" },
+          "disabled_access_credit": { "type": "number" },
+          "f8835_registration_number": { "type": "string" },
+          "f8835_credit_transfer_election": { "type": "string" },
+          "f8835_net_general_business_credit": { "type": "number" },
+          "f7210_registration_number": { "type": "string" },
+          "f7210_credit_trans_election": { "type": "string" },
+          "f7210_gross_elective_payment_election": {
+            "type": "number"
+          },
+          "f7210_net_elective_payment": { "type": "number" },
+          "f7210_net_general_business_credit": { "type": "number" },
+          "f7210_gross_minus_net_computer": { "type": "number" },
+          "orphan_drug_credit": { "type": "number" },
+          "new_market_tax_credit_f8874": { "type": "number" },
+          "small_employer_pension_plan_start_up_credit": { "type": "number" },
+          "employer_child_care_credit": { "type": "number" },
+          "biodiesel_fuel_credit": { "type": "number" },
+          "low_sulfur_diesel_production_credit": { "type": "number" },
+          "distilled_spirits": { "type": "number" },
+          "accelerated_research_credit": { "type": "number" },
+          "electricity_production_credit": { "type": "number" },
+          "f3468_part_4_registration_number": { "type": "string" }
+        }
+      },
+      "Form3800Part2BusinessModel": {
+        "type": "object",
+        "properties": {
+          "f3468_part_4_gross_elective_payment_election": {
+            "type": "number"
+          },
+          "f3468_part_4_net_elective_payment": { "type": "number" },
+          "f3468_part_4_net_general_business_credit": {
+            "type": "number"
+          },
+          "indian_employment_credit": { "type": "number" },
+          "nonconvertible_source_fuel": { "type": "number" },
+          "energy_efficient_home": { "type": "number" },
+          "energy_efficient_appliance": { "type": "number" },
+          "alternative_fuel_vehicle": { "type": "number" },
+          "f8911_registration_number": { "type": "string" },
+          "f8911_credit_trans_election": { "type": "string" },
+          "f8911_gross_elective_payment_election": {
+            "type": "number"
+          },
+          "f8911_net_elective_payment": { "type": "number" },
+          "f8911_net_general_business_credit": { "type": "number" },
+          "f8911_gross_minus_net_computer": { "type": "number" },
+          "oil_recovery_credit": { "type": "number" },
+          "f8923_mine_rescue_training_credit": { "type": "number" },
+          "f8931_agricultural_chemicals_credit": { "type": "number" },
+          "f8933_carbon_dioxide_sequestration_credit": { "type": "number" },
+          "f7213_registration_number": { "type": "string" },
+          "f7213_credit_transfer_election": { "type": "string" },
+          "f7213_gross_elective_payment_election": {
+            "type": "number"
+          },
+          "f7213_net_elective_payment": { "type": "number" },
+          "f7213_net_general_business_credit": { "type": "number" },
+          "f7213_gross_minus_net_computer": { "type": "number" },
+          "f8932_employer_differential_wage_credit": { "type": "number" },
+          "f8933_registration_number": { "type": "string" },
+          "f8933_credit_transfer_election": { "type": "string" },
+          "f8933_gross_elective_payment_election": {
+            "type": "number"
+          },
+          "f8933_net_elective_payment": { "type": "number" },
+          "f8933_net_general_business_credit": { "type": "number" },
+          "f8933_gross_minus_net_computer": { "type": "number" },
+          "f8936_plug_in_electric_drive_motor_vehicle_credit": {
+            "type": "number"
+          },
+          "f8834_plug_in_electric_vehicle": { "type": "number" },
+          "employee_retention_credit": { "type": "number" },
+          "general_credits_schedule_k_1": { "type": "number" },
+          "other_general_business_credit": { "type": "number" },
+          "increasing_research_credit": { "type": "number" },
+          "empowerment_zone_credit": { "type": "number" },
+          "f3468_part_iii_investment_credit": { "type": "number" },
+          "jobs_credit": { "type": "number" },
+          "alcohol_fuels_credit": { "type": "number" },
+          "low_income_housing_credit": { "type": "number" },
+          "employee_cash_tips": { "type": "number" },
+          "qualified_railroad_track_maintenance": { "type": "number" },
+          "f8941_small_employer_health_insurance_premiums_credit": {
+            "type": "number"
+          },
+          "f8994_employer_credit_for_paid_family_and_medical_leave": {
+            "type": "number"
+          },
+          "f8894_employer_credit_for_paid_family_and_medical_leave": {
+            "type": "number"
+          },
+          "other_credit": { "type": "number" },
+          "f5884_b_new_hire_retention_credit": { "type": "number" },
+          "f3468_part_7_rehabilitation_credit": { "type": "number" },
+          "f8936_part_5_vehicle_registration_number": {
+            "type": "string"
+          },
+          "f8936_part_5_vehicle_gross_elective_payment_election": {
+            "type": "number"
+          },
+          "f8936_part_5_net_vehicle_election_payment": {
+            "type": "number"
+          },
+          "f8636_part_5_net_general_business_credit": {
+            "type": "number"
+          },
+          "f8936_gross_minus_net_computer": { "type": "number" },
+          "f8904_net_general_business_credit": { "type": "number" },
+          "f7213_part_1_net_general_business_credit": {
+            "type": "number"
+          },
+          "f8881_part_2_pension_plan": { "type": "number" },
+          "f8881_part_3_military_spouse": { "type": "number" },
+          "f8864_net_general_business_credit": { "type": "number" },
+          "f3468_part_6_registration_number": { "type": "string" },
+          "f3468_part_6_credit_transfer_election": {
+            "type": "string"
+          },
+          "f3468_part_6_gross_elective_payment_election": {
+            "type": "number"
+          },
+          "f3468_part_6_net_elective_payment": { "type": "number" },
+          "f3468_part_6_net_general_business_credit": {
+            "type": "number"
+          },
+          "f3468_gross_minus_net_computer": { "type": "number" },
+          "f3468_pt_4_gross_minus_net_computer": { "type": "number" },
+          "f8835_part_2_registration_number": { "type": "string" },
+          "f8835_part_2_credit_transfer_election": {
+            "type": "string"
+          },
+          "f8835_part_2_gross_elective_payment_election": {
+            "type": "number"
+          },
+          "f8835_part_2_net_elective_pay": { "type": "number" },
+          "f8835_part_2_net_general_business_credit": {
+            "type": "number"
+          },
+          "f8835_part_2_gross_minus_net_computer": {
+            "type": "number"
+          },
+          "renewable_electricity_refined_coal_and_indian_coal_production_credit": {
+            "type": "number"
+          },
+          "empowerment_zone_credit_per_computer": { "type": "number" },
+          "merchant_cd_gross_receipts_per_computer": { "type": "number" },
+          "preliminary_credit_allowed_per_computer": { "type": "number" },
+          "tentative_allowable_credit_per_computer": { "type": "number" },
+          "total_current_year_credit_per_computer": { "type": "number" }
         }
       },
       "Error": {
