@@ -1440,9 +1440,9 @@
               "properties": {
                 "type": {
                   "type": "string",
-                  "enum": ["W2", "WAID"],
+                  "enum": ["W2", "WAID-W2", "1099NEC", "WAID-1099NEC"],
                   "description": "Document type - W2 or Wage and Income Document",
-                  "example": "WAID"
+                  "example": "WAID-W2"
                 },
                 "year": {
                   "type": "string",
@@ -1797,7 +1797,7 @@
             "required": ["name", "tin", "address"]
           },
           "recipient": {
-            "type": "object", 
+            "type": "object",
             "properties": {
               "name": { "type": "string" },
               "tin": { "type": "string" },
@@ -1818,7 +1818,7 @@
         },
         "required": [
           "payer",
-          "recipient", 
+          "recipient",
           "unemployment_compensation",
           "state_local_income_tax_refunds",
           "year_of_refund",
@@ -3529,7 +3529,7 @@
         "required": [
           "type",
           "year",
-          "name", 
+          "name",
           "address",
           "form_number",
           "tin",
@@ -3565,7 +3565,7 @@
           "type",
           "year",
           "name",
-          "address", 
+          "address",
           "form_number",
           "tin",
           "account_summary",
