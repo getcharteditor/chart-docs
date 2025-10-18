@@ -1432,6 +1432,11 @@
             "example": "3000",
             "description": "The total tax liabilities of the taxpayer calculated for each year with a federal tax lien filed."
           },
+          "tin": {
+            "type": "string",
+            "example": "123456789",
+            "description": "The TIN of the taxpayer."
+          },
           "employment_history": {
             "type": "array",
             "description": "Historical employment records from W2s and wage and income documents",
