@@ -3489,6 +3489,12 @@
               },
               "form4626": {
                 "$ref": "#/components/schemas/Form4626Model"
+              },
+              "form3800": {
+                "$ref": "#/components/schemas/Form3800BusinessModel"
+              },
+              "credits": {
+                "$ref": "#/components/schemas/CreditsFormBusinessModel"
               }
             }
           }
@@ -3699,6 +3705,12 @@
           },
           "form4626": {
             "$ref": "#/components/schemas/Form4626Model"
+          },
+          "form3800": {
+            "$ref": "#/components/schemas/Form3800BusinessModel"
+          },
+          "credits": {
+            "$ref": "#/components/schemas/CreditsFormBusinessModel"
           }
         }
       },
@@ -4808,6 +4820,182 @@
           "tentative_amt": { "type": "number" },
           "tentative_amt_per_computer": { "type": "number" },
           "environmental_tax_per_computer": { "type": "number" }
+        }
+      },
+      "Form3800BusinessModel": {
+        "type": "object",
+        "properties": {
+          "parts": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/Form3800GeneralBusinessCreditModelPart1"
+                },
+                {
+                  "$ref": "#/components/schemas/Form3800GeneralBusinessCreditModelPart2"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "Form3800GeneralBusinessCreditModelPart1": {
+        "type": "object",
+        "properties": {
+          "general_business_credit_non_passive_activity": { "type": "number" },
+          "general_business_credit_passive_activity": { "type": "number" },
+          "passive_activity_current_credit": { "type": "number" },
+          "carryforward_general_business_credit": { "type": "number" },
+          "carryback_general_business_credit": { "type": "number" },
+          "f7207_registration_number": { "type": "string" },
+          "f7207_credit_trans_election": { "type": "number" },
+          "f7207_gross_elective_payment_election": { "type": "number" },
+          "f7207_net_elective_payment": { "type": "number" },
+          "f7207_net_general_business_credit": { "type": "number" },
+          "f7207_gross_minus_net_computer": { "type": "number" },
+          "certain_allowable_credits": { "type": "number" },
+          "f8844_passive_activity_credit": { "type": "number" },
+          "allowable_credit": { "type": "number" },
+          "general_business_credit": { "type": "number" },
+          "eligible_small_business_credit": { "type": "number" },
+          "passive_activity_credit_box_b_f": { "type": "number" },
+          "passive_activity_credit_allowed": { "type": "number" },
+          "carryforward_general_business_credit_box_c_g": { "type": "number" },
+          "carryback_general_business_credit_box_d_h": { "type": "number" },
+          "f3468_investment_credit": { "type": "number" },
+          "research_credit": { "type": "number" },
+          "low_income_housing_credit": { "type": "number" },
+          "f3468_registration_number": { "type": "string" },
+          "f3468_credit_trans_election": { "type": "number" },
+          "f3468_gross_elective_payment_election": { "type": "number" },
+          "f3468_net_elective_payment_election": { "type": "number" },
+          "f3468_net_general_business_credit": { "type": "number" },
+          "disabled_access_credit": { "type": "number" },
+          "f8835_registration_number": { "type": "string" },
+          "f8835_credit_transfer_election": { "type": "number" },
+          "f8835_net_general_business_credit": { "type": "number" },
+          "f7210_registration_number": { "type": "string" },
+          "f7210_credit_trans_election": { "type": "number" },
+          "f7210_gross_elective_payment_election": { "type": "number" },
+          "f7210_net_elective_payment": { "type": "number" },
+          "f7210_net_general_business_credit": { "type": "number" },
+          "f7210_gross_minus_net_computer": { "type": "number" },
+          "orphan_drug_credit": { "type": "number" },
+          "new_market_tax_credit_f8874": { "type": "number" },
+          "small_employer_pension_plan_start_up_credit": { "type": "number" },
+          "employer_child_care_credit": { "type": "number" },
+          "biodiesel_fuel_credit": { "type": "number" },
+          "low_sulfur_diesel_production_credit": { "type": "number" },
+          "distilled_spirits": { "type": "number" },
+          "accelerated_research_credit": { "type": "number" },
+          "f3468_part_4_registration_number": { "type": "string" }
+        }
+      },
+      "Form3800GeneralBusinessCreditModelPart2": {
+        "type": "object",
+        "properties": {
+          "f3468_part_4_gross_elective_payment_election": { "type": "number" },
+          "f3468_part_4_net_elective_payment": { "type": "number" },
+          "f3468_part_4_net_general_business_credit": { "type": "number" },
+          "energy_efficient_home": { "type": "number" },
+          "alternative_fuel_vehicle": { "type": "number" },
+          "f8911_registration_number": { "type": "string" },
+          "f8911_credit_trans_election": { "type": "number" },
+          "f8911_gross_elective_payment_election": { "type": "number" },
+          "f8911_net_elective_payment": { "type": "number" },
+          "f8911_net_general_business_credit": { "type": "number" },
+          "f8911_gross_minus_net_computer": { "type": "number" },
+          "oil_recovery_credit": { "type": "number" },
+          "f7213_registration_number": { "type": "string" },
+          "f7213_credit_transfer_election": { "type": "number" },
+          "f7213_gross_elective_payment_election": { "type": "number" },
+          "f7213_net_elective_payment": { "type": "number" },
+          "f7213_net_general_business_credit": { "type": "number" },
+          "f7213_gross_minus_net_computer": { "type": "number" },
+          "f8932_employer_differential_wage_credit": { "type": "number" },
+          "f8933_registration_number": { "type": "string" },
+          "f8933_credit_transfer_election": { "type": "number" },
+          "f8933_gross_elective_payment_election": { "type": "number" },
+          "f8933_net_elective_payment": { "type": "number" },
+          "f8933_net_general_business_credit": { "type": "number" },
+          "f8933_gross_minus_net_computer": { "type": "number" },
+          "f8936_plug_in_electric_drive_motor_vehicle_credit": {
+            "type": "number"
+          },
+          "other_general_business_credit": { "type": "number" },
+          "increasing_research_credit": { "type": "number" },
+          "empowerment_zone_credit": { "type": "number" },
+          "f3468_part_iii_investment_credit": { "type": "number" },
+          "jobs_credit": { "type": "number" },
+          "alcohol_fuels_credit": { "type": "number" },
+          "low_income_housing_credit": { "type": "number" },
+          "employee_cash_tips": { "type": "number" },
+          "qualified_railroad_track_maintenance": { "type": "number" },
+          "f8941_small_employer_health_insurance_premiums_credit": {
+            "type": "number"
+          },
+          "f8994_employer_credit_for_paid_family_and_medical_leave": {
+            "type": "number"
+          },
+          "f3468_part_7_rehabilitation_credit": { "type": "number" },
+          "f8936_part_5_vehicle_registration_number": { "type": "string" },
+          "f8936_part_5_vehicle_gross_elective_payment_election": {
+            "type": "number"
+          },
+          "f8936_part_5_net_vehicle_election_payment": { "type": "number" },
+          "f8636_part_5_net_general_business_credit": { "type": "number" },
+          "f8936_gross_minus_net_computer": { "type": "number" },
+          "f8904_net_general_business_credit": { "type": "number" },
+          "f7213_part_1_net_general_business_credit": { "type": "number" },
+          "f8881_part_2_pension_plan": { "type": "number" },
+          "f8881_part_3_military_spouse": { "type": "number" },
+          "f8864_net_general_business_credit": { "type": "number" },
+          "f3468_part_6_registration_number": { "type": "string" },
+          "f3468_part_6_credit_transfer_election": { "type": "number" },
+          "f3468_part_6_gross_elective_payment_election": { "type": "number" },
+          "f3468_part_6_net_elective_payment": { "type": "number" },
+          "f3468_part_6_net_general_business_credit": { "type": "number" },
+          "f3468_gross_minus_net_computer": { "type": "number" },
+          "f3468_pt_4_gross_minus_net_computer": { "type": "number" },
+          "f8835_part_2_registration_number": { "type": "string" },
+          "f8835_part_2_credit_transfer_election": { "type": "number" },
+          "f8835_part_2_gross_elective_payment_election": { "type": "number" },
+          "f8835_part_2_net_elective_pay": { "type": "number" },
+          "f8835_part_2_net_general_business_credit": { "type": "number" },
+          "f8835_part_2_gross_minus_net_computer": { "type": "number" },
+          "empowerment_zone_credit_per_computer": { "type": "number" },
+          "merchant_cd_gross_receipts_per_computer": { "type": "number" },
+          "preliminary_credit_allowed_per_computer": { "type": "number" },
+          "tentative_allowable_credit_per_computer": { "type": "number" },
+          "total_current_year_credit_per_computer": { "type": "number" }
+        }
+      },
+      "CreditsFormBusinessModel": {
+        "type": "object",
+        "properties": {
+          "vehicle_1_number": { "type": "string" },
+          "placed_in_service_date_1": { "type": "string" },
+          "tentative_1_credit": { "type": "number" },
+          "net_1_business_credit": { "type": "number" },
+          "net_1_business_credit_computer": { "type": "number" },
+          "lesser_1_pt_4": { "type": "number" },
+          "lesser_1_pt_5": { "type": "number" },
+          "lesser_1_part_5_computer": { "type": "number" },
+          "vehicle_2_number": { "type": "string" },
+          "placed_in_service_date_2": { "type": "string" },
+          "tentative_2_credit": { "type": "number" },
+          "net_2_business_credit": { "type": "number" },
+          "net_2_business_credit_computer": { "type": "number" },
+          "lesser_2_pt_4": { "type": "number" },
+          "lesser_2_pt_5": { "type": "number" },
+          "lesser_2_part_5_computer": { "type": "number" },
+          "summary_vehicle_validation_credit_verified": { "type": "number" },
+          "more_than_2_schedule_a_indicators": { "type": "string" },
+          "vehicle_1_validation_number": { "type": "string" },
+          "vehicle_2_validation_number": { "type": "string" },
+          "total_net_elective_pay_per_computer": { "type": "number" },
+          "reduction_of_cvc_credit_per_computer": { "type": "number" }
         }
       },
       "Error": {
