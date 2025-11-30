@@ -1121,6 +1121,7 @@
                 { "$ref": "#/components/schemas/ACTR" },
                 { "$ref": "#/components/schemas/RETR" },
                 { "$ref": "#/components/schemas/VENF" },
+                { "$ref": "#/components/schemas/F1040" },
                 { "$ref": "#/components/schemas/W2" },
                 { "$ref": "#/components/schemas/Form1095A" },
                 { "$ref": "#/components/schemas/FormIrs1099IntModel" },
@@ -1549,6 +1550,174 @@
         "properties": {
           "type": { "type": "string", "enum": ["VENF"], "example": "VENF" },
           "year": { "type": "string", "example": "2023" }
+        }
+      },
+      "F1040": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string", "enum": ["F1040"], "example": "F1040" },
+          "year": { "type": "string", "example": "2023" },
+          "filing_info": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "spouse_name": { "type": "string" },
+              "ssn": { "type": "string" },
+              "spouse_ssn": { "type": "string" },
+              "home_address": { "type": "string" },
+              "city": { "type": "string" },
+              "state": { "type": "string" },
+              "zip": { "type": "string" },
+              "filing_status": {
+                "type": "string",
+                "enum": [
+                  "SINGLE",
+                  "MARRIED_FILING_JOINTLY",
+                  "MARRIED_FILING_SEPARATELY",
+                  "HEAD_OF_HOUSEHOLD",
+                  "QUALIFYING_WIDOW_ER"
+                ]
+              }
+            }
+          },
+          "dependents": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" },
+                "ssn": { "type": "string" },
+                "relationship": { "type": "string" },
+                "child_tax_credit": { "type": "boolean" },
+                "credit_for_other_dependents": { "type": "boolean" }
+              }
+            }
+          },
+          "income": {
+            "type": "object",
+            "properties": {
+              "w2_wages": {
+                "type": "number",
+                "description": "Line 1a: Total from W-2, box 1"
+              },
+              "household_employee_wages": {
+                "type": "number",
+                "description": "Line 1b: Household employee wages not reported on W-2"
+              },
+              "tip_income": {
+                "type": "number",
+                "description": "Line 1c: Tip income not reported on line 1a"
+              },
+              "medicaid_waiver_payments": {
+                "type": "number",
+                "description": "Line 1d: Medicaid waiver payments"
+              },
+              "dependent_care_benefits": {
+                "type": "number",
+                "description": "Line 1e: Taxable dependent care benefits from Form 2441"
+              },
+              "adoption_benefits": {
+                "type": "number",
+                "description": "Line 1f: Employer-provided adoption benefits from Form 8839"
+              },
+              "form_8919_wages": {
+                "type": "number",
+                "description": "Line 1g: Wages from Form 8919"
+              },
+              "other_earned_income": {
+                "type": "number",
+                "description": "Line 1h: Other earned income"
+              },
+              "nontaxable_combat_pay": {
+                "type": "number",
+                "description": "Line 1i: Nontaxable combat pay election"
+              },
+              "total_wages": {
+                "type": "number",
+                "description": "Line 1z: Total wages (sum of 1a-1h)"
+              },
+              "tax_exempt_interest": {
+                "type": "number",
+                "description": "Line 2a: Tax-exempt interest"
+              },
+              "taxable_interest": {
+                "type": "number",
+                "description": "Line 2b: Taxable interest"
+              },
+              "qualified_dividends": {
+                "type": "number",
+                "description": "Line 3a: Qualified dividends"
+              },
+              "ordinary_dividends": {
+                "type": "number",
+                "description": "Line 3b: Ordinary dividends"
+              },
+              "ira_distributions": {
+                "type": "number",
+                "description": "Line 4a: IRA distributions"
+              },
+              "taxable_ira_distributions": {
+                "type": "number",
+                "description": "Line 4b: Taxable IRA distributions"
+              },
+              "pensions_annuities": {
+                "type": "number",
+                "description": "Line 5a: Pensions and annuities"
+              },
+              "taxable_pensions_annuities": {
+                "type": "number",
+                "description": "Line 5b: Taxable pensions and annuities"
+              },
+              "social_security_benefits": {
+                "type": "number",
+                "description": "Line 6a: Social security benefits"
+              },
+              "taxable_social_security_benefits": {
+                "type": "number",
+                "description": "Line 6b: Taxable social security benefits"
+              },
+              "lump_sum_election": {
+                "type": "boolean",
+                "description": "Line 6c: Lump-sum election method checkbox"
+              },
+              "capital_gain_loss": {
+                "type": "number",
+                "description": "Line 7: Capital gain or (loss)"
+              },
+              "additional_income_schedule_1": {
+                "type": "number",
+                "description": "Line 8: Additional income from Schedule 1, line 10"
+              },
+              "total_income": {
+                "type": "number",
+                "description": "Line 9: Total income"
+              },
+              "adjustments_to_income": {
+                "type": "number",
+                "description": "Line 10: Adjustments to income from Schedule 1, line 26"
+              },
+              "adjusted_gross_income": {
+                "type": "number",
+                "description": "Line 11: Adjusted gross income (subtract line 10 from line 9)"
+              },
+              "standard_or_itemized_deduction": {
+                "type": "number",
+                "description": "Line 12: Standard deduction or itemized deductions from Schedule A"
+              },
+              "qualified_business_income_deduction": {
+                "type": "number",
+                "description": "Line 13: Qualified business income deduction from Form 8995 or 8995-A"
+              },
+              "total_deductions": {
+                "type": "number",
+                "description": "Line 14: Add lines 12 and 13"
+              },
+              "taxable_income": {
+                "type": "number",
+                "description": "Line 15: Taxable income (subtract line 14 from line 11)"
+              }
+            }
+          }
         }
       },
       "W2": {
