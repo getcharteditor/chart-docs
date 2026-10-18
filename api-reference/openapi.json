@@ -143,6 +143,12 @@
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Server Error. An unexpected error occurred. The authorization code cannot be used again, so the user must connect again."
+          },
+          "503": {
+            "description": "Service Unavailable. The tax provider, for example the IRS, did not respond. The authorization code cannot be used again, so the user must connect again later."
           }
         },
         "security": []
