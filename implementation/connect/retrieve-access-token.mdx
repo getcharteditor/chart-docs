@@ -82,6 +82,9 @@ In this step, you'll set up a secure server-side process to exchange the authori
 5.  **Handle errors**: If the `/auth/token` endpoint returns an error, your server-side code should handle it gracefully.
     Common error scenarios include invalid or expired authorization codes, incorrect client IDs or secrets,
     or mismatched redirect URIs. Display a helpful error message to the user or retry the authentication flow as needed.
+    If the response is `503`, the tax provider, for example the IRS, did not respond.
+    If the response is `500`, an unexpected error occurred on our side.
+    In both cases, the authorization code cannot be used again, so ask the user to connect again later.
 
 ## Checkpoint + Next Step
 
